@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+    <meta name="google-site-verification" content="N7GGnWH6FqrnOVlINPYOLiLkv1WZqP91HnxVgAf9tlU" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VendixStore</title>
+    <title>VendixStore | Tienda</title>
 
     <style>
+        :root {
+            --bg: #080808;
+            --bg-soft: #101010;
+            --card: #151515;
+            --card-hover: #1b1b1b;
+            --text: #f5f5f5;
+            --muted: #9b9b9b;
+            --border: rgba(255, 255, 255, 0.09);
+            --gold: #d6b36a;
+            --gold-light: #ecd69d;
+        }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         html {
@@ -20,258 +34,478 @@
         }
 
         body {
-            background: #080808;
-            color: white;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
         }
 
-        /* HEADER */
+        a {
+            color: inherit;
+        }
 
         header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: #0d0d0d;
-            border-bottom: 1px solid #222;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 18px 7%;
+            background: rgba(8, 8, 8, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            font-size: 27px;
-            font-weight: bold;
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
 
         .logo span {
-            color: #ff0000;
+            color: var(--gold);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
-            transition: 0.2s;
+            color: #d5d5d5;
+            font-size: 14px;
+            transition: 0.25s;
         }
 
         nav a:hover {
-            color: #ff0000;
+            color: var(--gold-light);
         }
 
-        /* HERO */
+        .nav-button {
+            padding: 10px 17px;
+            border: 1px solid rgba(214, 179, 106, 0.5);
+            border-radius: 8px;
+            color: var(--gold-light);
+        }
+
+        .nav-button:hover {
+            background: rgba(214, 179, 106, 0.08);
+        }
 
         .hero {
-            min-height: 80vh;
+            min-height: 82vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 30px;
+            padding: 80px 20px;
+            background:
+                radial-gradient(circle at 50% 30%, rgba(214, 179, 106, 0.13), transparent 30%),
+                radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.035), transparent 35%),
+                var(--bg);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(214, 179, 106, 0.3);
+            border-radius: 50px;
+            color: var(--gold-light);
+            background: rgba(214, 179, 106, 0.06);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .hero h1 {
-            font-size: 65px;
-            margin-bottom: 15px;
+            max-width: 900px;
+            font-size: clamp(45px, 7vw, 82px);
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
         }
 
         .hero h1 span {
-            color: #ff0000;
+            color: var(--gold);
         }
 
         .hero p {
-            color: #aaa;
-            font-size: 19px;
             max-width: 650px;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .button {
-            display: inline-block;
-            padding: 13px 25px;
-            background: #ff0000;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .button:hover {
-            background: #cc0000;
-            transform: scale(1.04);
-        }
-
-        /* SECCIONES */
-
-        .section {
-            padding: 75px 8%;
-            text-align: center;
-        }
-
-        .section-dark {
-            background: #0d0d0d;
-        }
-
-        .section h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .section-description {
-            color: #999;
-            margin-bottom: 45px;
-            font-size: 17px;
-        }
-
-        /* CATEGORÍAS */
-
-        .categories {
-            display: flex;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .category {
-            width: 210px;
-            min-height: 145px;
-            padding: 30px 20px;
-            background: #151515;
-            border: 1px solid #292929;
-            border-radius: 14px;
+            min-width: 150px;
+            padding: 14px 24px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: #111;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             transition: 0.25s;
         }
 
-        .category:hover {
-            transform: translateY(-7px);
-            border-color: #ff0000;
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(214, 179, 106, 0.17);
         }
 
-        .category .icon {
-            font-size: 38px;
-            margin-bottom: 15px;
+        .button-secondary {
+            background: transparent;
+            color: #eee;
+            border: 1px solid var(--border);
         }
 
-        .category h3 {
-            font-size: 19px;
+        .button-secondary:hover {
+            border-color: rgba(214, 179, 106, 0.45);
+            color: var(--gold-light);
+            box-shadow: none;
         }
 
-        .category p {
-            color: #888;
-            margin-top: 8px;
-            font-size: 14px;
+        .info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* PETARDOS */
-
-        .fireworks-section {
-            background: #090909;
-        }
-
-        .warning {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            padding: 18px 22px;
-            background: #171000;
-            border: 1px solid #6d5200;
-            border-radius: 10px;
-            color: #ddd;
-            line-height: 1.5;
-        }
-
-        .fireworks-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .firework-card {
-            width: 240px;
+        .info-box {
             padding: 30px 20px;
-            background: #121212;
-            border: 1px solid #292929;
-            border-radius: 14px;
+            text-align: center;
+            background: var(--bg-soft);
         }
 
-        .firework-card .icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .firework-card h3 {
+        .info-icon {
+            font-size: 25px;
             margin-bottom: 10px;
         }
 
-        .firework-card p {
-            color: #999;
-            line-height: 1.5;
+        .info-box h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
         }
 
-        /* REDES */
+        .info-box p {
+            color: var(--muted);
+            font-size: 13px;
+        }
 
-        .social-buttons {
+        .section {
+            padding: 90px 7%;
+        }
+
+        .section-dark {
+            background: var(--bg-soft);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section h2 {
+            font-size: clamp(32px, 4vw, 46px);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .categories {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .category {
+            min-height: 190px;
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.025),
+                    rgba(255, 255, 255, 0)
+                ),
+                var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: 0.28s;
+        }
+
+        .category:hover {
+            transform: translateY(-6px);
+            background: var(--card-hover);
+            border-color: rgba(214, 179, 106, 0.35);
+        }
+
+        .category-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .category-icon {
+            font-size: 38px;
+        }
+
+        .category-number {
+            color: #555;
+            font-size: 12px;
+        }
+
+        .category h3 {
+            font-size: 20px;
+            margin-top: 25px;
+        }
+
+        .category p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        .category-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .pyro-section {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(214, 179, 106, 0.07), transparent 35%),
+                #090909;
+        }
+
+        .warning {
+            max-width: 850px;
+            margin: 0 auto 35px;
+            padding: 18px 22px;
+            background: rgba(214, 179, 106, 0.05);
+            border: 1px solid rgba(214, 179, 106, 0.22);
+            border-radius: 12px;
+            color: #c9c9c9;
+            font-size: 14px;
+        }
+
+        .pyro-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .pyro-card {
+            padding: 30px 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .pyro-card .icon {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .pyro-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .pyro-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .featured {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .featured-card {
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            transition: 0.28s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(214, 179, 106, 0.3);
+        }
+
+        .fake-image {
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle, rgba(214, 179, 106, 0.16), transparent 55%),
+                #111;
+            font-size: 55px;
+        }
+
+        .featured-content {
+            padding: 24px;
+            text-align: left;
+        }
+
+        .featured-content h3 {
+            margin-bottom: 7px;
+        }
+
+        .featured-content p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            padding: 6px 9px;
+            border: 1px solid rgba(214, 179, 106, 0.25);
+            border-radius: 6px;
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .socials {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin: 30px 0;
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            background: #050505;
-            border-top: 1px solid #1c1c1c;
-        }
-
-        .copyright {
-            color: #666;
             margin-top: 30px;
         }
 
-        /* MÓVIL */
+        footer {
+            padding: 45px 20px;
+            text-align: center;
+            background: #050505;
+            border-top: 1px solid var(--border);
+        }
 
-        @media (max-width: 700px) {
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 900;
+        }
 
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-note {
+            color: #666;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories,
+            .pyro-grid,
+            .featured {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
             header {
                 flex-direction: column;
                 gap: 15px;
             }
 
             nav {
-                text-align: center;
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             nav a {
-                margin: 0 8px;
+                font-size: 13px;
             }
 
-            .hero h1 {
-                font-size: 43px;
+            .info {
+                grid-template-columns: 1fr 1fr;
             }
 
-            .hero p {
-                font-size: 16px;
+            .categories,
+            .pyro-grid,
+            .featured {
+                grid-template-columns: 1fr;
             }
 
-            .section h2 {
-                font-size: 30px;
+            .section {
+                padding: 65px 6%;
             }
 
+            .hero {
+                min-height: 75vh;
+            }
         }
 
+        @media (max-width: 430px) {
+            .info {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
 <body>
-
-    <!-- CABECERA -->
 
     <header>
 
@@ -282,79 +516,171 @@
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#ropa">Ropa</a>
+            <a href="#destacados">Destacados</a>
             <a href="#petardos">Petardos</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#contacto" class="nav-button">Contacto</a>
         </nav>
 
     </header>
 
 
-    <!-- INICIO -->
-
     <section class="hero" id="inicio">
 
+        <div class="hero-badge">
+            ✦ VENDIXSTORE
+        </div>
+
         <h1>
-            Bienvenido a <span>VendixStore</span>
+            Tu estilo.<br>
+            <span>Tu selección.</span>
         </h1>
 
         <p>
-            Descubre nuestra selección de ropa, accesorios,
-            novedades y mucho más.
+            Descubre nuestra selección de moda, accesorios,
+            novedades y mucho más en VendixStore.
         </p>
 
-        <a href="#ropa" class="button">
-            Explorar categorías
-        </a>
+        <div class="hero-buttons">
+
+            <a href="#ropa" class="button">
+                Explorar ropa
+            </a>
+
+            <a href="#destacados" class="button button-secondary">
+                Ver destacados
+            </a>
+
+        </div>
 
     </section>
 
 
-    <!-- ROPA -->
+    <section class="info">
+
+        <div class="info-box">
+            <div class="info-icon">🚚</div>
+            <h3>Envíos en Europa</h3>
+            <p>
+                Enviamos únicamente dentro de Europa.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-icon">👕</div>
+            <h3>Moda y accesorios</h3>
+            <p>
+                Diferentes categorías para descubrir.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-icon">📦</div>
+            <h3>Novedades</h3>
+            <p>
+                Nuevos productos próximamente.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-icon">💬</div>
+            <h3>Comunidad</h3>
+            <p>
+                Únete a VendixStore en Discord.
+            </p>
+        </div>
+
+    </section>
+
 
     <section class="section section-dark" id="ropa">
 
-        <h2>👕 Ropa</h2>
+        <div class="section-header">
 
-        <p class="section-description">
-            Explora nuestras categorías de moda.
-        </p>
+            <div class="section-label">
+                Colección
+            </div>
+
+            <h2>👕 Ropa</h2>
+
+            <p class="section-description">
+                Explora nuestras categorías y descubre
+                lo que llegará próximamente a VendixStore.
+            </p>
+
+        </div>
 
         <div class="categories">
 
             <div class="category">
-                <div class="icon">👖</div>
-                <h3>Pantalones</h3>
-                <p>Próximamente</p>
+                <div>
+                    <div class="category-top">
+                        <div class="category-icon">👖</div>
+                        <div class="category-number">01</div>
+                    </div>
+                    <h3>Pantalones</h3>
+                    <p>Diferentes estilos y modelos.</p>
+                </div>
+                <a href="#" class="category-link">Próximamente →</a>
             </div>
 
             <div class="category">
-                <div class="icon">👕</div>
-                <h3>Camisetas</h3>
-                <p>Próximamente</p>
+                <div>
+                    <div class="category-top">
+                        <div class="category-icon">👕</div>
+                        <div class="category-number">02</div>
+                    </div>
+                    <h3>Camisetas</h3>
+                    <p>Diseños para todos los estilos.</p>
+                </div>
+                <a href="#" class="category-link">Próximamente →</a>
             </div>
 
             <div class="category">
-                <div class="icon">🧢</div>
-                <h3>Accesorios</h3>
-                <p>Próximamente</p>
+                <div>
+                    <div class="category-top">
+                        <div class="category-icon">🧢</div>
+                        <div class="category-number">03</div>
+                    </div>
+                    <h3>Accesorios</h3>
+                    <p>Complementos para completar tu look.</p>
+                </div>
+                <a href="#" class="category-link">Próximamente →</a>
             </div>
 
             <div class="category">
-                <div class="icon">🧥</div>
-                <h3>Chaquetas</h3>
-                <p>Próximamente</p>
+                <div>
+                    <div class="category-top">
+                        <div class="category-icon">🧥</div>
+                        <div class="category-number">04</div>
+                    </div>
+                    <h3>Chaquetas</h3>
+                    <p>Prendas para cualquier ocasión.</p>
+                </div>
+                <a href="#" class="category-link">Próximamente →</a>
             </div>
 
             <div class="category">
-                <div class="icon">👚</div>
-                <h3>Sudaderas</h3>
-                <p>Próximamente</p>
+                <div>
+                    <div class="category-top">
+                        <div class="category-icon">👚</div>
+                        <div class="category-number">05</div>
+                    </div>
+                    <h3>Sudaderas</h3>
+                    <p>Comodidad y estilo.</p>
+                </div>
+                <a href="#" class="category-link">Próximamente →</a>
             </div>
 
             <div class="category">
-                <div class="icon">👟</div>
-                <h3>Conjuntos</h3>
-                <p>Próximamente</p>
+                <div>
+                    <div class="category-top">
+                        <div class="category-icon">👟</div>
+                        <div class="category-number">06</div>
+                    </div>
+                    <h3>Conjuntos</h3>
+                    <p>Looks completos preparados para ti.</p>
+                </div>
+                <a href="#" class="category-link">Próximamente →</a>
             </div>
 
         </div>
@@ -362,90 +688,154 @@
     </section>
 
 
-    <!-- PETARDOS -->
+    <section class="section" id="destacados">
 
-    <section class="section fireworks-section" id="petardos">
+        <div class="section-header">
 
-        <h2>🧨 Petardos</h2>
+            <div class="section-label">
+                Selección Vendix
+            </div>
 
-        <p class="section-description">
-            Sección de artículos de pirotecnia.
-        </p>
+            <h2>⭐ Destacados</h2>
+
+            <p class="section-description">
+                Esta sección está preparada para tus productos
+                destacados y futuros lanzamientos.
+            </p>
+
+        </div>
+
+        <div class="featured">
+
+            <div class="featured-card">
+                <div class="fake-image">👕</div>
+
+                <div class="featured-content">
+                    <h3>Camiseta</h3>
+                    <p>Añade aquí la información de tu producto.</p>
+
+                    <span class="coming-soon">
+                        PRÓXIMAMENTE
+                    </span>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <div class="fake-image">🧢</div>
+
+                <div class="featured-content">
+                    <h3>Accesorio</h3>
+                    <p>Añade aquí la información de tu producto.</p>
+
+                    <span class="coming-soon">
+                        PRÓXIMAMENTE
+                    </span>
+                </div>
+            </div>
+
+            <div class="featured-card">
+                <div class="fake-image">👟</div>
+
+                <div class="featured-content">
+                    <h3>Conjunto</h3>
+                    <p>Añade aquí la información de tu producto.</p>
+
+                    <span class="coming-soon">
+                        PRÓXIMAMENTE
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section pyro-section" id="petardos">
+
+        <div class="section-header">
+
+            <div class="section-label">
+                Pirotecnia
+            </div>
+
+            <h2>🧨 Petardos</h2>
+
+            <p class="section-description">
+                Sección dedicada a información sobre pirotecnia.
+            </p>
+
+        </div>
 
         <div class="warning">
-            ⚠️ La adquisición y utilización de artículos pirotécnicos
-            está sujeta a la normativa aplicable y a restricciones
-            de edad. Utiliza siempre estos productos de forma segura
-            y conforme a la legislación vigente.
+            ⚠️ La adquisición, posesión y uso de artículos
+            pirotécnicos está sujeta a la legislación aplicable
+            y a restricciones de edad. Cualquier producto de esta
+            categoría debe utilizarse siguiendo las instrucciones
+            del fabricante y la normativa vigente.
         </div>
 
-        <div class="fireworks-grid">
+        <div class="pyro-grid">
 
-            <div class="firework-card">
+            <div class="pyro-card">
                 <div class="icon">🧨</div>
                 <h3>Petardos</h3>
-                <p>
-                    Próximamente encontrarás información
-                    sobre nuestra selección.
-                </p>
+                <p>Información y novedades próximamente.</p>
             </div>
 
-            <div class="firework-card">
+            <div class="pyro-card">
                 <div class="icon">🎆</div>
                 <h3>Fuegos artificiales</h3>
-                <p>
-                    Próximamente habrá información
-                    sobre las novedades disponibles.
-                </p>
+                <p>Información y novedades próximamente.</p>
             </div>
 
-            <div class="firework-card">
+            <div class="pyro-card">
                 <div class="icon">✨</div>
                 <h3>Novedades</h3>
-                <p>
-                    Mantente atento a VendixStore
-                    para futuras novedades.
-                </p>
+                <p>Mantente atento a VendixStore.</p>
             </div>
 
         </div>
 
     </section>
 
-
-    <!-- REDES -->
 
     <section class="section section-dark" id="contacto">
 
-        <h2>🔗 Únete a VendixStore</h2>
+        <div class="section-header">
 
-        <p class="section-description">
-            Síguenos y entra en nuestra comunidad.
-        </p>
+            <div class="section-label">
+                Comunidad
+            </div>
 
-        <div class="social-buttons">
+            <h2>🔗 Sigue a VendixStore</h2>
+
+            <p class="section-description">
+                Únete a nuestra comunidad y descubre las novedades.
+            </p>
+
+        </div>
+
+        <div class="socials">
 
             <a
                 href="https://discord.gg/7A6yxYvej"
                 target="_blank"
-                class="button"
-            >
+                class="button">
                 Discord
             </a>
 
             <a
                 href="https://www.tiktok.com/@vendixstore7"
                 target="_blank"
-                class="button"
-            >
+                class="button button-secondary">
                 TikTok
             </a>
 
             <a
                 href="https://www.instagram.com/vendixstore02"
                 target="_blank"
-                class="button"
-            >
+                class="button button-secondary">
                 Instagram
             </a>
 
@@ -454,12 +844,14 @@
     </section>
 
 
-    <!-- FOOTER -->
-
     <footer>
 
-        <p>
-            VendixStore
+        <div class="footer-logo">
+            Vendix<span>Store</span>
+        </div>
+
+        <p class="footer-note">
+            Envíos disponibles únicamente en Europa.
         </p>
 
         <p class="copyright">
