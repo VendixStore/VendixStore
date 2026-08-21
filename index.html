@@ -1,2049 +1,1505 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
-    <meta name="google-site-verification" content="N7GGnWH6FqrnOVlINPYOLiLkv1WZqP91HnxVgAf9tlU">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>VendixStore | Ropa y accesorios</title>
-
-    <meta
-        name="description"
-        content="VendixStore: ropa, accesorios y novedades. Envíos disponibles únicamente en Europa."
-    >
-
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://vendixstore.github.io/">
-
-    <style>
-
-        :root {
-            --bg: #070707;
-            --bg2: #0d0d0d;
-            --card: #151515;
-            --card2: #1b1b1b;
-            --text: #f5f5f5;
-            --muted: #909090;
-            --line: rgba(255,255,255,.08);
-            --gold: #d7b56d;
-            --gold2: #f0dda8;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VendixStore</title>
+
+<meta name="description" content="VendixStore - Ropa, bambas y accesorios.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:white;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #8b2cff44;
+}
+
+.nav{
+    max-width:1250px;
+    margin:auto;
+    padding:18px 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:25px;
+    font-weight:900;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+.logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.logo span{
+    color:#a855f7;
+}
 
-        body {
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-        }
+nav{
+    display:flex;
+    gap:25px;
+}
 
-        body.cart-open {
-            overflow: hidden;
-        }
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
 
-        a {
-            color: inherit;
-        }
+nav a:hover{
+    color:#b45cff;
+}
 
-        /* =========================
-           HEADER
-        ========================= */
+.cart-button{
+    border:0;
+    background:linear-gradient(135deg,#6d16d9,#a33cff);
+    color:white;
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 900;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 17px 7%;
+    padding:12px 17px;
+    border-radius:12px;
 
-            background: rgba(7,7,7,.94);
-            backdrop-filter: blur(15px);
+    cursor:pointer;
+    font-weight:bold;
 
-            border-bottom: 1px solid var(--line);
-        }
+    box-shadow:0 0 20px #8b2cff33;
+}
 
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
+/* ================= HERO ================= */
 
-        .logo span {
-            color: var(--gold);
-        }
+.hero{
+    min-height:100vh;
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-        nav a {
-            text-decoration: none;
-            color: #d1d1d1;
-            font-size: 14px;
-            transition: .2s;
-        }
+    text-align:center;
 
-        nav a:hover {
-            color: var(--gold2);
-        }
+    padding:130px 20px 70px;
 
-        .cart-button {
-            position: relative;
+    background:
+    radial-gradient(circle at center,#7b22ff35,transparent 38%),
+    #050505;
+}
 
-            border: 1px solid rgba(215,181,109,.35);
-            background: rgba(215,181,109,.05);
+.hero-content{
+    max-width:850px;
+}
 
-            color: var(--gold2);
+.hero h1{
+    font-size:clamp(65px,11vw,125px);
+    line-height:.9;
+    font-weight:1000;
 
-            padding: 10px 14px;
-            border-radius: 9px;
+    background:linear-gradient(
+        90deg,
+        white,
+        #a855f7,
+        white
+    );
 
-            cursor: pointer;
+    -webkit-background-clip:text;
+    color:transparent;
 
-            font-weight: 800;
-        }
+    animation:glow 3s infinite alternate;
+}
 
-        .cart-count {
-            position: absolute;
+@keyframes glow{
 
-            top: -8px;
-            right: -8px;
+    from{
+        filter:drop-shadow(0 0 5px #8b2cff33);
+    }
 
-            width: 22px;
-            height: 22px;
+    to{
+        filter:drop-shadow(0 0 35px #8b2cff88);
+    }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+}
 
-            border-radius: 50%;
+.hero p{
+    color:#999;
+    font-size:18px;
+    line-height:1.7;
 
-            background: var(--gold);
-            color: #111;
+    max-width:650px;
 
-            font-size: 11px;
-            font-weight: 900;
-        }
+    margin:30px auto;
+}
 
-        /* =========================
-           HERO
-        ========================= */
+.hero-button{
+    display:inline-block;
 
-        .hero {
-            min-height: 80vh;
-            padding: 80px 20px;
+    padding:16px 28px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+    background:linear-gradient(
+        135deg,
+        #6d16d9,
+        #a33cff
+    );
 
-            text-align: center;
+    border-radius:12px;
 
-            background:
-                radial-gradient(
-                    circle at 50% 25%,
-                    rgba(215,181,109,.15),
-                    transparent 30%
-                ),
-                var(--bg);
-        }
+    color:white;
+    text-decoration:none;
 
-        .eyebrow {
-            color: var(--gold2);
+    font-weight:bold;
 
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 2px;
+    box-shadow:0 0 30px #8b2cff44;
 
-            padding: 8px 15px;
-            margin-bottom: 22px;
+    transition:.3s;
+}
 
-            border: 1px solid rgba(215,181,109,.3);
-            border-radius: 50px;
+.hero-button:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 45px #8b2cff77;
+}
 
-            background: rgba(215,181,109,.05);
-        }
+/* ================= SECTIONS ================= */
 
-        .hero h1 {
-            max-width: 950px;
+section{
+    max-width:1250px;
+    margin:auto;
+    padding:100px 25px;
+}
 
-            font-size: clamp(48px, 8vw, 86px);
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
 
-            line-height: .97;
-            letter-spacing: -4px;
-        }
+.section-title h2{
+    font-size:42px;
+}
 
-        .hero h1 span {
-            color: var(--gold);
-        }
+.section-title span{
+    color:#a855f7;
+}
 
-        .hero p {
-            max-width: 650px;
+.section-title p{
+    color:#777;
+    margin-top:10px;
+}
 
-            margin: 25px auto 32px;
+/* ================= BUSCADOR ================= */
 
-            color: var(--muted);
-            font-size: 18px;
-        }
+.search{
+    max-width:600px;
+    margin:0 auto 40px;
+}
 
-        .buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
+.search input{
+    width:100%;
 
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+    padding:17px 20px;
 
-            min-width: 150px;
-            padding: 14px 23px;
+    border-radius:14px;
 
-            text-decoration: none;
+    border:1px solid #8b2cff55;
 
-            background: linear-gradient(
-                135deg,
-                var(--gold2),
-                var(--gold)
-            );
+    background:#0d0d0d;
 
-            color: #111;
+    color:white;
 
-            border-radius: 9px;
+    outline:none;
 
-            font-weight: 900;
-            font-size: 14px;
+    font-size:16px;
+}
 
-            border: none;
+.search input:focus{
+    border-color:#a855f7;
 
-            cursor: pointer;
+    box-shadow:
+    0 0 25px #8b2cff22;
+}
 
-            transition: .25s;
-        }
+/* ================= PRODUCTOS ================= */
 
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 35px rgba(215,181,109,.15);
-        }
+.products{
 
-        .button-outline {
-            color: #fff;
-            background: transparent;
-            border: 1px solid var(--line);
-        }
+    display:grid;
 
-        .button-outline:hover {
-            color: var(--gold2);
-            border-color: rgba(215,181,109,.4);
-            box-shadow: none;
-        }
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
 
-        /* =========================
-           BENEFITS
-        ========================= */
+    gap:25px;
+}
 
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
+.product{
 
-            background: var(--line);
+    position:relative;
 
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
+    overflow:hidden;
 
-        .benefit {
-            background: var(--bg2);
-            padding: 28px 18px;
-            text-align: center;
-        }
+    background:
+    linear-gradient(
+        145deg,
+        #120b18,
+        #080808
+    );
 
-        .benefit-icon {
-            font-size: 25px;
-            margin-bottom: 8px;
-        }
+    border:1px solid #8b2cff33;
 
-        .benefit h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
+    border-radius:20px;
 
-        .benefit p {
-            color: var(--muted);
-            font-size: 12px;
-        }
+    transition:.35s;
+}
 
-        /* =========================
-           SECTIONS
-        ========================= */
+.product:hover{
 
-        .section {
-            padding: 85px 7%;
-        }
+    transform:translateY(-9px);
 
-        .dark {
-            background: var(--bg2);
-        }
+    border-color:#a855f7;
 
-        .section-head {
-            max-width: 720px;
-            margin: 0 auto 45px;
-            text-align: center;
-        }
+    box-shadow:
+    0 20px 50px #8b2cff22;
+}
 
-        .label {
-            color: var(--gold);
+.product-image{
 
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+    height:270px;
 
-            margin-bottom: 9px;
-        }
+    background:#090909;
 
-        .section h2 {
-            font-size: clamp(32px, 4vw, 46px);
-            letter-spacing: -1.5px;
-            margin-bottom: 12px;
-        }
+    overflow:hidden;
+}
 
-        .section-subtitle {
-            color: var(--muted);
-            font-size: 16px;
-        }
+.product-image img{
 
-        /* =========================
-           CATEGORIES
-        ========================= */
+    width:100%;
+    height:100%;
 
-        .categories {
-            max-width: 1100px;
-            margin: auto;
+    object-fit:cover;
 
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
+    transition:.5s;
+}
 
-        .category {
-            min-height: 170px;
+.product:hover .product-image img{
+    transform:scale(1.06);
+}
 
-            padding: 27px 23px;
+.badge{
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+    position:absolute;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.025),
-                    transparent
-                ),
-                var(--card);
+    top:14px;
+    left:14px;
 
-            border: 1px solid var(--line);
-            border-radius: 15px;
+    z-index:5;
 
-            transition: .25s;
-        }
+    background:#8b2cff;
 
-        .category:hover {
-            transform: translateY(-6px);
-            background: var(--card2);
-            border-color: rgba(215,181,109,.35);
-        }
+    padding:7px 10px;
 
-        .category-top {
-            display: flex;
-            justify-content: space-between;
-        }
+    border-radius:8px;
 
-        .category-icon {
-            font-size: 38px;
-        }
+    font-size:11px;
 
-        .category-number {
-            color: #555;
-            font-size: 12px;
-        }
+    font-weight:bold;
+}
 
-        .category h3 {
-            margin-top: 18px;
-            font-size: 18px;
-        }
+.product-info{
+    padding:20px;
+}
 
-        .category p {
-            color: var(--muted);
-            font-size: 13px;
-            margin-top: 5px;
-        }
+.product-info h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
 
-        /* =========================
-           PRODUCTS
-        ========================= */
+.product-info p{
+    color:#888;
+    line-height:1.5;
 
-        .shop-tools {
-            max-width: 1100px;
-            margin: 0 auto 25px;
+    margin-bottom:14px;
+}
 
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+.price{
 
-        .search {
-            flex: 1;
-            min-width: 220px;
+    color:#c084fc;
 
-            padding: 13px 15px;
+    font-size:23px;
 
-            color: white;
-            background: #111;
+    font-weight:bold;
 
-            border: 1px solid var(--line);
-            border-radius: 9px;
+    margin-bottom:16px;
+}
 
-            outline: none;
-        }
+.add-cart{
 
-        .search:focus {
-            border-color: rgba(215,181,109,.4);
-        }
+    width:100%;
 
-        .products {
-            max-width: 1100px;
-            margin: auto;
+    padding:13px;
 
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+    border:0;
 
-            gap: 18px;
-        }
+    border-radius:10px;
 
-        .product {
-            overflow: hidden;
+    background:
+    linear-gradient(
+        135deg,
+        #6d16d9,
+        #a33cff
+    );
 
-            background: var(--card);
+    color:white;
 
-            border: 1px solid var(--line);
-            border-radius: 14px;
+    font-weight:bold;
 
-            transition: .25s;
-        }
+    cursor:pointer;
 
-        .product:hover {
-            transform: translateY(-5px);
-            border-color: rgba(215,181,109,.32);
-        }
+    transition:.3s;
+}
 
-        .product-image {
-            height: 250px;
+.add-cart:hover{
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    transform:translateY(-2px);
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(215,181,109,.14),
-                    transparent 55%
-                ),
-                #101010;
+    box-shadow:
+    0 0 25px #8b2cff55;
+}
 
-            font-size: 65px;
-        }
+/* ================= INFO ================= */
 
-        .product-content {
-            padding: 21px;
-        }
+.info-grid{
 
-        .product-category {
-            color: var(--gold);
+    display:grid;
 
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
 
-        .product-content h3 {
-            margin: 6px 0;
-            font-size: 18px;
-        }
+    gap:20px;
+}
 
-        .product-description {
-            color: var(--muted);
-            font-size: 13px;
+.info-card{
 
-            margin-bottom: 15px;
-        }
+    background:#0d0a11;
 
-        .product-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
+    border:1px solid #8b2cff33;
 
-        .price {
-            font-size: 18px;
-            font-weight: 900;
-        }
+    padding:30px;
 
-        .add-cart {
-            padding: 10px 13px;
+    border-radius:18px;
 
-            border: none;
-            border-radius: 8px;
+    text-align:center;
 
-            background: var(--gold);
-            color: #111;
+    transition:.3s;
+}
 
-            cursor: pointer;
+.info-card:hover{
 
-            font-size: 12px;
-            font-weight: 900;
+    transform:translateY(-5px);
 
-            transition: .2s;
-        }
+    border-color:#a855f7;
+}
 
-        .add-cart:hover {
-            background: var(--gold2);
-        }
+.info-icon{
 
-        /* =========================
-           SHIPPING
-        ========================= */
+    font-size:40px;
 
-        .shipping-box {
-            max-width: 1000px;
-            margin: auto;
+    margin-bottom:15px;
+}
 
-            padding: 35px;
+.info-card p{
 
-            border-radius: 17px;
+    color:#888;
 
-            border: 1px solid rgba(215,181,109,.22);
+    line-height:1.5;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(215,181,109,.07),
-                    rgba(255,255,255,.015)
-                );
-        }
+    margin-top:10px;
+}
 
-        .shipping-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-        }
+/* ================= FAQ ================= */
 
-        .shipping-title {
-            font-size: 23px;
-            font-weight: 800;
-            margin-bottom: 7px;
-        }
+.faq{
 
-        .shipping-text {
-            color: var(--muted);
-            font-size: 14px;
-        }
+    max-width:800px;
 
-        .europe-badge {
-            padding: 12px 17px;
+    margin:auto;
+}
 
-            flex-shrink: 0;
+details{
 
-            color: var(--gold2);
+    background:#0d0a11;
 
-            border: 1px solid rgba(215,181,109,.3);
-            border-radius: 9px;
+    border:1px solid #8b2cff33;
 
-            font-size: 13px;
-            font-weight: 900;
-        }
+    border-radius:13px;
 
-        /* =========================
-           FAQ
-        ========================= */
+    padding:20px;
 
-        .faq {
-            max-width: 850px;
-            margin: auto;
-        }
+    margin-bottom:12px;
+}
 
-        .faq details {
-            margin-bottom: 10px;
+summary{
 
-            background: var(--card);
+    cursor:pointer;
 
-            border: 1px solid var(--line);
-            border-radius: 10px;
+    font-weight:bold;
+}
 
-            overflow: hidden;
-        }
+details p{
 
-        .faq summary {
-            cursor: pointer;
-            padding: 18px 20px;
+    color:#888;
 
-            font-weight: 800;
+    margin-top:15px;
 
-            list-style: none;
-        }
+    line-height:1.6;
+}
 
-        .faq summary::-webkit-details-marker {
-            display: none;
-        }
+/* ================= REDES ================= */
 
-        .faq summary::after {
-            content: "+";
+.social{
 
-            float: right;
+    display:flex;
 
-            color: var(--gold);
-            font-size: 20px;
-        }
+    justify-content:center;
 
-        .faq details[open] summary::after {
-            content: "−";
-        }
+    flex-wrap:wrap;
 
-        .faq-answer {
-            padding: 0 20px 20px;
+    gap:15px;
+}
 
-            color: var(--muted);
-            font-size: 14px;
-        }
+.social a{
 
-        /* =========================
-           SOCIAL
-        ========================= */
+    padding:15px 25px;
 
-        .socials {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 28px;
-        }
+    border-radius:12px;
 
-        /* =========================
-           CART OVERLAY
-        ========================= */
+    background:#0d0a11;
 
-        .cart-overlay {
-            position: fixed;
-            inset: 0;
+    border:1px solid #8b2cff55;
 
-            background: rgba(0,0,0,.65);
+    color:white;
 
-            opacity: 0;
-            pointer-events: none;
+    text-decoration:none;
 
-            transition: .25s;
+    transition:.3s;
+}
 
-            z-index: 998;
-        }
+.social a:hover{
 
-        .cart-overlay.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
+    background:#8b2cff;
 
-        .cart {
-            position: fixed;
-            top: 0;
-            right: -430px;
+    transform:translateY(-4px);
+}
 
-            width: min(430px, 100%);
-            height: 100vh;
+/* ================= FOOTER ================= */
 
-            z-index: 999;
+footer{
 
-            display: flex;
-            flex-direction: column;
+    text-align:center;
 
-            background: #101010;
+    padding:50px 20px;
 
-            border-left: 1px solid var(--line);
+    background:#030303;
 
-            transition: .3s;
-        }
+    border-top:1px solid #8b2cff33;
+}
 
-        .cart.open {
-            right: 0;
-        }
+footer h2{
+    color:#a855f7;
+}
 
-        .cart-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+footer p{
 
-            padding: 20px;
+    color:#666;
 
-            border-bottom: 1px solid var(--line);
-        }
+    margin-top:10px;
+}
 
-        .cart-header h3 {
-            font-size: 20px;
-        }
+/* ================= CARRITO ================= */
 
-        .close-cart {
-            border: none;
-            background: transparent;
+#cart{
 
-            color: white;
+    position:fixed;
 
-            font-size: 25px;
+    top:0;
 
-            cursor: pointer;
-        }
+    right:-430px;
 
-        .cart-items {
-            flex: 1;
+    width:400px;
 
-            overflow-y: auto;
+    max-width:90%;
 
-            padding: 20px;
-        }
+    height:100vh;
 
-        .empty-cart {
-            padding: 50px 10px;
+    z-index:3000;
 
-            text-align: center;
+    background:#0a070d;
 
-            color: var(--muted);
-        }
+    border-left:1px solid #8b2cff;
 
-        .cart-item {
-            display: flex;
-            gap: 12px;
+    padding:25px;
 
-            padding: 14px 0;
+    transition:.4s;
 
-            border-bottom: 1px solid var(--line);
-        }
+    box-shadow:-20px 0 50px #000;
+}
 
-        .cart-item-icon {
-            width: 55px;
-            height: 55px;
+#cart.open{
+    right:0;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+.cart-header{
 
-            flex-shrink: 0;
+    display:flex;
 
-            border-radius: 9px;
+    justify-content:space-between;
 
-            background: #181818;
+    align-items:center;
 
-            font-size: 28px;
-        }
+    margin-bottom:25px;
+}
 
-        .cart-item-info {
-            flex: 1;
-        }
+.close{
 
-        .cart-item-name {
-            font-weight: 800;
-            font-size: 14px;
-        }
+    background:none;
 
-        .cart-item-price {
-            color: var(--gold2);
-            margin-top: 4px;
-            font-size: 13px;
-        }
+    border:0;
 
-        .cart-item-remove {
-            margin-top: 7px;
+    color:white;
 
-            border: none;
-            background: none;
+    font-size:28px;
 
-            color: #777;
+    cursor:pointer;
+}
 
-            cursor: pointer;
+.cart-item{
 
-            font-size: 11px;
-        }
+    background:#15101a;
 
-        .cart-footer {
-            padding: 20px;
+    border-radius:12px;
 
-            border-top: 1px solid var(--line);
-        }
+    padding:15px;
 
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
+    margin-bottom:10px;
 
-            margin-bottom: 15px;
+    display:flex;
 
-            font-size: 19px;
-            font-weight: 900;
-        }
+    justify-content:space-between;
 
-        .checkout-button {
-            width: 100%;
-        }
+    gap:10px;
+}
 
-        /* =========================
-           FOOTER
-        ========================= */
+.remove{
 
-        footer {
-            padding: 45px 20px;
+    background:#ff3d5a;
 
-            text-align: center;
+    border:0;
 
-            background: #050505;
+    color:white;
 
-            border-top: 1px solid var(--line);
-        }
+    border-radius:7px;
 
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 900;
-        }
+    padding:6px 9px;
 
-        .footer-logo span {
-            color: var(--gold);
-        }
+    cursor:pointer;
+}
 
-        .footer-text {
-            margin-top: 8px;
+.cart-total{
 
-            color: #666;
-            font-size: 13px;
-        }
+    margin-top:25px;
 
-        .copyright {
-            margin-top: 18px;
+    font-size:23px;
 
-            color: #414141;
-            font-size: 12px;
-        }
+    font-weight:bold;
+}
 
-        /* =========================
-           MOBILE
-        ========================= */
+.checkout{
 
-        @media (max-width: 900px) {
+    width:100%;
 
-            .benefits {
-                grid-template-columns: repeat(2,1fr);
-            }
+    padding:14px;
 
-            .categories,
-            .products {
-                grid-template-columns: repeat(2,1fr);
-            }
+    margin-top:20px;
 
-            .shipping-inner {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+    border:0;
 
-        }
+    border-radius:12px;
 
-        @media (max-width: 650px) {
+    background:#8b2cff;
 
-            header {
-                flex-direction: column;
-                gap: 14px;
-            }
+    color:white;
 
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-            }
+    font-weight:bold;
 
-            nav a {
-                font-size: 12px;
-            }
+    cursor:pointer;
+}
 
-            .benefits,
-            .categories,
-            .products {
-                grid-template-columns: 1fr;
-            }
+/* ================= RESPONSIVE ================= */
 
-            .section {
-                padding: 65px 6%;
-            }
+@media(max-width:800px){
 
-            .hero {
-                min-height: 75vh;
-            }
+    nav{
+        display:none;
+    }
 
-        }
+    .hero h1{
+        font-size:65px;
+    }
 
-        @media (max-width: 430px) {
+    section{
+        padding:75px 18px;
+    }
 
-            .hero h1 {
-                letter-spacing: -2px;
-            }
+}
 
-        }
+</style>
 
-    </style>
 </head>
+
 
 <body>
 
 
-    <!-- HEADER -->
+<!-- HEADER -->
 
-    <header>
+<header>
 
-        <div class="logo">
-            Vendix<span>Store</span>
-        </div>
+<div class="nav">
 
-        <nav>
+<div class="logo">
 
-            <a href="#inicio">
-                Inicio
-            </a>
+<img src="logo.png" alt="VendixStore">
 
-            <a href="#ropa">
-                Ropa
-            </a>
+Vendix<span>Store</span>
 
-            <a href="#productos">
-                Productos
-            </a>
+</div>
 
-            <a href="#envios">
-                Envíos
-            </a>
 
-            <button
-                class="cart-button"
-                onclick="openCart()"
-            >
-                🛒 Carrito
+<nav>
 
-                <span
-                    class="cart-count"
-                    id="cartCount"
-                >
-                    0
-                </span>
+<a href="#inicio">Inicio</a>
 
-            </button>
+<a href="#tienda">Tienda</a>
 
-        </nav>
+<a href="#bambas">Bambas</a>
 
-    </header>
+<a href="#ropa">Ropa</a>
 
+<a href="#envios">Envíos</a>
 
-    <!-- HERO -->
+<a href="#contacto">Contacto</a>
 
-    <section class="hero" id="inicio">
+</nav>
 
-        <div class="eyebrow">
-            ✦ VENDIXSTORE
-        </div>
 
-        <h1>
-            Tu estilo.<br>
-            <span>Tu selección.</span>
-        </h1>
+<button class="cart-button" onclick="openCart()">
 
-        <p>
-            Descubre ropa, accesorios y novedades
-            en VendixStore.
-        </p>
+🛒 Carrito
 
-        <div class="buttons">
+(<span id="cartCount">0</span>)
 
-            <a
-                href="#productos"
-                class="button"
-            >
-                Ver productos
-            </a>
+</button>
 
-            <a
-                href="#ropa"
-                class="button button-outline"
-            >
-                Ver categorías
-            </a>
+</div>
 
-        </div>
+</header>
 
-    </section>
 
 
-    <!-- BENEFITS -->
+<!-- HERO -->
 
-    <section class="benefits">
+<section class="hero" id="inicio">
 
-        <div class="benefit">
-            <div class="benefit-icon">🚚</div>
-            <h3>Envíos en Europa</h3>
-            <p>Solo dentro de Europa.</p>
-        </div>
+<div class="hero-content">
 
-        <div class="benefit">
-            <div class="benefit-icon">🛍️</div>
-            <h3>Tienda online</h3>
-            <p>Compra desde la web.</p>
-        </div>
+<h1>VendixStore</h1>
 
-        <div class="benefit">
-            <div class="benefit-icon">📦</div>
-            <h3>Novedades</h3>
-            <p>Nuevos productos próximamente.</p>
-        </div>
-
-        <div class="benefit">
-            <div class="benefit-icon">💬</div>
-            <h3>Comunidad</h3>
-            <p>Estamos también en Discord.</p>
-        </div>
-
-    </section>
-
-
-    <!-- CATEGORÍAS -->
-
-    <section
-        class="section dark"
-        id="ropa"
-    >
-
-        <div class="section-head">
-
-            <div class="label">
-                Colección
-            </div>
-
-            <h2>
-                👕 Ropa
-            </h2>
-
-            <p class="section-subtitle">
-                Elige una categoría y descubre
-                nuestros próximos productos.
-            </p>
-
-        </div>
-
-
-        <div class="categories">
-
-            <div class="category">
-                <div>
-                    <div class="category-top">
-                        <div class="category-icon">👖</div>
-                        <div class="category-number">01</div>
-                    </div>
-                    <h3>Pantalones</h3>
-                    <p>Estilos y modelos.</p>
-                </div>
-
-                <a
-                    href="#productos"
-                    class="category-link"
-                >
-                    Ver productos →
-                </a>
-            </div>
-
-
-            <div class="category">
-                <div>
-                    <div class="category-top">
-                        <div class="category-icon">👕</div>
-                        <div class="category-number">02</div>
-                    </div>
-                    <h3>Camisetas</h3>
-                    <p>Diseños y estilos.</p>
-                </div>
-
-                <a
-                    href="#productos"
-                    class="category-link"
-                >
-                    Ver productos →
-                </a>
-            </div>
-
-
-            <div class="category">
-                <div>
-                    <div class="category-top">
-                        <div class="category-icon">🧢</div>
-                        <div class="category-number">03</div>
-                    </div>
-                    <h3>Accesorios</h3>
-                    <p>Complementos para tu look.</p>
-                </div>
-
-                <a
-                    href="#productos"
-                    class="category-link"
-                >
-                    Ver productos →
-                </a>
-            </div>
-
-
-            <div class="category">
-                <div>
-                    <div class="category-top">
-                        <div class="category-icon">🧥</div>
-                        <div class="category-number">04</div>
-                    </div>
-                    <h3>Chaquetas</h3>
-                    <p>Prendas para cualquier ocasión.</p>
-                </div>
-
-                <a
-                    href="#productos"
-                    class="category-link"
-                >
-                    Ver productos →
-                </a>
-            </div>
-
-
-            <div class="category">
-                <div>
-                    <div class="category-top">
-                        <div class="category-icon">👚</div>
-                        <div class="category-number">05</div>
-                    </div>
-                    <h3>Sudaderas</h3>
-                    <p>Comodidad y estilo.</p>
-                </div>
-
-                <a
-                    href="#productos"
-                    class="category-link"
-                >
-                    Ver productos →
-                </a>
-            </div>
-
-
-            <div class="category">
-                <div>
-                    <div class="category-top">
-                        <div class="category-icon">👟</div>
-                        <div class="category-number">06</div>
-                    </div>
-                    <h3>Conjuntos</h3>
-                    <p>Looks completos.</p>
-                </div>
-
-                <a
-                    href="#productos"
-                    class="category-link"
-                >
-                    Ver productos →
-                </a>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PRODUCTOS -->
-
-    <section
-        class="section"
-        id="productos"
-    >
-
-        <div class="section-head">
-
-            <div class="label">
-                Tienda
-            </div>
-
-            <h2>
-                🛍️ Productos
-            </h2>
-
-            <p class="section-subtitle">
-                Añade productos al carrito para probar
-                el funcionamiento de la tienda.
-            </p>
-
-        </div>
+<p>
 
-
-        <div class="shop-tools">
-
-            <input
-                type="text"
-                class="search"
-                id="search"
-                placeholder="Buscar productos..."
-                oninput="filterProducts()"
-            >
-
-        </div>
-
-
-        <div class="products" id="productGrid">
-
-
-            <!-- PRODUCTO 1 -->
+Ropa, bambas, accesorios y mucho más.
 
-            <article
-                class="product"
-                data-name="Camiseta Vendix"
-            >
+Descubre nuestros productos y encuentra
+tu próximo favorito.
 
-                <div class="product-image">
-                    👕
-                </div>
+</p>
 
-                <div class="product-content">
+<a href="#tienda" class="hero-button">
 
-                    <div class="product-category">
-                        Camisetas
-                    </div>
+🛍️ Ver tienda
 
-                    <h3>
-                        Camiseta Vendix
-                    </h3>
+</a>
 
-                    <p class="product-description">
-                        Producto preparado para añadir
-                        tu foto, descripción y tallas.
-                    </p>
+</div>
 
-                    <div class="product-bottom">
+</section>
 
-                        <span class="price">
-                            24,99 €
-                        </span>
 
-                        <button
-                            class="add-cart"
-                            onclick="addToCart(
-                                'Camiseta Vendix',
-                                24.99,
-                                '👕'
-                            )"
-                        >
-                            Añadir al carrito
-                        </button>
-
-                    </div>
-
-                </div>
 
-            </article>
+<!-- TIENDA -->
 
+<section id="tienda">
 
-            <!-- PRODUCTO 2 -->
+<div class="section-title">
 
-            <article
-                class="product"
-                data-name="Sudadera Vendix"
-            >
+<h2>Nuestra <span>Tienda</span></h2>
 
-                <div class="product-image">
-                    👚
-                </div>
+<p>Descubre nuestros productos</p>
 
-                <div class="product-content">
+</div>
 
-                    <div class="product-category">
-                        Sudaderas
-                    </div>
 
-                    <h3>
-                        Sudadera Vendix
-                    </h3>
+<div class="search">
 
-                    <p class="product-description">
-                        Producto preparado para añadir
-                        tu foto y características.
-                    </p>
+<input
 
-                    <div class="product-bottom">
+type="text"
 
-                        <span class="price">
-                            39,99 €
-                        </span>
+id="search"
 
-                        <button
-                            class="add-cart"
-                            onclick="addToCart(
-                                'Sudadera Vendix',
-                                39.99,
-                                '👚'
-                            )"
-                        >
-                            Añadir al carrito
-                        </button>
+placeholder="🔎 Buscar producto..."
 
-                    </div>
+onkeyup="searchProducts()"
 
-                </div>
+>
 
-            </article>
+</div>
 
 
-            <!-- PRODUCTO 3 -->
+<div class="products" id="products">
 
-            <article
-                class="product"
-                data-name="Gorra Vendix"
-            >
 
-                <div class="product-image">
-                    🧢
-                </div>
+<!-- BAMBA 1 -->
 
-                <div class="product-content">
+<article class="product">
 
-                    <div class="product-category">
-                        Accesorios
-                    </div>
+<span class="badge">
+NUEVO
+</span>
 
-                    <h3>
-                        Gorra Vendix
-                    </h3>
+<div class="product-image">
 
-                    <p class="product-description">
-                        Producto preparado para añadir
-                        tu foto y características.
-                    </p>
+<img
+src="bambas1.jpg"
+alt="Bambas 1"
+>
 
-                    <div class="product-bottom">
+</div>
 
-                        <span class="price">
-                            19,99 €
-                        </span>
+<div class="product-info">
 
-                        <button
-                            class="add-cart"
-                            onclick="addToCart(
-                                'Gorra Vendix',
-                                19.99,
-                                '🧢'
-                            )"
-                        >
-                            Añadir al carrito
-                        </button>
+<h3>Bambas 1</h3>
 
-                    </div>
+<p>
+Modelo disponible en nuestra tienda.
+</p>
 
-                </div>
+<div class="price">
+59,99 €
+</div>
 
-            </article>
+<button
+class="add-cart"
+onclick="addToCart('Bambas 1',59.99)"
+>
 
+🛒 Añadir al carrito
 
-            <!-- PRODUCTO 4 -->
+</button>
 
-            <article
-                class="product"
-                data-name="Pantalón Vendix"
-            >
+</div>
 
-                <div class="product-image">
-                    👖
-                </div>
+</article>
 
-                <div class="product-content">
 
-                    <div class="product-category">
-                        Pantalones
-                    </div>
 
-                    <h3>
-                        Pantalón Vendix
-                    </h3>
+<!-- BAMBA 2 -->
 
-                    <p class="product-description">
-                        Producto preparado para añadir
-                        tu foto y características.
-                    </p>
+<article class="product">
 
-                    <div class="product-bottom">
+<span class="badge">
+TOP
+</span>
 
-                        <span class="price">
-                            34,99 €
-                        </span>
+<div class="product-image">
 
-                        <button
-                            class="add-cart"
-                            onclick="addToCart(
-                                'Pantalón Vendix',
-                                34.99,
-                                '👖'
-                            )"
-                        >
-                            Añadir al carrito
-                        </button>
+<img
+src="bambas2.jpg"
+alt="Bambas 2"
+>
 
-                    </div>
+</div>
 
-                </div>
+<div class="product-info">
 
-            </article>
+<h3>Bambas 2</h3>
 
+<p>
+Modelo disponible en nuestra tienda.
+</p>
 
-            <!-- PRODUCTO 5 -->
+<div class="price">
+69,99 €
+</div>
 
-            <article
-                class="product"
-                data-name="Chaqueta Vendix"
-            >
+<button
+class="add-cart"
+onclick="addToCart('Bambas 2',69.99)"
+>
 
-                <div class="product-image">
-                    🧥
-                </div>
+🛒 Añadir al carrito
 
-                <div class="product-content">
+</button>
 
-                    <div class="product-category">
-                        Chaquetas
-                    </div>
+</div>
 
-                    <h3>
-                        Chaqueta Vendix
-                    </h3>
+</article>
 
-                    <p class="product-description">
-                        Producto preparado para añadir
-                        tu foto y características.
-                    </p>
 
-                    <div class="product-bottom">
 
-                        <span class="price">
-                            49,99 €
-                        </span>
+<!-- BAMBA 3 -->
 
-                        <button
-                            class="add-cart"
-                            onclick="addToCart(
-                                'Chaqueta Vendix',
-                                49.99,
-                                '🧥'
-                            )"
-                        >
-                            Añadir al carrito
-                        </button>
+<article class="product">
 
-                    </div>
+<div class="product-image">
 
-                </div>
+<img
+src="bambas3.jpg"
+alt="Bambas 3"
+>
 
-            </article>
+</div>
 
+<div class="product-info">
 
-            <!-- PRODUCTO 6 -->
+<h3>Bambas 3</h3>
 
-            <article
-                class="product"
-                data-name="Conjunto Vendix"
-            >
+<p>
+Modelo disponible en nuestra tienda.
+</p>
 
-                <div class="product-image">
-                    👟
-                </div>
+<div class="price">
+79,99 €
+</div>
 
-                <div class="product-content">
+<button
+class="add-cart"
+onclick="addToCart('Bambas 3',79.99)"
+>
 
-                    <div class="product-category">
-                        Conjuntos
-                    </div>
+🛒 Añadir al carrito
 
-                    <h3>
-                        Conjunto Vendix
-                    </h3>
+</button>
 
-                    <p class="product-description">
-                        Producto preparado para añadir
-                        tu foto y características.
-                    </p>
+</div>
 
-                    <div class="product-bottom">
+</article>
 
-                        <span class="price">
-                            59,99 €
-                        </span>
 
-                        <button
-                            class="add-cart"
-                            onclick="addToCart(
-                                'Conjunto Vendix',
-                                59.99,
-                                '👟'
-                            )"
-                        >
-                            Añadir al carrito
-                        </button>
 
-                    </div>
+<!-- CAMISETA -->
 
-                </div>
+<article class="product">
 
-            </article>
+<span class="badge">
+NUEVO
+</span>
 
-        </div>
+<div class="product-image">
 
-    </section>
+<img
+src="camiseta.jpg"
+alt="Camiseta VendixStore"
+>
 
+</div>
 
-    <!-- ENVÍOS -->
+<div class="product-info">
 
-    <section
-        class="section dark"
-        id="envios"
-    >
+<h3>Camiseta VendixStore</h3>
 
-        <div class="section-head">
+<p>
+Camiseta disponible en nuestra tienda.
+</p>
 
-            <div class="label">
-                Información
-            </div>
+<div class="price">
+24,99 €
+</div>
 
-            <h2>
-                🚚 Envíos
-            </h2>
+<button
+class="add-cart"
+onclick="addToCart('Camiseta VendixStore',24.99)"
+>
 
-        </div>
+🛒 Añadir al carrito
 
+</button>
 
-        <div class="shipping-box">
+</div>
 
-            <div class="shipping-inner">
+</article>
 
-                <div>
 
-                    <div class="shipping-title">
-                        Envíos únicamente en Europa
-                    </div>
+</div>
 
-                    <div class="shipping-text">
-                        La tienda estará preparada para gestionar
-                        pedidos dentro de Europa. Las condiciones
-                        concretas se mostrarán junto a cada producto.
-                    </div>
+</section>
 
-                </div>
 
-                <div class="europe-badge">
-                    🇪🇺 EUROPA
-                </div>
 
-            </div>
+<!-- ENVÍOS -->
 
-        </div>
+<section id="envios">
 
-    </section>
+<div class="section-title">
 
+<h2>¿Por qué <span>VendixStore?</span></h2>
 
-    <!-- FAQ -->
+<p>
+Compra con nosotros y descubre nuestra comunidad.
+</p>
 
-    <section
-        class="section"
-        id="faq"
-    >
+</div>
 
-        <div class="section-head">
 
-            <div class="label">
-                Ayuda
-            </div>
+<div class="info-grid">
 
-            <h2>
-                ❓ Preguntas frecuentes
-            </h2>
 
-        </div>
+<div class="info-card">
 
+<div class="info-icon">
+🚚
+</div>
 
-        <div class="faq">
+<h3>Envíos</h3>
 
-            <details>
+<p>
+Envíos disponibles por Europa.
+</p>
 
-                <summary>
-                    ¿Dónde realizáis envíos?
-                </summary>
+</div>
 
-                <div class="faq-answer">
-                    Los envíos están disponibles únicamente
-                    dentro de Europa.
-                </div>
 
-            </details>
+<div class="info-card">
 
+<div class="info-icon">
+🛍️
+</div>
 
-            <details>
+<h3>Productos</h3>
 
-                <summary>
-                    ¿Cómo funciona el carrito?
-                </summary>
+<p>
+Ropa, bambas y accesorios.
+</p>
 
-                <div class="faq-answer">
-                    Añade los productos que quieras y aparecerán
-                    automáticamente en el carrito con el total.
-                </div>
+</div>
 
-            </details>
 
+<div class="info-card">
 
-            <details>
+<div class="info-icon">
+💬
+</div>
 
-                <summary>
-                    ¿Dónde puedo contactar con VendixStore?
-                </summary>
+<h3>Atención</h3>
 
-                <div class="faq-answer">
-                    Puedes contactar mediante nuestras redes
-                    sociales y nuestra comunidad de Discord.
-                </div>
+<p>
+Contacta con nosotros para resolver tus dudas.
+</p>
 
-            </details>
+</div>
 
 
-            <details>
+<div class="info-card">
 
-                <summary>
-                    ¿Cuándo estarán disponibles los productos?
-                </summary>
+<div class="info-icon">
+⚡
+</div>
 
-                <div class="faq-answer">
-                    Iremos actualizando la web cuando añadamos
-                    el catálogo real.
-                </div>
+<h3>Vendix Community</h3>
 
-            </details>
+<p>
+Únete a nuestra comunidad.
+</p>
 
-        </div>
+</div>
 
-    </section>
 
+</div>
 
-    <!-- REDES -->
+</section>
 
-    <section
-        class="section dark"
-        id="contacto"
-    >
 
-        <div class="section-head">
 
-            <div class="label">
-                Comunidad
-            </div>
+<!-- FAQ -->
 
-            <h2>
-                🔗 VendixStore
-            </h2>
+<section id="faq">
 
-            <p class="section-subtitle">
-                Síguenos y entra en nuestra comunidad.
-            </p>
+<div class="section-title">
 
-        </div>
+<h2>Preguntas <span>frecuentes</span></h2>
 
+</div>
 
-        <div class="socials">
 
-            <a
-                href="https://discord.gg/7A6yxYvej"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button"
-            >
-                Discord
-            </a>
+<div class="faq">
 
-            <a
-                href="https://www.tiktok.com/@vendixstore7"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button button-outline"
-            >
-                TikTok
-            </a>
 
-            <a
-                href="https://www.instagram.com/vendixstore02"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button button-outline"
-            >
-                Instagram
-            </a>
+<details>
 
-        </div>
+<summary>
+¿Dónde realizáis envíos?
+</summary>
 
-    </section>
+<p>
+Realizamos envíos por Europa.
+</p>
 
+</details>
 
-    <!-- CART OVERLAY -->
 
-    <div
-        class="cart-overlay"
-        id="cartOverlay"
-        onclick="closeCart()"
-    ></div>
+<details>
 
+<summary>
+¿Cómo puedo comprar?
+</summary>
 
-    <!-- CART -->
+<p>
+Añade los productos al carrito y utiliza el botón de realizar pedido para contactar con VendixStore.
+</p>
 
-    <aside
-        class="cart"
-        id="cart"
-    >
+</details>
 
-        <div class="cart-header">
 
-            <h3>
-                🛒 Tu carrito
-            </h3>
+<details>
 
-            <button
-                class="close-cart"
-                onclick="closeCart()"
-            >
-                ×
-            </button>
+<summary>
+¿Puedo preguntar por un producto?
+</summary>
 
-        </div>
+<p>
+Sí. Puedes contactar con nosotros mediante nuestras redes o email.
+</p>
 
+</details>
 
-        <div
-            class="cart-items"
-            id="cartItems"
-        >
 
-            <div class="empty-cart">
-                Tu carrito está vacío.
-            </div>
+<details>
 
-        </div>
+<summary>
+¿Los precios pueden cambiar?
+</summary>
 
+<p>
+Sí. Los precios dependen del modelo, talla, estado y disponibilidad.
+</p>
 
-        <div class="cart-footer">
+</details>
 
-            <div class="cart-total">
 
-                <span>
-                    Total
-                </span>
+</div>
 
-                <span id="cartTotal">
-                    0,00 €
-                </span>
+</section>
 
-            </div>
 
-            <button
-                class="button checkout-button"
-                onclick="checkout()"
-            >
-                Continuar
-            </button>
 
-        </div>
+<!-- CONTACTO -->
 
-    </aside>
+<section id="contacto">
 
+<div class="section-title">
 
-    <!-- FOOTER -->
+<h2>Únete a <span>VendixStore</span></h2>
 
-    <footer>
+<p>
+Síguenos en nuestras redes.
+</p>
 
-        <div class="footer-logo">
-            Vendix<span>Store</span>
-        </div>
+</div>
 
-        <p class="footer-text">
-            Ropa, accesorios y novedades.
-        </p>
 
-        <p class="footer-text">
-            Envíos disponibles únicamente en Europa.
-        </p>
+<div class="social">
 
-        <p class="copyright">
-            © 2026 VendixStore — Todos los derechos reservados.
-        </p>
 
-    </footer>
+<a
+href="https://www.tiktok.com/@vendixstore7"
+target="_blank"
+>
 
+🎵 TikTok
 
-    <script>
+</a>
 
-        let cart = [];
 
+<a
+href="https://www.instagram.com/vendixstore02"
+target="_blank"
+>
 
-        function openCart() {
+📸 Instagram
 
-            document
-                .getElementById("cart")
-                .classList.add("open");
+</a>
 
-            document
-                .getElementById("cartOverlay")
-                .classList.add("show");
 
-            document.body.classList.add("cart-open");
+<a
+href="https://discord.gg/"
+target="_blank"
+>
 
-        }
+💬 Discord
 
+</a>
 
-        function closeCart() {
 
-            document
-                .getElementById("cart")
-                .classList.remove("open");
+<a
+href="mailto:micmc018@gmail.com"
+>
 
-            document
-                .getElementById("cartOverlay")
-                .classList.remove("show");
+📧 Email
 
-            document.body.classList.remove("cart-open");
+</a>
 
-        }
 
+</div>
 
-        function addToCart(name, price, icon) {
+</section>
 
-            const existing =
-                cart.find(item => item.name === name);
 
-            if (existing) {
 
-                existing.quantity++;
+<!-- FOOTER -->
 
-            } else {
+<footer>
 
-                cart.push({
-                    name: name,
-                    price: price,
-                    icon: icon,
-                    quantity: 1
-                });
+<h2>VendixStore</h2>
 
-            }
+<p>
+© 2026 VendixStore
+</p>
 
-            updateCart();
-            openCart();
+<p>
+Envíos por Europa
+</p>
 
-        }
+</footer>
 
 
-        function removeFromCart(index) {
 
-            cart.splice(index, 1);
+<!-- CARRITO -->
 
-            updateCart();
+<div id="cart">
 
-        }
 
+<div class="cart-header">
 
-        function updateCart() {
+<h2>🛒 Tu carrito</h2>
 
-            const items =
-                document.getElementById("cartItems");
+<button
+class="close"
+onclick="closeCart()"
+>
 
-            const count =
-                document.getElementById("cartCount");
+×
 
-            const total =
-                document.getElementById("cartTotal");
+</button>
 
+</div>
 
-            let totalItems = 0;
-            let totalPrice = 0;
 
+<div id="cartItems">
 
-            if (cart.length === 0) {
+<p style="color:#777">
 
-                items.innerHTML = `
-                    <div class="empty-cart">
-                        Tu carrito está vacío.
-                    </div>
-                `;
+Tu carrito está vacío.
 
-            } else {
+</p>
 
-                items.innerHTML = cart.map(
-                    (item, index) => {
+</div>
 
-                        totalItems += item.quantity;
 
-                        totalPrice +=
-                            item.price * item.quantity;
+<div class="cart-total">
 
-                        return `
-                            <div class="cart-item">
+Total:
 
-                                <div class="cart-item-icon">
-                                    ${item.icon}
-                                </div>
+<span id="cartTotal">
+0.00
+</span>
 
-                                <div class="cart-item-info">
+€
 
-                                    <div class="cart-item-name">
-                                        ${item.name}
-                                        ${item.quantity > 1
-                                            ? ` × ${item.quantity}`
-                                            : ""
-                                        }
-                                    </div>
+</div>
 
-                                    <div class="cart-item-price">
-                                        ${(item.price * item.quantity)
-                                            .toFixed(2)
-                                            .replace(".", ",")
-                                        } €
-                                    </div>
 
-                                    <button
-                                        class="cart-item-remove"
-                                        onclick="removeFromCart(${index})"
-                                    >
-                                        Eliminar
-                                    </button>
+<button
+class="checkout"
+onclick="checkout()"
+>
 
-                                </div>
+📧 Realizar pedido
 
-                            </div>
-                        `;
+</button>
 
-                    }
-                ).join("");
 
-            }
+</div>
 
 
-            if (cart.length > 0) {
 
-                totalItems =
-                    cart.reduce(
-                        (sum, item) =>
-                            sum + item.quantity,
-                        0
-                    );
+<script>
 
-                totalPrice =
-                    cart.reduce(
-                        (sum, item) =>
-                            sum +
-                            item.price *
-                            item.quantity,
-                        0
-                    );
 
-            }
+/* ================= CARRITO ================= */
 
+let cart = [];
 
-            count.textContent = totalItems;
 
-            total.textContent =
-                totalPrice
-                    .toFixed(2)
-                    .replace(".", ",")
-                + " €";
+function addToCart(name,price){
 
-        }
+cart.push({
 
+name:name,
 
-        function filterProducts() {
+price:price
 
-            const search =
-                document
-                    .getElementById("search")
-                    .value
-                    .toLowerCase();
+});
 
-            const products =
-                document.querySelectorAll(".product");
+updateCart();
 
+openCart();
 
-            products.forEach(product => {
+}
 
-                const name =
-                    product
-                        .dataset
-                        .name
-                        .toLowerCase();
 
-                product.style.display =
-                    name.includes(search)
-                        ? ""
-                        : "none";
+function updateCart(){
 
-            });
+let items =
+document.getElementById("cartItems");
 
-        }
+let count =
+document.getElementById("cartCount");
 
+let total =
+document.getElementById("cartTotal");
 
-        function checkout() {
 
-            if (cart.length === 0) {
+count.innerText = cart.length;
 
-                alert(
-                    "Tu carrito está vacío."
-                );
 
-                return;
+if(cart.length === 0){
 
-            }
+items.innerHTML =
 
+'<p style="color:#777">Tu carrito está vacío.</p>';
 
-            alert(
-                "El carrito funciona correctamente. " +
-                "El sistema de pago se conectará " +
-                "cuando terminemos la tienda."
-            );
+total.innerText = "0.00";
 
-        }
+return;
 
+}
 
-        updateCart();
 
-    </script>
+items.innerHTML = "";
+
+let sum = 0;
+
+
+cart.forEach((item,index)=>{
+
+sum += item.price;
+
+
+items.innerHTML += `
+
+<div class="cart-item">
+
+<div>
+
+<strong>
+${item.name}
+</strong>
+
+<br>
+
+<span style="color:#b45cff">
+
+${item.price.toFixed(2)} €
+
+</span>
+
+</div>
+
+
+<button
+
+class="remove"
+
+onclick="removeItem(${index})"
+
+>
+
+✕
+
+</button>
+
+</div>
+
+`;
+
+});
+
+
+total.innerText =
+sum.toFixed(2);
+
+}
+
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+
+function openCart(){
+
+document
+.getElementById("cart")
+.classList.add("open");
+
+}
+
+
+function closeCart(){
+
+document
+.getElementById("cart")
+.classList.remove("open");
+
+}
+
+
+/* ================= PEDIDO ================= */
+
+function checkout(){
+
+if(cart.length === 0){
+
+alert(
+"Tu carrito está vacío."
+);
+
+return;
+
+}
+
+
+let message =
+"Hola VendixStore 👋%0A%0A";
+
+message +=
+"Quiero realizar este pedido:%0A%0A";
+
+
+let total = 0;
+
+
+cart.forEach(item=>{
+
+message +=
+"• " +
+item.name +
+" — " +
+item.price.toFixed(2) +
+" €%0A";
+
+total += item.price;
+
+});
+
+
+message +=
+"%0ATotal: " +
+total.toFixed(2) +
+" €";
+
+
+window.location.href =
+
+"mailto:micmc018@gmail.com" +
+
+"?subject=Pedido VendixStore" +
+
+"&body=" +
+
+message;
+
+}
+
+
+/* ================= BUSCADOR ================= */
+
+function searchProducts(){
+
+let search =
+
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
+
+let products =
+
+document
+.querySelectorAll(".product");
+
+
+products.forEach(product=>{
+
+let text =
+product.innerText.toLowerCase();
+
+
+if(text.includes(search)){
+
+product.style.display = "";
+
+}else{
+
+product.style.display = "none";
+
+}
+
+});
+
+}
+
+</script>
+
 
 </body>
+
 </html>
