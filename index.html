@@ -2,29 +2,36 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>VendixStore</title>
+<title>VendixStore | Sneakers & Streetwear</title>
 
-<meta name="description" content="VendixStore - Sneakers, ropa y accesorios.">
+<meta name="description" content="VendixStore - Sneakers, ropa, accesorios y novedades.">
 
 <style>
 
 /* =====================================================
-   VENDIXSTORE ULTRA
-   ===================================================== */
+   VENDIXSTORE V7 ULTRA
+   NEGRO + MORADO
+===================================================== */
 
 :root{
     --black:#050507;
     --black2:#09090d;
     --card:#101016;
     --card2:#15151d;
+
     --purple:#8b2cff;
     --purple2:#bd6cff;
-    --white:#ffffff;
-    --gray:#92929e;
-    --line:#ffffff12;
-    --green:#50e38b;
+    --purple3:#5e16c9;
+
+    --white:#fff;
+    --gray:#9696a3;
+    --gray2:#5f5f6b;
+
+    --line:rgba(255,255,255,.08);
+
+    --green:#4ee38a;
     --red:#ff4965;
 }
 
@@ -40,17 +47,46 @@ html{
 
 body{
     background:
-        radial-gradient(circle at 20% 20%,#8b2cff0d,transparent 25%),
-        radial-gradient(circle at 80% 60%,#bd6cff08,transparent 25%),
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(139,44,255,.12),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(189,108,255,.08),
+            transparent 25%
+        ),
         var(--black);
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
+
+    color:var(--white);
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
     overflow-x:hidden;
 }
 
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+}
+
+
 /* =====================================================
    SCROLLBAR
-   ===================================================== */
+===================================================== */
 
 ::-webkit-scrollbar{
     width:8px;
@@ -61,23 +97,34 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-    background:#8b2cff;
+    background:linear-gradient(
+        var(--purple),
+        var(--purple2)
+    );
+
     border-radius:20px;
 }
 
+
 /* =====================================================
    LOADER
-   ===================================================== */
+===================================================== */
 
 .loader{
     position:fixed;
     inset:0;
-    background:#050507;
+
     z-index:99999;
+
+    background:#050507;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    transition:.6s;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
 }
 
 .loader.hide{
@@ -85,87 +132,132 @@ body{
     visibility:hidden;
 }
 
-.loader-title{
-    font-size:40px;
+.loader-content{
+    text-align:center;
+}
+
+.loader-logo{
+    width:70px;
+    height:70px;
+
+    object-fit:contain;
+
+    margin-bottom:20px;
+
+    animation:
+        loaderPulse 1.4s infinite;
+}
+
+.loader-name{
+    font-size:34px;
     font-weight:1000;
 }
 
-.loader-title span{
+.loader-name span{
     color:var(--purple2);
 }
 
 .loader-bar{
-    width:200px;
+    width:220px;
     height:3px;
+
+    margin:20px auto 0;
+
     background:#222;
-    border-radius:20px;
-    margin:20px auto;
+
+    border-radius:50px;
+
     overflow:hidden;
 }
 
 .loader-bar div{
-    height:100%;
     width:40%;
-    background:var(--purple2);
-    animation:loader 1s infinite;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--purple2)
+        );
+
+    animation:
+        loaderMove 1.2s infinite;
 }
 
-@keyframes loader{
+@keyframes loaderMove{
+
     from{
         transform:translateX(-150%);
     }
+
     to{
         transform:translateX(400%);
     }
+
 }
 
-/* =====================================================
-   TOPBAR
-   ===================================================== */
+@keyframes loaderPulse{
 
-.topbar{
-    position:relative;
-    z-index:1000;
-    background:#000;
-    border-bottom:1px solid var(--line);
-    padding:8px;
-    text-align:center;
-    color:#aaa;
-    font-size:12px;
+    50%{
+        transform:scale(1.08);
+    }
+
 }
 
+
 /* =====================================================
-   SIDEBAR
-   ===================================================== */
+   SIDEBAR RIGHT
+===================================================== */
 
 .sidebar{
     position:fixed;
-    left:0;
+
+    right:0;
     top:0;
     bottom:0;
-    width:245px;
-    background:
-        linear-gradient(180deg,#0b0b10,#070709);
-    border-right:1px solid var(--line);
+
+    width:250px;
+
     z-index:5000;
-    padding:25px 16px;
+
+    padding:22px 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0c0c11,
+            #060608
+        );
+
+    border-left:1px solid var(--line);
+
     overflow-y:auto;
+
+    box-shadow:
+        -20px 0 80px rgba(0,0,0,.25);
 }
 
 .sidebar-logo{
     display:flex;
+
     align-items:center;
+
     gap:10px;
-    text-decoration:none;
-    color:white;
-    font-size:22px;
-    font-weight:1000;
+
     padding:8px 10px 25px;
+
+    text-decoration:none;
+
+    font-size:22px;
+
+    font-weight:1000;
 }
 
 .sidebar-logo img{
-    width:42px;
-    height:42px;
+    width:40px;
+    height:40px;
+
     object-fit:contain;
 }
 
@@ -174,269 +266,459 @@ body{
 }
 
 .side-title{
-    color:#555561;
+    color:#555560;
+
     font-size:10px;
+
     font-weight:1000;
-    letter-spacing:1.5px;
+
+    letter-spacing:2px;
+
     padding:15px 12px 8px;
 }
 
 .side-link{
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
     padding:12px;
+
     margin:3px 0;
+
     border-radius:11px;
-    color:#9a9aa4;
+
+    color:#9797a2;
+
     text-decoration:none;
+
     font-size:14px;
-    transition:.2s;
+
+    transition:.25s;
 }
 
 .side-link:hover{
-    background:#ffffff08;
     color:white;
-    transform:translateX(3px);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(139,44,255,.13),
+            transparent
+        );
+
+    transform:translateX(-4px);
 }
 
 .side-link.active{
-    background:linear-gradient(
-        90deg,
-        #8b2cff33,
-        #8b2cff0b
-    );
     color:white;
-    border-left:2px solid var(--purple2);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(139,44,255,.08),
+            rgba(139,44,255,.25)
+        );
+
+    border-right:
+        2px solid var(--purple2);
+
+    box-shadow:
+        0 0 25px rgba(139,44,255,.08);
 }
 
 .side-icon{
-    width:23px;
+    width:24px;
+
     text-align:center;
+
+    font-size:17px;
 }
 
 .side-bottom{
     margin-top:25px;
-    padding:15px;
-    border:1px solid var(--line);
-    background:#ffffff04;
-    border-radius:14px;
-}
 
-.side-bottom p{
-    color:#777;
-    font-size:11px;
-    line-height:1.5;
+    padding:16px;
+
+    border:1px solid var(--line);
+
+    border-radius:15px;
+
+    background:#ffffff04;
 }
 
 .side-bottom strong{
-    color:white;
+    font-size:14px;
 }
+
+.side-bottom p{
+    margin-top:7px;
+
+    color:#666671;
+
+    font-size:11px;
+
+    line-height:1.5;
+}
+
 
 /* =====================================================
    MAIN
-   ===================================================== */
+===================================================== */
 
 .main{
-    margin-left:245px;
+    margin-right:250px;
 }
+
 
 /* =====================================================
    HEADER
-   ===================================================== */
+===================================================== */
 
 .header{
     position:sticky;
+
     top:0;
+
     z-index:4000;
-    height:70px;
-    background:#050507dd;
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid var(--line);
+
+    height:72px;
+
+    padding:
+        0 28px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    padding:0 28px;
+
+    gap:20px;
+
+    background:
+        rgba(5,5,7,.82);
+
+    backdrop-filter:
+        blur(22px);
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+.header-left{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
 }
 
 .header-search{
-    width:420px;
-    max-width:45%;
+    width:430px;
+
+    max-width:55%;
 }
 
 .header-search input{
     width:100%;
-    padding:12px 18px;
-    border-radius:25px;
-    border:1px solid var(--line);
+
+    padding:13px 18px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:30px;
+
     background:#111116;
+
     color:white;
+
     outline:none;
+
+    transition:.25s;
 }
 
 .header-search input:focus{
-    border-color:#8b2cff88;
+    border-color:
+        rgba(139,44,255,.65);
+
+    box-shadow:
+        0 0 25px rgba(139,44,255,.1);
 }
 
 .header-actions{
     display:flex;
-    gap:10px;
+
     align-items:center;
+
+    gap:9px;
 }
 
 .header-btn{
-    border:1px solid var(--line);
+    border:
+        1px solid var(--line);
+
     background:#111116;
+
     color:white;
-    border-radius:25px;
-    padding:11px 17px;
-    cursor:pointer;
-    transition:.2s;
+
+    border-radius:30px;
+
+    padding:11px 16px;
+
+    transition:.25s;
 }
 
 .header-btn:hover{
-    border-color:var(--purple);
+    border-color:
+        rgba(139,44,255,.6);
+
     transform:translateY(-2px);
 }
 
-/* =====================================================
-   HERO
-   ===================================================== */
+.cart-count{
+    display:inline-flex;
 
-.hero{
-    min-height:calc(100vh - 70px);
-    display:flex;
     align-items:center;
     justify-content:center;
+
+    min-width:20px;
+    height:20px;
+
+    margin-left:4px;
+
+    padding:0 5px;
+
+    border-radius:20px;
+
+    background:var(--purple);
+
+    font-size:10px;
+
+    font-weight:1000;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:
+        calc(100vh - 72px);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
     text-align:center;
+
     position:relative;
+
     overflow:hidden;
+
     background:
         radial-gradient(
-            circle at 50% 40%,
-            #8b2cff42,
-            transparent 32%
+            circle at 50% 45%,
+            rgba(139,44,255,.28),
+            transparent 34%
         );
 }
 
 .hero-orb{
     position:absolute;
+
     width:350px;
     height:350px;
+
     border-radius:50%;
-    background:#8b2cff;
+
+    background:var(--purple);
+
     filter:blur(130px);
-    opacity:.13;
+
+    opacity:.12;
 }
 
 .hero-orb.one{
-    left:-200px;
-    top:25%;
+    left:-220px;
+    top:20%;
 }
 
 .hero-orb.two{
-    right:-200px;
+    right:-220px;
     bottom:5%;
-    background:#bd6cff;
+
+    background:var(--purple2);
 }
 
 .hero-content{
-    max-width:1000px;
-    padding:80px 30px;
     position:relative;
+
     z-index:2;
+
+    max-width:1000px;
+
+    padding:
+        80px 30px;
 }
 
 .hero-tag{
     display:inline-block;
+
     padding:8px 15px;
-    border:1px solid #ffffff1c;
+
+    border:
+        1px solid var(--line);
+
     border-radius:30px;
+
+    background:#ffffff06;
+
     color:#aaa;
-    background:#ffffff08;
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:1000;
-    letter-spacing:1px;
+
+    letter-spacing:2px;
+
     margin-bottom:25px;
 }
 
 .hero h1{
-    font-size:clamp(65px,10vw,145px);
+    font-size:
+        clamp(65px,10vw,145px);
+
     line-height:.82;
+
     letter-spacing:-8px;
+
     font-weight:1000;
-    background:linear-gradient(
-        100deg,
-        white,
-        #bd6cff,
-        white
-    );
+
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            #bd6cff,
+            #fff
+        );
+
     -webkit-background-clip:text;
+
     color:transparent;
-    animation:glow 4s infinite alternate;
+
+    filter:
+        drop-shadow(
+            0 0 25px rgba(139,44,255,.16)
+        );
+
+    animation:
+        heroGlow 4s infinite alternate;
 }
 
-@keyframes glow{
+@keyframes heroGlow{
+
     from{
-        filter:drop-shadow(0 0 10px #8b2cff22);
+        filter:
+            drop-shadow(
+                0 0 10px rgba(139,44,255,.1)
+            );
     }
+
     to{
-        filter:drop-shadow(0 0 40px #8b2cff66);
+        filter:
+            drop-shadow(
+                0 0 45px rgba(139,44,255,.35)
+            );
     }
+
 }
 
 .hero p{
     max-width:650px;
+
     margin:30px auto;
+
     color:#999;
+
     line-height:1.7;
+
     font-size:17px;
 }
 
 .hero-buttons{
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:12px;
 }
 
 .btn{
     display:inline-block;
-    text-decoration:none;
+
     padding:15px 27px;
+
     border-radius:30px;
+
+    text-decoration:none;
+
     font-weight:1000;
+
     transition:.25s;
 }
 
 .btn-primary{
     background:white;
+
     color:black;
 }
 
 .btn-primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 45px #fff2;
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 50px rgba(255,255,255,.14);
 }
 
 .btn-purple{
-    background:var(--purple);
     color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--purple3)
+        );
 }
 
 .btn-purple:hover{
-    transform:translateY(-4px);
-    box-shadow:0 15px 45px #8b2cff55;
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 50px rgba(139,44,255,.3);
 }
+
 
 /* =====================================================
    SECTIONS
-   ===================================================== */
+===================================================== */
 
 .section{
     max-width:1450px;
+
     margin:auto;
-    padding:100px 35px;
+
+    padding:
+        100px 35px;
 }
 
 .section-head{
@@ -445,58 +727,89 @@ body{
 
 .small-label{
     color:var(--purple2);
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:1000;
+
     letter-spacing:2px;
+
     margin-bottom:10px;
 }
 
 .section h2{
     font-size:48px;
+
     letter-spacing:-3px;
 }
 
 .section-description{
-    color:#777;
+    max-width:650px;
+
     margin-top:12px;
+
+    color:#777;
+
     line-height:1.6;
-    max-width:600px;
 }
+
 
 /* =====================================================
    CATEGORY CARDS
-   ===================================================== */
+===================================================== */
 
 .category-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:15px;
 }
 
 .category-card{
-    min-height:180px;
+    min-height:190px;
+
     padding:25px;
-    border:1px solid var(--line);
-    border-radius:20px;
-    background:
-        radial-gradient(circle at 80% 20%,#8b2cff22,transparent 40%),
-        var(--card);
+
     display:flex;
+
     flex-direction:column;
-    justify-content:end;
+
+    justify-content:flex-end;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:20px;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(139,44,255,.14),
+            transparent 45%
+        ),
+        var(--card);
+
     text-decoration:none;
-    color:white;
+
     transition:.35s;
 }
 
 .category-card:hover{
-    transform:translateY(-7px);
-    border-color:#8b2cff66;
-    box-shadow:0 20px 50px #000;
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(139,44,255,.45);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.6);
 }
 
-.category-card .icon{
-    font-size:35px;
+.category-icon{
+    font-size:38px;
+
     margin-bottom:auto;
 }
 
@@ -506,114 +819,200 @@ body{
 
 .category-card p{
     color:#777;
+
     font-size:12px;
-    margin-top:5px;
+
+    margin-top:6px;
 }
 
+
 /* =====================================================
-   PRODUCTS
-   ===================================================== */
+   SEARCH + FILTERS
+===================================================== */
 
 .search-large{
-    margin-bottom:20px;
+    margin-bottom:16px;
 }
 
 .search-large input{
     width:100%;
+
     padding:17px 20px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:14px;
+
     background:#0e0e13;
+
     color:white;
-    border:1px solid var(--line);
-    border-radius:13px;
+
     outline:none;
 }
 
 .filters{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:8px;
+
     margin-bottom:30px;
 }
 
 .filter{
     padding:10px 17px;
-    background:#111116;
-    color:#999;
-    border:1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius:25px;
-    cursor:pointer;
+
+    background:#111116;
+
+    color:#999;
+
+    transition:.2s;
 }
 
-.filter.active,
-.filter:hover{
-    color:black;
+.filter:hover,
+.filter.active{
     background:white;
+
+    color:black;
 }
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:18px;
 }
 
 .product{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:20px;
     overflow:hidden;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:20px;
+
+    background:var(--card);
+
     transition:.35s;
+
+    animation:
+        productIn .55s ease both;
+}
+
+@keyframes productIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .product:hover{
-    transform:translateY(-8px);
-    border-color:#8b2cff66;
-    box-shadow:0 25px 70px #000;
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(139,44,255,.5);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.7);
 }
 
 .product-image{
-    height:340px;
-    background:#111;
     position:relative;
+
+    height:330px;
+
     overflow:hidden;
+
+    background:#111;
 }
 
 .product-image img{
     width:100%;
     height:100%;
+
+    display:block;
+
     object-fit:cover;
-    transition:.6s;
+
+    transition:
+        transform .6s ease;
 }
 
-.product:hover img{
+.product:hover
+.product-image img{
     transform:scale(1.07);
 }
 
 .badge{
     position:absolute;
+
     top:13px;
     left:13px;
-    background:white;
-    color:black;
-    padding:7px 10px;
-    border-radius:7px;
-    font-size:10px;
-    font-weight:1000;
+
     z-index:2;
+
+    padding:7px 10px;
+
+    border-radius:7px;
+
+    background:white;
+
+    color:black;
+
+    font-size:9px;
+
+    font-weight:1000;
 }
 
 .favorite{
     position:absolute;
-    right:13px;
+
     top:13px;
+    right:13px;
+
+    z-index:3;
+
     width:38px;
     height:38px;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
     border-radius:50%;
-    border:1px solid #ffffff22;
-    background:#000b;
+
+    background:rgba(0,0,0,.7);
+
     color:white;
-    cursor:pointer;
-    z-index:2;
+
     font-size:18px;
+
+    transition:.2s;
+}
+
+.favorite:hover{
+    transform:scale(1.1);
 }
 
 .product-info{
@@ -625,60 +1024,118 @@ body{
 }
 
 .product-type{
-    color:#777;
-    font-size:12px;
     margin:7px 0 17px;
+
+    color:#777;
+
+    font-size:12px;
 }
 
 .price-line{
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
     margin-bottom:15px;
 }
 
 .price{
     font-size:20px;
+
     font-weight:1000;
 }
 
 .available{
     color:var(--green);
-    font-size:10px;
+
+    font-size:9px;
+
+    font-weight:1000;
 }
 
 .add-cart{
     width:100%;
+
     padding:13px;
+
     border:0;
+
     border-radius:10px;
+
     background:white;
+
     color:black;
+
     font-weight:1000;
-    cursor:pointer;
+
     transition:.2s;
 }
 
 .add-cart:hover{
-    background:var(--purple2);
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--purple2)
+        );
+
     color:white;
+
+    transform:translateY(-2px);
 }
 
+
 /* =====================================================
-   OFFERS
-   ===================================================== */
+   NO RESULTS
+===================================================== */
+
+.no-results{
+    display:none;
+
+    padding:50px;
+
+    text-align:center;
+
+    color:#777;
+
+    border:
+        1px dashed var(--line);
+
+    border-radius:18px;
+}
+
+
+/* =====================================================
+   OFFER
+===================================================== */
 
 .offer{
     padding:55px;
-    border:1px solid #8b2cff33;
-    border-radius:25px;
-    background:
-        radial-gradient(circle at 80% 20%,#8b2cff40,transparent 40%),
-        #100a16;
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
     gap:30px;
+
+    border:
+        1px solid rgba(139,44,255,.25);
+
+    border-radius:25px;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(139,44,255,.25),
+            transparent 40%
+        ),
+        #100a16;
 }
 
 .offer h2{
@@ -686,41 +1143,59 @@ body{
 }
 
 .offer p{
-    color:#999;
     margin-top:10px;
+
+    color:#999;
 }
 
 .offer-badge{
-    font-size:55px;
-    font-weight:1000;
     color:var(--purple2);
+
+    font-size:60px;
+
+    font-weight:1000;
+
+    text-shadow:
+        0 0 35px rgba(139,44,255,.4);
 }
+
 
 /* =====================================================
    INFO
-   ===================================================== */
+===================================================== */
 
 .info-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:15px;
 }
 
 .info-card{
     padding:28px;
-    border:1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius:18px;
+
     background:var(--card);
+
     transition:.3s;
 }
 
 .info-card:hover{
     transform:translateY(-5px);
-    border-color:#8b2cff44;
+
+    border-color:
+        rgba(139,44,255,.4);
 }
 
 .info-icon{
     font-size:30px;
+
     margin-bottom:18px;
 }
 
@@ -730,102 +1205,199 @@ body{
 
 .info-card p{
     color:#777;
-    line-height:1.6;
+
     font-size:13px;
+
+    line-height:1.6;
 }
+
 
 /* =====================================================
    FAQ
-   ===================================================== */
+===================================================== */
 
 .faq{
-    max-width:850px;
+    max-width:900px;
 }
 
 details{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:13px;
     padding:20px;
+
     margin-bottom:10px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:13px;
+
+    background:var(--card);
 }
 
 summary{
     cursor:pointer;
+
     font-weight:1000;
 }
 
 details p{
-    color:#777;
-    line-height:1.7;
     margin-top:15px;
+
+    color:#777;
+
+    line-height:1.7;
 }
 
+
 /* =====================================================
-   PIROTECNIA
-   ===================================================== */
+   PYROTECHNICS INFORMATION
+===================================================== */
 
 .pyro-note{
     padding:20px;
+
     margin-bottom:25px;
-    border:1px solid #ffb30033;
-    background:#ffb30008;
+
+    border:
+        1px solid rgba(255,179,0,.2);
+
     border-radius:14px;
+
+    background:rgba(255,179,0,.04);
+
     color:#aaa;
-    line-height:1.6;
+
     font-size:13px;
+
+    line-height:1.6;
 }
+
+
+/* =====================================================
+   COMING SOON
+===================================================== */
+
+.coming-soon{
+    min-height:180px;
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    border:
+        1px dashed rgba(139,44,255,.35);
+
+    border-radius:20px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,44,255,.08),
+            transparent 55%
+        );
+}
+
+.coming-soon .big{
+    font-size:40px;
+
+    margin-bottom:10px;
+}
+
+.coming-soon h3{
+    font-size:20px;
+}
+
+.coming-soon p{
+    margin-top:7px;
+
+    color:#777;
+}
+
 
 /* =====================================================
    CONTACT
-   ===================================================== */
+===================================================== */
 
 .contact{
+    padding:
+        130px 25px;
+
     text-align:center;
-    padding:120px 25px;
+
     background:
-        radial-gradient(circle,#8b2cff30,transparent 45%);
+        radial-gradient(
+            circle at center,
+            rgba(139,44,255,.22),
+            transparent 45%
+        );
 }
 
 .contact h2{
     font-size:60px;
+
     letter-spacing:-4px;
 }
 
 .contact p{
+    margin:20px auto 30px;
+
+    max-width:600px;
+
     color:#777;
-    margin:20px 0 30px;
 }
 
 .socials{
     display:flex;
+
     justify-content:center;
-    gap:10px;
+
     flex-wrap:wrap;
+
+    gap:10px;
 }
 
 .social{
     padding:13px 20px;
-    border:1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius:30px;
-    color:white;
+
     text-decoration:none;
+
     transition:.2s;
 }
 
 .social:hover{
-    border-color:var(--purple);
     transform:translateY(-3px);
+
+    border-color:
+        rgba(139,44,255,.6);
+
+    background:#ffffff05;
 }
+
 
 /* =====================================================
    FOOTER
-   ===================================================== */
+===================================================== */
 
 footer{
-    border-top:1px solid var(--line);
-    text-align:center;
     padding:45px 20px;
+
+    text-align:center;
+
+    border-top:
+        1px solid var(--line);
+
     color:#666;
 }
 
@@ -833,24 +1405,38 @@ footer strong{
     color:white;
 }
 
+
 /* =====================================================
    CART
-   ===================================================== */
+===================================================== */
 
 .cart{
     position:fixed;
-    right:-450px;
+
+    right:-460px;
     top:0;
-    width:430px;
-    max-width:92%;
+
+    width:440px;
+
+    max-width:92vw;
+
     height:100vh;
-    background:#09090d;
-    border-left:1px solid #8b2cff55;
+
     z-index:10000;
+
     padding:25px;
-    transition:.4s;
-    box-shadow:-30px 0 90px #000;
+
+    background:#09090d;
+
+    border-left:
+        1px solid rgba(139,44,255,.5);
+
+    box-shadow:
+        -30px 0 90px rgba(0,0,0,.8);
+
     overflow-y:auto;
+
+    transition:.4s;
 }
 
 .cart.open{
@@ -859,175 +1445,291 @@ footer strong{
 
 .cart-header{
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
     margin-bottom:25px;
 }
 
 .close-cart{
     border:0;
+
     background:none;
+
     color:white;
+
     font-size:30px;
-    cursor:pointer;
 }
 
 .cart-item{
-    background:#111116;
-    border:1px solid var(--line);
     padding:15px;
-    border-radius:12px;
+
     margin-bottom:10px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:12px;
+
+    background:#111116;
+}
+
+.cart-item-row{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
 }
 
 .cart-item small{
     color:#777;
 }
 
-.remove{
-    margin-top:9px;
-    border:0;
-    background:var(--red);
-    color:white;
-    padding:7px 10px;
+.quantity{
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-top:10px;
+}
+
+.quantity button{
+    width:27px;
+    height:27px;
+
+    border:
+        1px solid var(--line);
+
     border-radius:7px;
-    cursor:pointer;
+
+    background:#19191f;
+
+    color:white;
+}
+
+.remove{
+    margin-top:10px;
+
+    padding:7px 10px;
+
+    border:0;
+
+    border-radius:7px;
+
+    background:var(--red);
+
+    color:white;
+
+    font-size:11px;
 }
 
 .cart-total{
     margin-top:25px;
+
+    padding-top:20px;
+
+    border-top:
+        1px solid var(--line);
+
     font-size:22px;
+
     font-weight:1000;
 }
 
 .checkout{
     width:100%;
+
     padding:15px;
+
     margin-top:15px;
+
     border:0;
+
     border-radius:12px;
+
     background:white;
+
     color:black;
+
     font-weight:1000;
-    cursor:pointer;
 }
+
+.clear-cart{
+    width:100%;
+
+    margin-top:8px;
+
+    padding:12px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:12px;
+
+    background:#111116;
+
+    color:#aaa;
+}
+
 
 /* =====================================================
    TOAST
-   ===================================================== */
+===================================================== */
 
 .toast{
     position:fixed;
-    bottom:25px;
+
     left:50%;
-    transform:translate(-50%,120px);
-    background:white;
-    color:black;
-    padding:14px 20px;
-    border-radius:12px;
-    font-weight:1000;
+
+    bottom:25px;
+
     z-index:20000;
+
+    padding:14px 20px;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:black;
+
+    font-weight:1000;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.6);
+
+    transform:
+        translate(-50%,120px);
+
     transition:.3s;
-    box-shadow:0 20px 60px #000;
 }
 
 .toast.show{
-    transform:translate(-50%,0);
+    transform:
+        translate(-50%,0);
 }
 
+
 /* =====================================================
-   MOBILE
-   ===================================================== */
+   MOBILE MENU
+===================================================== */
 
 .mobile-menu{
     display:none;
 }
 
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
 @media(max-width:1200px){
 
     .sidebar{
-        width:210px;
+        width:215px;
     }
 
     .main{
-        margin-left:210px;
+        margin-right:215px;
     }
 
     .products{
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:
+            repeat(3,1fr);
     }
 
     .category-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .info-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
+
 
 @media(max-width:850px){
 
     .sidebar{
-        transform:translateX(-100%);
+        transform:
+            translateX(100%);
+
         transition:.3s;
     }
 
     .sidebar.open{
-        transform:translateX(0);
+        transform:
+            translateX(0);
     }
 
     .main{
-        margin-left:0;
-    }
-
-    .header{
-        height:65px;
-    }
-
-    .header-search{
-        max-width:55%;
+        margin-right:0;
     }
 
     .mobile-menu{
-        display:block;
+        display:flex;
+
+        align-items:center;
+        justify-content:center;
+
         position:fixed;
-        left:15px;
-        top:78px;
+
+        right:15px;
+        top:82px;
+
         z-index:6000;
+
         width:45px;
         height:45px;
-        border-radius:50%;
-        background:#111116;
-        color:white;
-        border:1px solid var(--line);
-        cursor:pointer;
-    }
 
-    .mobile-menu::after{
-        content:"☰";
-        position:absolute;
-        inset:0;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+        border:
+            1px solid var(--line);
+
+        border-radius:50%;
+
+        background:#111116;
+
+        color:white;
+
+        font-size:18px;
     }
 
     .products{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
 
+
 @media(max-width:600px){
+
+    .header{
+        padding:
+            0 15px;
+    }
 
     .header-search{
         display:none;
     }
 
+    .header-actions{
+        margin-left:auto;
+    }
+
     .section{
-        padding:75px 18px;
+        padding:
+            75px 18px;
     }
 
     .section h2{
@@ -1035,7 +1737,8 @@ footer strong{
     }
 
     .hero h1{
-        font-size:64px;
+        font-size:63px;
+
         letter-spacing:-5px;
     }
 
@@ -1057,6 +1760,7 @@ footer strong{
 
     .offer{
         display:block;
+
         padding:35px 25px;
     }
 
@@ -1073,16 +1777,25 @@ footer strong{
 </style>
 </head>
 
+
 <body>
 
 
-<!-- LOADER -->
+<!-- =====================================================
+     LOADER
+===================================================== -->
 
 <div class="loader" id="loader">
 
-    <div>
+    <div class="loader-content">
 
-        <div class="loader-title">
+        <img
+            src="logo.png"
+            class="loader-logo"
+            alt="VendixStore"
+        >
+
+        <div class="loader-name">
             Vendix<span>Store</span>
         </div>
 
@@ -1095,13 +1808,22 @@ footer strong{
 </div>
 
 
-<!-- SIDEBAR -->
+<!-- =====================================================
+     SIDEBAR RIGHT
+===================================================== -->
 
 <aside class="sidebar" id="sidebar">
 
-    <a href="#inicio" class="sidebar-logo">
 
-        <img src="logo.png" alt="VendixStore">
+    <a
+        href="#inicio"
+        class="sidebar-logo"
+    >
+
+        <img
+            src="logo.png"
+            alt="VendixStore"
+        >
 
         Vendix<span>Store</span>
 
@@ -1113,13 +1835,19 @@ footer strong{
     </div>
 
 
-    <a href="#inicio" class="side-link active">
+    <a
+        href="#inicio"
+        class="side-link active"
+    >
         <span class="side-icon">⌂</span>
         Inicio
     </a>
 
 
-    <a href="#faq" class="side-link">
+    <a
+        href="#faq"
+        class="side-link"
+    >
         <span class="side-icon">?</span>
         FAQ
     </a>
@@ -1130,37 +1858,55 @@ footer strong{
     </div>
 
 
-    <a href="#pirotecnia" class="side-link">
+    <a
+        href="#pirotecnia"
+        class="side-link"
+    >
         <span class="side-icon">🎆</span>
         Petardos
     </a>
 
 
-    <a href="#camiseta" class="side-link">
+    <a
+        href="#camiseta"
+        class="side-link"
+    >
         <span class="side-icon">👕</span>
         Camiseta
     </a>
 
 
-    <a href="#pantalon" class="side-link">
+    <a
+        href="#pantalon"
+        class="side-link"
+    >
         <span class="side-icon">👖</span>
         Pantalón
     </a>
 
 
-    <a href="#zapatos" class="side-link">
+    <a
+        href="#zapatos"
+        class="side-link"
+    >
         <span class="side-icon">👟</span>
         Zapatos
     </a>
 
 
-    <a href="#conjuntos" class="side-link">
+    <a
+        href="#conjuntos"
+        class="side-link"
+    >
         <span class="side-icon">🧥</span>
         Conjuntos
     </a>
 
 
-    <a href="#accesorios" class="side-link">
+    <a
+        href="#accesorios"
+        class="side-link"
+    >
         <span class="side-icon">🧢</span>
         Accesorios
     </a>
@@ -1171,13 +1917,19 @@ footer strong{
     </div>
 
 
-    <a href="#envios" class="side-link">
+    <a
+        href="#envios"
+        class="side-link"
+    >
         <span class="side-icon">🚚</span>
         Envíos
     </a>
 
 
-    <a href="#contacto" class="side-link">
+    <a
+        href="#contacto"
+        class="side-link"
+    >
         <span class="side-icon">💬</span>
         Contacto
     </a>
@@ -1185,7 +1937,9 @@ footer strong{
 
     <div class="side-bottom">
 
-        <strong>VendixStore</strong>
+        <strong>
+            VendixStore
+        </strong>
 
         <p>
             Sneakers · Ropa · Accesorios
@@ -1196,7 +1950,9 @@ footer strong{
 </aside>
 
 
-<!-- MAIN -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <div class="main">
 
@@ -1205,21 +1961,26 @@ footer strong{
 
 <header class="header">
 
-    <button
-        class="header-btn"
-        onclick="toggleSidebar()"
-    >
-        ☰
-    </button>
+
+    <div class="header-left">
+
+        <button
+            class="header-btn"
+            onclick="toggleSidebar()"
+        >
+            ☰
+        </button>
+
+    </div>
 
 
     <div class="header-search">
 
         <input
-            id="search"
+            id="headerSearch"
             type="text"
             placeholder="🔎 Buscar productos..."
-            onkeyup="searchProducts()"
+            oninput="searchProducts(this.value)"
         >
 
     </div>
@@ -1232,7 +1993,14 @@ footer strong{
             onclick="openCart()"
         >
             🛒 Carrito
-            <span id="cartCount">0</span>
+
+            <span
+                class="cart-count"
+                id="cartCount"
+            >
+                0
+            </span>
+
         </button>
 
     </div>
@@ -1240,15 +2008,33 @@ footer strong{
 </header>
 
 
-<!-- HERO -->
+<!-- MOBILE MENU -->
 
-<section class="hero" id="inicio">
+<button
+    class="mobile-menu"
+    onclick="toggleSidebar()"
+>
+    ☰
+</button>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    class="hero"
+    id="inicio"
+>
+
 
     <div class="hero-orb one"></div>
+
     <div class="hero-orb two"></div>
 
 
     <div class="hero-content">
+
 
         <div class="hero-tag">
             VENDIXSTORE · OFFICIAL
@@ -1273,7 +2059,7 @@ footer strong{
                 href="#zapatos"
                 class="btn btn-primary"
             >
-                Explorar zapatos
+                Explorar sneakers
             </a>
 
 
@@ -1291,9 +2077,12 @@ footer strong{
 </section>
 
 
-<!-- CATEGORÍAS -->
+<!-- =====================================================
+     CATEGORÍAS
+===================================================== -->
 
-<section class="section" id="categorias">
+<section class="section">
+
 
     <div class="section-head">
 
@@ -1306,7 +2095,7 @@ footer strong{
         </h2>
 
         <p class="section-description">
-            Encuentra rápidamente lo que buscas.
+            Todo VendixStore organizado en un solo lugar.
         </p>
 
     </div>
@@ -1315,9 +2104,14 @@ footer strong{
     <div class="category-grid">
 
 
-        <a href="#zapatos" class="category-card">
+        <a
+            href="#zapatos"
+            class="category-card"
+        >
 
-            <div class="icon">👟</div>
+            <div class="category-icon">
+                👟
+            </div>
 
             <h3>
                 Zapatos
@@ -1330,9 +2124,14 @@ footer strong{
         </a>
 
 
-        <a href="#camiseta" class="category-card">
+        <a
+            href="#camiseta"
+            class="category-card"
+        >
 
-            <div class="icon">👕</div>
+            <div class="category-icon">
+                👕
+            </div>
 
             <h3>
                 Camisetas
@@ -1345,9 +2144,14 @@ footer strong{
         </a>
 
 
-        <a href="#conjuntos" class="category-card">
+        <a
+            href="#conjuntos"
+            class="category-card"
+        >
 
-            <div class="icon">🧥</div>
+            <div class="category-icon">
+                🧥
+            </div>
 
             <h3>
                 Conjuntos
@@ -1360,29 +2164,39 @@ footer strong{
         </a>
 
 
-        <a href="#accesorios" class="category-card">
+        <a
+            href="#accesorios"
+            class="category-card"
+        >
 
-            <div class="icon">🧢</div>
+            <div class="category-icon">
+                🧢
+            </div>
 
             <h3>
                 Accesorios
             </h3>
 
             <p>
-                Completa tu outfit
+                Próximamente
             </p>
 
         </a>
-
 
     </div>
 
 </section>
 
 
-<!-- TIENDA -->
+<!-- =====================================================
+     PRODUCTOS
+===================================================== -->
 
-<section class="section" id="tienda">
+<section
+    class="section"
+    id="tienda"
+>
+
 
     <div class="section-head">
 
@@ -1395,7 +2209,7 @@ footer strong{
         </h2>
 
         <p class="section-description">
-            Selecciona un producto para añadirlo al carrito.
+            Explora los productos disponibles.
         </p>
 
     </div>
@@ -1406,14 +2220,15 @@ footer strong{
         <input
             id="productSearch"
             type="text"
-            placeholder="🔎 Buscar Air Force, Jordan, Samba..."
-            onkeyup="searchProducts()"
+            placeholder="🔎 Buscar Air Force, Campus, Jordan..."
+            oninput="searchProducts(this.value)"
         >
 
     </div>
 
 
     <div class="filters">
+
 
         <button
             class="filter active"
@@ -1422,29 +2237,38 @@ footer strong{
             Todos
         </button>
 
+
         <button
             class="filter"
             onclick="filterProducts('sneaker',this)"
         >
-            👟 Zapatos
+            👟 Sneakers
         </button>
+
 
         <button
             class="filter"
             onclick="filterProducts('clothing',this)"
         >
-            👕 Camisetas
+            👕 Ropa
         </button>
 
     </div>
 
 
-    <div class="products" id="productGrid">
+    <div
+        class="products"
+        id="productGrid"
+    >
 
 
         <!-- AIR FORCE -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="Air Force 1"
+        >
 
             <div class="product-image">
 
@@ -1462,6 +2286,7 @@ footer strong{
                 <img
                     src="bambas.jpg"
                     alt="Air Force 1"
+                    loading="lazy"
                 >
 
             </div>
@@ -1477,7 +2302,6 @@ footer strong{
                     Sneakers
                 </div>
 
-
                 <div class="price-line">
 
                     <span class="price">
@@ -1489,7 +2313,6 @@ footer strong{
                     </span>
 
                 </div>
-
 
                 <button
                     class="add-cart"
@@ -1505,7 +2328,11 @@ footer strong{
 
         <!-- ON QLOUD -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="On Qloud"
+        >
 
             <div class="product-image">
 
@@ -1523,6 +2350,7 @@ footer strong{
                 <img
                     src="bambas1.jpg"
                     alt="On Qloud"
+                    loading="lazy"
                 >
 
             </div>
@@ -1564,7 +2392,11 @@ footer strong{
 
         <!-- CAMPUS -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="Campus 00s"
+        >
 
             <div class="product-image">
 
@@ -1578,6 +2410,7 @@ footer strong{
                 <img
                     src="bambas2.jpg"
                     alt="Campus 00s"
+                    loading="lazy"
                 >
 
             </div>
@@ -1617,9 +2450,13 @@ footer strong{
         </article>
 
 
-        <!-- NB 530 -->
+        <!-- NEW BALANCE -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="New Balance 530"
+        >
 
             <div class="product-image">
 
@@ -1637,6 +2474,7 @@ footer strong{
                 <img
                     src="bambas3.jpg"
                     alt="New Balance 530"
+                    loading="lazy"
                 >
 
             </div>
@@ -1678,7 +2516,11 @@ footer strong{
 
         <!-- SAMBA -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="Samba OG"
+        >
 
             <div class="product-image">
 
@@ -1692,6 +2534,7 @@ footer strong{
                 <img
                     src="bambas4.jpg"
                     alt="Samba OG"
+                    loading="lazy"
                 >
 
             </div>
@@ -1733,7 +2576,11 @@ footer strong{
 
         <!-- TN -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="Air Max TN"
+        >
 
             <div class="product-image">
 
@@ -1747,6 +2594,7 @@ footer strong{
                 <img
                     src="bambas5.jpg"
                     alt="Air Max TN"
+                    loading="lazy"
                 >
 
             </div>
@@ -1788,7 +2636,11 @@ footer strong{
 
         <!-- DN -->
 
-        <article class="product" data-category="sneaker">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="Air Max DN"
+        >
 
             <div class="product-image">
 
@@ -1806,6 +2658,7 @@ footer strong{
                 <img
                     src="bambas6.jpg"
                     alt="Air Max DN"
+                    loading="lazy"
                 >
 
             </div>
@@ -1847,7 +2700,12 @@ footer strong{
 
         <!-- ASICS -->
 
-        <article class="product" data-category="sneaker" id="zapatos">
+        <article
+            class="product"
+            data-category="sneaker"
+            data-name="Asics"
+            id="zapatos"
+        >
 
             <div class="product-image">
 
@@ -1861,6 +2719,7 @@ footer strong{
                 <img
                     src="bambas7.jpg"
                     alt="Asics"
+                    loading="lazy"
                 >
 
             </div>
@@ -1900,11 +2759,12 @@ footer strong{
         </article>
 
 
-        <!-- CAMISETA -->
+        <!-- JORDAN -->
 
         <article
             class="product"
             data-category="clothing"
+            data-name="Camiseta Jordan"
             id="camiseta"
         >
 
@@ -1924,6 +2784,7 @@ footer strong{
                 <img
                     src="CamisetaJordan.jpg"
                     alt="Camiseta Jordan"
+                    loading="lazy"
                 >
 
             </div>
@@ -1965,12 +2826,23 @@ footer strong{
 
     </div>
 
+
+    <div
+        class="no-results"
+        id="noResults"
+    >
+        🔎 No hemos encontrado ningún producto.
+    </div>
+
 </section>
 
 
-<!-- OFERTA -->
+<!-- =====================================================
+     OFERTA
+===================================================== -->
 
 <section class="section">
+
 
     <div class="offer">
 
@@ -1985,8 +2857,8 @@ footer strong{
             </h2>
 
             <p>
-                Nuevos productos, ropa y accesorios
-                llegarán próximamente a VendixStore.
+                Nuevos modelos, ropa y accesorios
+                estarán disponibles próximamente.
             </p>
 
         </div>
@@ -2001,9 +2873,15 @@ footer strong{
 </section>
 
 
-<!-- PANTALONES -->
+<!-- =====================================================
+     PANTALONES
+===================================================== -->
 
-<section class="section" id="pantalon">
+<section
+    class="section"
+    id="pantalon"
+>
+
 
     <div class="section-head">
 
@@ -2016,14 +2894,15 @@ footer strong{
         </h2>
 
         <p class="section-description">
-            Estamos preparando nuevos modelos.
+            Próximamente añadiremos nuevos modelos.
         </p>
 
     </div>
 
-    <div class="category-card">
 
-        <div class="icon">
+    <div class="coming-soon">
+
+        <div class="big">
             👖
         </div>
 
@@ -2032,7 +2911,7 @@ footer strong{
         </h3>
 
         <p>
-            Nuevos pantalones estarán disponibles aquí.
+            Estamos preparando esta categoría.
         </p>
 
     </div>
@@ -2040,9 +2919,15 @@ footer strong{
 </section>
 
 
-<!-- CONJUNTOS -->
+<!-- =====================================================
+     CONJUNTOS
+===================================================== -->
 
-<section class="section" id="conjuntos">
+<section
+    class="section"
+    id="conjuntos"
+>
+
 
     <div class="section-head">
 
@@ -2055,14 +2940,15 @@ footer strong{
         </h2>
 
         <p class="section-description">
-            Nuevos conjuntos próximamente.
+            Nuevos outfits próximamente.
         </p>
 
     </div>
 
-    <div class="category-card">
 
-        <div class="icon">
+    <div class="coming-soon">
+
+        <div class="big">
             🧥
         </div>
 
@@ -2079,9 +2965,15 @@ footer strong{
 </section>
 
 
-<!-- ACCESORIOS -->
+<!-- =====================================================
+     ACCESORIOS
+===================================================== -->
 
-<section class="section" id="accesorios">
+<section
+    class="section"
+    id="accesorios"
+>
+
 
     <div class="section-head">
 
@@ -2094,16 +2986,18 @@ footer strong{
         </h2>
 
         <p class="section-description">
-            Gorras, accesorios y mucho más próximamente.
+            Completa tu estilo con nuevos accesorios.
         </p>
 
     </div>
 
+
     <div class="category-grid">
+
 
         <div class="category-card">
 
-            <div class="icon">
+            <div class="category-icon">
                 🧢
             </div>
 
@@ -2120,7 +3014,7 @@ footer strong{
 
         <div class="category-card">
 
-            <div class="icon">
+            <div class="category-icon">
                 🎒
             </div>
 
@@ -2137,7 +3031,7 @@ footer strong{
 
         <div class="category-card">
 
-            <div class="icon">
+            <div class="category-icon">
                 🕶️
             </div>
 
@@ -2154,7 +3048,7 @@ footer strong{
 
         <div class="category-card">
 
-            <div class="icon">
+            <div class="category-icon">
                 ✨
             </div>
 
@@ -2173,22 +3067,28 @@ footer strong{
 </section>
 
 
-<!-- PIROTECNIA -->
+<!-- =====================================================
+     PIROTECNIA
+===================================================== -->
 
-<section class="section" id="pirotecnia">
+<section
+    class="section"
+    id="pirotecnia"
+>
+
 
     <div class="section-head">
 
         <div class="small-label">
-            PIROTECNIA
+            INFORMACIÓN
         </div>
 
         <h2>
-            Petardos.
+            Pirotecnia.
         </h2>
 
         <p class="section-description">
-            Catálogo informativo.
+            Catálogo informativo de productos.
         </p>
 
     </div>
@@ -2196,11 +3096,11 @@ footer strong{
 
     <div class="pyro-note">
 
-        ⚠️ <strong>Información importante:</strong>
-        la adquisición, edad mínima, transporte, almacenamiento
-        y envío de productos pirotécnicos están sujetos a la
-        normativa aplicable. Consulta la legalidad y condiciones
-        antes de cualquier operación.
+        ⚠️ <strong>Aviso:</strong>
+        la venta, adquisición, transporte,
+        almacenamiento y uso de productos pirotécnicos
+        están sujetos a la legislación aplicable.
+        Esta sección es únicamente informativa.
 
     </div>
 
@@ -2211,8 +3111,13 @@ footer strong{
         <article class="product">
 
             <div class="product-image">
-                <img src="Pirotecnia.jpg"
-                     alt="BIG BANG 2G GREEN">
+
+                <img
+                    src="Pirotecnia.jpg"
+                    alt="BIG BANG 2G GREEN"
+                    loading="lazy"
+                >
+
             </div>
 
             <div class="product-info">
@@ -2222,7 +3127,7 @@ footer strong{
                 </h3>
 
                 <div class="product-type">
-                    Catálogo
+                    Catálogo informativo
                 </div>
 
             </div>
@@ -2233,8 +3138,13 @@ footer strong{
         <article class="product">
 
             <div class="product-image">
-                <img src="Pirotecnia1.jpg"
-                     alt="EDWIN C1614E14">
+
+                <img
+                    src="Pirotecnia1.jpg"
+                    alt="EDWIN C1614E14"
+                    loading="lazy"
+                >
+
             </div>
 
             <div class="product-info">
@@ -2244,7 +3154,7 @@ footer strong{
                 </h3>
 
                 <div class="product-type">
-                    Catálogo
+                    Catálogo informativo
                 </div>
 
             </div>
@@ -2255,8 +3165,13 @@ footer strong{
         <article class="product">
 
             <div class="product-image">
-                <img src="Pirotecnia2.jpg"
-                     alt="RED FLAME XP1072">
+
+                <img
+                    src="Pirotecnia2.jpg"
+                    alt="RED FLAME XP1072"
+                    loading="lazy"
+                >
+
             </div>
 
             <div class="product-info">
@@ -2266,7 +3181,7 @@ footer strong{
                 </h3>
 
                 <div class="product-type">
-                    Catálogo
+                    Catálogo informativo
                 </div>
 
             </div>
@@ -2277,8 +3192,13 @@ footer strong{
         <article class="product">
 
             <div class="product-image">
-                <img src="Pirotecnia3.jpg"
-                     alt="DUMBUM BLACK THUNDER PBDF2">
+
+                <img
+                    src="Pirotecnia3.jpg"
+                    alt="DUMBUM BLACK THUNDER PBDF2"
+                    loading="lazy"
+                >
+
             </div>
 
             <div class="product-info">
@@ -2288,7 +3208,7 @@ footer strong{
                 </h3>
 
                 <div class="product-type">
-                    Catálogo
+                    Catálogo informativo
                 </div>
 
             </div>
@@ -2299,8 +3219,13 @@ footer strong{
         <article class="product">
 
             <div class="product-image">
-                <img src="Pirotecnia4.jpg"
-                     alt="FP3 SMALL JC05">
+
+                <img
+                    src="Pirotecnia4.jpg"
+                    alt="FP3 SMALL JC05"
+                    loading="lazy"
+                >
+
             </div>
 
             <div class="product-info">
@@ -2310,7 +3235,7 @@ footer strong{
                 </h3>
 
                 <div class="product-type">
-                    Catálogo
+                    Catálogo informativo
                 </div>
 
             </div>
@@ -2323,9 +3248,15 @@ footer strong{
 </section>
 
 
-<!-- ENVIOS -->
+<!-- =====================================================
+     ENVÍOS
+===================================================== -->
 
-<section class="section" id="envios">
+<section
+    class="section"
+    id="envios"
+>
+
 
     <div class="section-head">
 
@@ -2338,13 +3269,14 @@ footer strong{
         </h2>
 
         <p class="section-description">
-            Todo lo que necesitas saber antes de realizar un pedido.
+            Información sobre pedidos y entregas.
         </p>
 
     </div>
 
 
     <div class="info-grid">
+
 
         <div class="info-card">
 
@@ -2357,8 +3289,8 @@ footer strong{
             </h3>
 
             <p>
-                Envíos de productos permitidos según destino
-                y condiciones aplicables.
+                Consulta disponibilidad de envío según
+                producto y destino.
             </p>
 
         </div>
@@ -2392,7 +3324,8 @@ footer strong{
             </h3>
 
             <p>
-                Consulta el estado de tu pedido mediante contacto.
+                Contacta con VendixStore para consultar
+                el estado de un pedido.
             </p>
 
         </div>
@@ -2409,8 +3342,8 @@ footer strong{
             </h3>
 
             <p>
-                Algunos productos pueden tener restricciones
-                específicas de transporte.
+                Algunos productos pueden tener
+                restricciones de transporte.
             </p>
 
         </div>
@@ -2420,9 +3353,15 @@ footer strong{
 </section>
 
 
-<!-- FAQ -->
+<!-- =====================================================
+     FAQ
+===================================================== -->
 
-<section class="section" id="faq">
+<section
+    class="section"
+    id="faq"
+>
+
 
     <div class="section-head">
 
@@ -2443,6 +3382,7 @@ footer strong{
 
     <div class="faq">
 
+
         <details>
 
             <summary>
@@ -2450,8 +3390,8 @@ footer strong{
             </summary>
 
             <p>
-                Pulsa el botón “Añadir al carrito”
-                que aparece debajo del producto.
+                Pulsa “Añadir al carrito” debajo del
+                producto que quieras consultar.
             </p>
 
         </details>
@@ -2460,12 +3400,12 @@ footer strong{
         <details>
 
             <summary>
-                ¿Cómo contacto con VendixStore?
+                ¿Dónde puedo contactar?
             </summary>
 
             <p>
-                Puedes utilizar nuestro email o nuestras
-                redes sociales.
+                Puedes contactar por email o mediante
+                las redes sociales de VendixStore.
             </p>
 
         </details>
@@ -2478,8 +3418,21 @@ footer strong{
             </summary>
 
             <p>
-                Los envíos dependen del producto,
-                destino y condiciones aplicables.
+                Consulta las condiciones de envío
+                según el producto y destino.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿Puedo consultar otro producto?
+            </summary>
+
+            <p>
+                Sí. Escríbenos y consulta disponibilidad.
             </p>
 
         </details>
@@ -2492,23 +3445,9 @@ footer strong{
             </summary>
 
             <p>
-                Los precios mostrados en esta versión son
-                orientativos y pueden cambiar según modelo,
-                talla y disponibilidad.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                ¿Puedo preguntar por un producto que no aparece?
-            </summary>
-
-            <p>
-                Sí. Contacta con VendixStore y consulta
-                disponibilidad.
+                Los precios mostrados en esta demo son
+                orientativos y deben comprobarse antes
+                de publicar la tienda definitivamente.
             </p>
 
         </details>
@@ -2518,29 +3457,39 @@ footer strong{
 </section>
 
 
-<!-- CONTACTO -->
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
 
-<section class="contact" id="contacto">
+<section
+    class="contact"
+    id="contacto"
+>
+
 
     <div class="small-label">
         VENDIX COMMUNITY
     </div>
 
+
     <h2>
         ¿Hablamos?
     </h2>
 
+
     <p>
-        Síguenos para conocer las novedades de VendixStore.
+        Síguenos y descubre las novedades de VendixStore.
     </p>
 
 
     <div class="socials">
 
+
         <a
             class="social"
             href="https://www.tiktok.com/@vendixstore7"
             target="_blank"
+            rel="noopener"
         >
             🎵 TikTok
         </a>
@@ -2550,6 +3499,7 @@ footer strong{
             class="social"
             href="https://www.instagram.com/vendixstore02"
             target="_blank"
+            rel="noopener"
         >
             📸 Instagram
         </a>
@@ -2567,7 +3517,9 @@ footer strong{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -2589,9 +3541,15 @@ footer strong{
 </div>
 
 
-<!-- CART -->
+<!-- =====================================================
+     CART
+===================================================== -->
 
-<aside class="cart" id="cart">
+<aside
+    class="cart"
+    id="cart"
+>
+
 
     <div class="cart-header">
 
@@ -2636,12 +3594,23 @@ footer strong{
         📧 Consultar pedido
     </button>
 
+
+    <button
+        class="clear-cart"
+        onclick="clearCart()"
+    >
+        Vaciar carrito
+    </button>
+
 </aside>
 
 
 <!-- TOAST -->
 
-<div class="toast" id="toast">
+<div
+    class="toast"
+    id="toast"
+>
     Añadido al carrito ✓
 </div>
 
@@ -2650,131 +3619,242 @@ footer strong{
 
 /* =====================================================
    LOADER
-   ===================================================== */
+===================================================== */
 
-window.addEventListener("load",function(){
+window.addEventListener(
+    "load",
+    function(){
 
-    setTimeout(function(){
+        setTimeout(
+            function(){
 
-        document
-        .getElementById("loader")
-        .classList.add("hide");
+                document
+                    .getElementById("loader")
+                    .classList.add("hide");
 
-    },700);
+            },
+            700
+        );
 
-});
+    }
+);
 
 
 /* =====================================================
    SIDEBAR
-   ===================================================== */
+===================================================== */
 
 function toggleSidebar(){
 
     document
-    .getElementById("sidebar")
-    .classList.toggle("open");
+        .getElementById("sidebar")
+        .classList.toggle("open");
 
 }
 
 
 /* =====================================================
-   CART
-   ===================================================== */
+   CART DATA
+===================================================== */
 
 let cart=[];
 
 
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
 function addToCart(name,price){
 
-    cart.push({
-        name:name,
-        price:price
-    });
+    const existing=
+        cart.find(
+            item=>item.name===name
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+
+            name:name,
+
+            price:price,
+
+            quantity:1
+
+        });
+
+    }
+
 
     updateCart();
 
     openCart();
 
-    toast("Añadido al carrito ✓");
+    showToast(
+        name+
+        " añadido ✓"
+    );
 
 }
 
 
+/* =====================================================
+   UPDATE CART
+===================================================== */
+
 function updateCart(){
 
     const items=
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartItems"
+        );
 
     const count=
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
 
-    const total=
-        document.getElementById("cartTotal");
+    const totalElement=
+        document.getElementById(
+            "cartTotal"
+        );
 
 
-    count.textContent=cart.length;
+    const totalQuantity=
+        cart.reduce(
+            (sum,item)=>
+                sum+item.quantity,
+            0
+        );
+
+
+    count.textContent=
+        totalQuantity;
 
 
     if(cart.length===0){
 
         items.innerHTML=
-        `<p style="color:#777">
-            Tu carrito está vacío.
-        </p>`;
+            `
+            <p style="color:#777">
+                Tu carrito está vacío.
+            </p>
+            `;
 
-        total.textContent="0.00";
+        totalElement.textContent=
+            "0.00";
 
         return;
 
     }
 
 
-    let sum=0;
+    let total=0;
 
     items.innerHTML="";
 
 
-    cart.forEach(function(item,index){
+    cart.forEach(
+        function(item,index){
 
-        sum+=item.price;
-
-
-        items.innerHTML+=`
-
-            <div class="cart-item">
-
-                <strong>
-                    ${item.name}
-                </strong>
-
-                <br>
-
-                <small>
-                    ${item.price.toFixed(2)} €
-                </small>
-
-                <br>
-
-                <button
-                    class="remove"
-                    onclick="removeItem(${index})"
-                >
-                    Eliminar
-                </button>
-
-            </div>
-
-        `;
-
-    });
+            total+=
+                item.price*
+                item.quantity;
 
 
-    total.textContent=
-        sum.toFixed(2);
+            items.innerHTML+=`
+
+                <div class="cart-item">
+
+                    <div class="cart-item-row">
+
+                        <strong>
+                            ${item.name}
+                        </strong>
+
+                        <strong>
+                            ${(item.price*
+                            item.quantity)
+                            .toFixed(2)} €
+                        </strong>
+
+                    </div>
+
+                    <small>
+                        ${item.price.toFixed(2)} €
+                        por unidad
+                    </small>
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="changeQuantity(${index},-1)"
+                        >
+                            −
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(${index},1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="remove"
+                        onclick="removeItem(${index})"
+                    >
+                        Eliminar
+                    </button>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    totalElement.textContent=
+        total.toFixed(2);
 
 }
 
+
+/* =====================================================
+   QUANTITY
+===================================================== */
+
+function changeQuantity(index,amount){
+
+    cart[index].quantity+=amount;
+
+
+    if(cart[index].quantity<=0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* =====================================================
+   REMOVE
+===================================================== */
 
 function removeItem(index){
 
@@ -2785,11 +3865,32 @@ function removeItem(index){
 }
 
 
+/* =====================================================
+   CLEAR
+===================================================== */
+
+function clearCart(){
+
+    cart=[];
+
+    updateCart();
+
+    showToast(
+        "Carrito vacío"
+    );
+
+}
+
+
+/* =====================================================
+   OPEN / CLOSE CART
+===================================================== */
+
 function openCart(){
 
     document
-    .getElementById("cart")
-    .classList.add("open");
+        .getElementById("cart")
+        .classList.add("open");
 
 }
 
@@ -2797,21 +3898,23 @@ function openCart(){
 function closeCart(){
 
     document
-    .getElementById("cart")
-    .classList.remove("open");
+        .getElementById("cart")
+        .classList.remove("open");
 
 }
 
 
 /* =====================================================
-   CHECKOUT
-   ===================================================== */
+   EMAIL ORDER
+===================================================== */
 
 function checkout(){
 
     if(cart.length===0){
 
-        alert("Tu carrito está vacío.");
+        alert(
+            "Tu carrito está vacío."
+        );
 
         return;
 
@@ -2819,139 +3922,229 @@ function checkout(){
 
 
     let message=
-        "Hola VendixStore 👋%0A%0A"+
-        "Quiero consultar este pedido:%0A%0A";
+        "Hola VendixStore 👋\n\n"+
+        "Quiero consultar este pedido:\n\n";
 
 
     let total=0;
 
 
-    cart.forEach(function(item){
+    cart.forEach(
+        function(item){
 
-        message+=
-            "• "+
-            item.name+
-            " — "+
-            item.price.toFixed(2)+
-            " €%0A";
+            const subtotal=
+                item.price*
+                item.quantity;
 
-        total+=item.price;
 
-    });
+            message+=
+                "• "+
+                item.name+
+                " x"+
+                item.quantity+
+                " — "+
+                subtotal.toFixed(2)+
+                " €\n";
+
+
+            total+=subtotal;
+
+        }
+    );
 
 
     message+=
-        "%0ATotal aproximado: "+
+        "\nTotal aproximado: "+
         total.toFixed(2)+
         " €";
 
 
     window.location.href=
         "mailto:micmc018@gmail.com"+
-        "?subject=Consulta pedido VendixStore"+
-        "&body="+message;
+        "?subject="+
+        encodeURIComponent(
+            "Consulta pedido VendixStore"
+        )+
+        "&body="+
+        encodeURIComponent(
+            message
+        );
 
 }
 
 
 /* =====================================================
    SEARCH
-   ===================================================== */
+===================================================== */
 
-function searchProducts(){
+function searchProducts(value){
 
-    const search1=
-        document.getElementById("search");
-
-    const search2=
-        document.getElementById("productSearch");
-
-
-    let query="";
+    const query=
+        value
+            .toLowerCase()
+            .trim();
 
 
-    if(search1 && search1.value){
-        query=search1.value.toLowerCase();
+    const products=
+        document.querySelectorAll(
+            "#productGrid .product"
+        );
+
+
+    let visible=0;
+
+
+    products.forEach(
+        function(product){
+
+            const name=
+                product
+                    .dataset
+                    .name
+                    .toLowerCase();
+
+
+            const text=
+                product.innerText
+                    .toLowerCase();
+
+
+            const match=
+                name.includes(query) ||
+                text.includes(query);
+
+
+            if(match){
+
+                product.style.display="";
+                visible++;
+
+            }else{
+
+                product.style.display="none";
+
+            }
+
+        }
+    );
+
+
+    const noResults=
+        document.getElementById(
+            "noResults"
+        );
+
+
+    noResults.style.display=
+        visible===0
+            ? "block"
+            : "none";
+
+
+    /* sincronizar los dos buscadores */
+
+    const header=
+        document.getElementById(
+            "headerSearch"
+        );
+
+    const large=
+        document.getElementById(
+            "productSearch"
+        );
+
+
+    if(
+        document.activeElement===
+        header
+    ){
+
+        large.value=value;
+
+    }else{
+
+        header.value=value;
+
     }
-
-    if(search2 && search2.value){
-        query=search2.value.toLowerCase();
-    }
-
-
-    document
-    .querySelectorAll("#productGrid .product")
-    .forEach(function(product){
-
-        const text=
-            product.innerText.toLowerCase();
-
-        product.style.display=
-            text.includes(query)
-            ?
-            ""
-            :
-            "none";
-
-    });
 
 }
 
 
 /* =====================================================
-   FILTERS
-   ===================================================== */
+   FILTER
+===================================================== */
 
-function filterProducts(category,button){
-
-    document
-    .querySelectorAll(".filter")
-    .forEach(function(btn){
-
-        btn.classList.remove("active");
-
-    });
-
-
-    button.classList.add("active");
-
+function filterProducts(
+    category,
+    button
+){
 
     document
-    .querySelectorAll("#productGrid .product")
-    .forEach(function(product){
+        .querySelectorAll(".filter")
+        .forEach(
+            btn=>
+                btn.classList
+                    .remove("active")
+        );
 
-        if(
-            category==="all" ||
-            product.dataset.category===category
-        ){
 
-            product.style.display="";
+    button.classList.add(
+        "active"
+    );
 
-        }else{
 
-            product.style.display="none";
+    document
+        .querySelectorAll(
+            "#productGrid .product"
+        )
+        .forEach(
+            function(product){
 
-        }
+                if(
+                    category==="all" ||
+                    product.dataset.category===
+                    category
+                ){
 
-    });
+                    product.style.display="";
+
+                }else{
+
+                    product.style.display="none";
+
+                }
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            "noResults"
+        )
+        .style.display="none";
 
 }
 
 
 /* =====================================================
    FAVORITES
-   ===================================================== */
+===================================================== */
 
 function favorite(button){
 
-    if(button.textContent==="♡"){
+    if(
+        button.textContent.trim()==="♡"
+    ){
 
         button.textContent="♥";
 
         button.style.color=
             "#bd6cff";
 
-        toast("Añadido a favoritos ♥");
+        showToast(
+            "Añadido a favoritos ♥"
+        );
 
     }else{
 
@@ -2967,91 +4160,165 @@ function favorite(button){
 
 /* =====================================================
    TOAST
-   ===================================================== */
+===================================================== */
 
-function toast(message){
+function showToast(message){
 
-    const box=
-        document.getElementById("toast");
-
-
-    box.textContent=message;
-
-    box.classList.add("show");
+    const toast=
+        document.getElementById(
+            "toast"
+        );
 
 
-    setTimeout(function(){
+    toast.textContent=
+        message;
 
-        box.classList.remove("show");
 
-    },1800);
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function(){
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        1800
+    );
 
 }
 
 
 /* =====================================================
    ACTIVE SIDEBAR
-   ===================================================== */
+===================================================== */
 
-const links=
-    document.querySelectorAll(".side-link");
-
-
-window.addEventListener("scroll",function(){
-
-    let current="";
+const sideLinks=
+    document.querySelectorAll(
+        ".side-link"
+    );
 
 
-    document
-    .querySelectorAll("section[id]")
-    .forEach(function(section){
+window.addEventListener(
+    "scroll",
+    function(){
 
-        const top=
-            section.offsetTop-180;
-
-
-        if(window.scrollY>=top){
-
-            current=
-                section.getAttribute("id");
-
-        }
-
-    });
+        let current="";
 
 
-    links.forEach(function(link){
+        document
+            .querySelectorAll(
+                "section[id]"
+            )
+            .forEach(
+                function(section){
 
-        link.classList.remove("active");
+                    const top=
+                        section.offsetTop-
+                        200;
 
 
-        if(
-            link.getAttribute("href")===
-            "#"+current
-        ){
+                    if(
+                        window.scrollY>=top
+                    ){
 
-            link.classList.add("active");
+                        current=
+                            section.id;
 
-        }
+                    }
 
-    });
+                }
+            );
 
-});
+
+        sideLinks.forEach(
+            function(link){
+
+                link.classList.remove(
+                    "active"
+                );
+
+
+                if(
+                    link.getAttribute(
+                        "href"
+                    )===
+                    "#"+current
+                ){
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
 
 
 /* =====================================================
-   ESC CLOSE CART
-   ===================================================== */
+   CLOSE CART / SIDEBAR WITH ESC
+===================================================== */
 
-document.addEventListener("keydown",function(e){
+document.addEventListener(
+    "keydown",
+    function(event){
 
-    if(e.key==="Escape"){
+        if(
+            event.key==="Escape"
+        ){
 
-        closeCart();
+            closeCart();
+
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList.remove(
+                    "open"
+                );
+
+        }
 
     }
+);
 
-});
+
+/* =====================================================
+   CLOSE MOBILE SIDEBAR AFTER LINK
+===================================================== */
+
+document
+    .querySelectorAll(
+        ".side-link"
+    )
+    .forEach(
+        function(link){
+
+            link.addEventListener(
+                "click",
+                function(){
+
+                    document
+                        .getElementById(
+                            "sidebar"
+                        )
+                        .classList.remove(
+                            "open"
+                        );
+
+                }
+            );
+
+        }
+    );
 
 </script>
 
