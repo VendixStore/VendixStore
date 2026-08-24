@@ -1,1924 +1,838 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="google-site-verification"
-          content="N7GGnWH6FqrnOVlINPYOLiLkv1WZqP91HnxVgAf9tlU">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>VendixStore | Moda, Accesorios & Más</title>
-
-    <meta name="description"
-          content="VendixStore - Descubre ropa, accesorios y productos seleccionados. Diseño, ofertas y novedades. Envíos en Europa.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap"
-          rel="stylesheet">
-
-    <style>
-
-        :root {
-            --bg: #08070b;
-            --bg2: #0e0b14;
-            --card: #14111b;
-            --card2: #1b1624;
-            --purple: #8b5cf6;
-            --purple2: #a855f7;
-            --purple-dark: #5b21b6;
-            --white: #ffffff;
-            --text: #f5f3ff;
-            --muted: #aaa5b7;
-            --border: rgba(168,85,247,.22);
-            --green: #22c55e;
-            --red: #ef4444;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Inter", sans-serif;
-            background:
-                radial-gradient(circle at 20% 0%, rgba(139,92,246,.18), transparent 30%),
-                radial-gradient(circle at 90% 20%, rgba(168,85,247,.12), transparent 25%),
-                var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(18px);
-            background: rgba(8,7,11,.82);
-            border-bottom: 1px solid rgba(255,255,255,.07);
-        }
-
-        .nav {
-            max-width: 1250px;
-            margin: auto;
-            padding: 17px 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            font-family: "Poppins", sans-serif;
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
-
-        .logo span {
-            color: var(--purple2);
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        nav a {
-            color: #d7d3df;
-            font-size: 14px;
-            font-weight: 600;
-            transition: .25s;
-        }
-
-        nav a:hover {
-            color: #c084fc;
-        }
-
-        .cart-button {
-            border: 1px solid var(--border);
-            background: linear-gradient(135deg, #1c1428, #100d16);
-            color: white;
-            border-radius: 12px;
-            padding: 11px 15px;
-            cursor: pointer;
-            transition: .25s;
-        }
-
-        .cart-button:hover {
-            transform: translateY(-2px);
-            border-color: var(--purple);
-            box-shadow: 0 0 25px rgba(139,92,246,.2);
-        }
-
-        #cartCount {
-            background: var(--purple);
-            padding: 2px 7px;
-            border-radius: 50px;
-            font-size: 12px;
-            margin-left: 5px;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            max-width: 1250px;
-            min-height: 650px;
-            margin: auto;
-            padding: 90px 22px;
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 13px;
-            border-radius: 100px;
-            background: rgba(139,92,246,.12);
-            border: 1px solid var(--border);
-            color: #c4b5fd;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-family: "Poppins", sans-serif;
-            font-size: clamp(45px, 6vw, 78px);
-            line-height: .98;
-            letter-spacing: -4px;
-            margin-bottom: 25px;
-        }
-
-        h1 span {
-            color: #a855f7;
-            text-shadow: 0 0 35px rgba(168,85,247,.35);
-        }
-
-        .hero p {
-            color: var(--muted);
-            max-width: 600px;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 13px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .primary-btn,
-        .secondary-btn {
-            padding: 15px 21px;
-            border-radius: 13px;
-            font-weight: 800;
-            cursor: pointer;
-            border: none;
-            transition: .25s;
-        }
-
-        .primary-btn {
-            color: white;
-            background: linear-gradient(135deg, var(--purple), var(--purple2));
-            box-shadow: 0 10px 35px rgba(139,92,246,.25);
-        }
-
-        .secondary-btn {
-            background: rgba(255,255,255,.04);
-            border: 1px solid rgba(255,255,255,.1);
-            color: white;
-        }
-
-        .primary-btn:hover,
-        .secondary-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .hero-card {
-            min-height: 430px;
-            border-radius: 30px;
-            background:
-                radial-gradient(circle at 50% 35%, rgba(168,85,247,.4), transparent 35%),
-                linear-gradient(145deg,#181220,#0c0a10);
-            border: 1px solid var(--border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0,0,0,.45);
-        }
-
-        .hero-logo {
-            font-size: 80px;
-            font-weight: 900;
-            font-family: "Poppins";
-            color: white;
-            text-shadow:
-                0 0 20px #8b5cf6,
-                0 0 60px rgba(168,85,247,.5);
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* =========================
-           SEARCH
-        ========================= */
-
-        .search-area {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 10px 22px 50px;
-        }
-
-        .search-box {
-            display: flex;
-            background: #100d15;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 6px;
-            box-shadow: 0 10px 40px rgba(0,0,0,.3);
-        }
-
-        .search-box input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 15px;
-            font-size: 15px;
-        }
-
-        .search-box button {
-            border: none;
-            background: var(--purple);
-            color: white;
-            padding: 0 22px;
-            border-radius: 11px;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        /* =========================
-           GENERAL
-        ========================= */
-
-        section {
-            max-width: 1250px;
-            margin: auto;
-            padding: 80px 22px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-family: "Poppins";
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: var(--muted);
-        }
-
-        /* =========================
-           CATEGORIES
-        ========================= */
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(6,1fr);
-            gap: 12px;
-        }
-
-        .category {
-            padding: 20px 10px;
-            text-align: center;
-            background: rgba(255,255,255,.035);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 15px;
-            transition: .25s;
-            cursor: pointer;
-        }
-
-        .category:hover {
-            transform: translateY(-5px);
-            border-color: var(--purple);
-            background: rgba(139,92,246,.08);
-        }
-
-        .category-icon {
-            font-size: 27px;
-            margin-bottom: 8px;
-        }
-
-        .category span {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        /* =========================
-           PRODUCTS
-        ========================= */
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 20px;
-        }
-
-        .product {
-            background: linear-gradient(145deg,#15111c,#0f0c14);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            transition: .3s;
-        }
-
-        .product:hover {
-            transform: translateY(-7px);
-            border-color: rgba(168,85,247,.5);
-            box-shadow: 0 20px 50px rgba(0,0,0,.4);
-        }
-
-        .product-image {
-            height: 260px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: .4s;
-        }
-
-        .product:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-info {
-            padding: 18px;
-        }
-
-        .product-tag {
-            display: inline-block;
-            font-size: 11px;
-            padding: 5px 8px;
-            border-radius: 6px;
-            background: rgba(139,92,246,.15);
-            color: #c4b5fd;
-            margin-bottom: 9px;
-            font-weight: 800;
-        }
-
-        .product h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .product-description {
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.5;
-            min-height: 40px;
-        }
-
-        .price {
-            margin-top: 15px;
-            font-size: 21px;
-            font-weight: 900;
-        }
-
-        .add-btn {
-            width: 100%;
-            margin-top: 13px;
-            padding: 12px;
-            border-radius: 11px;
-            border: none;
-            color: white;
-            background: linear-gradient(135deg,#7c3aed,#a855f7);
-            font-weight: 800;
-            cursor: pointer;
-            transition: .2s;
-        }
-
-        .add-btn:hover {
-            filter: brightness(1.12);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           OFFERS
-        ========================= */
-
-        .offers {
-            background:
-                linear-gradient(110deg,rgba(139,92,246,.15),rgba(0,0,0,.1)),
-                #100c16;
-            border: 1px solid var(--border);
-            border-radius: 25px;
-            padding: 45px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .offers h2 {
-            font-family: Poppins;
-            font-size: 35px;
-        }
-
-        .offers p {
-            color: var(--muted);
-            margin-top: 8px;
-        }
-
-        /* =========================
-           PIROTECNIA
-        ========================= */
-
-        .pyro-section {
-            position: relative;
-        }
-
-        .pyro-notice {
-            background: rgba(239,68,68,.08);
-            border: 1px solid rgba(239,68,68,.25);
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 35px;
-            color: #fecaca;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .pyro-card {
-            background: linear-gradient(145deg,#161016,#0d0a0e);
-            border: 1px solid rgba(168,85,247,.2);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: .3s;
-        }
-
-        .pyro-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(168,85,247,.55);
-        }
-
-        .pyro-image {
-            height: 330px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .pyro-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .pyro-info {
-            padding: 20px;
-        }
-
-        .pyro-info h3 {
-            font-family: Poppins;
-            margin-bottom: 8px;
-        }
-
-        .pyro-info p {
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        .consult-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            border-radius: 11px;
-            border: 1px solid #8b5cf6;
-            background: rgba(139,92,246,.1);
-            color: #ddd6fe;
-            cursor: pointer;
-            font-weight: 800;
-        }
-
-        .consult-btn:hover {
-            background: #8b5cf6;
-            color: white;
-        }
-
-        /* =========================
-           FEATURES
-        ========================= */
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 18px;
-        }
-
-        .feature {
-            background: rgba(255,255,255,.035);
-            border: 1px solid rgba(255,255,255,.07);
-            padding: 27px;
-            border-radius: 18px;
-        }
-
-        .feature-icon {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .feature h3 {
-            margin-bottom: 8px;
-        }
-
-        .feature p {
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* =========================
-           FAQ
-        ========================= */
-
-        .faq {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        details {
-            background: rgba(255,255,255,.035);
-            border: 1px solid rgba(255,255,255,.08);
-            margin-bottom: 10px;
-            border-radius: 13px;
-            padding: 18px;
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        details p {
-            color: var(--muted);
-            line-height: 1.6;
-            padding-top: 12px;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            background: linear-gradient(145deg,#171120,#0d0a11);
-            border: 1px solid var(--border);
-            border-radius: 25px;
-            padding: 50px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-family: Poppins;
-            font-size: 38px;
-        }
-
-        .contact p {
-            color: var(--muted);
-            margin: 12px 0 25px;
-        }
-
-        .email {
-            display: inline-block;
-            color: #c084fc;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        /* =========================
-           CART
-        ========================= */
-
-        .cart-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,.65);
-            z-index: 2000;
-            display: none;
-        }
-
-        .cart-overlay.active {
-            display: block;
-        }
-
-        .cart {
-            position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: min(430px,100%);
-            background: #0d0a11;
-            border-left: 1px solid var(--border);
-            padding: 25px;
-            overflow-y: auto;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .cart-header h2 {
-            font-family: Poppins;
-        }
-
-        .close-cart {
-            border: none;
-            background: transparent;
-            color: white;
-            font-size: 25px;
-            cursor: pointer;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,.08);
-        }
-
-        .cart-item small {
-            color: var(--muted);
-        }
-
-        .remove-btn {
-            border: none;
-            background: transparent;
-            color: #f87171;
-            cursor: pointer;
-        }
-
-        .cart-total {
-            margin-top: 25px;
-            font-size: 22px;
-            font-weight: 900;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            border-top: 1px solid rgba(255,255,255,.07);
-            padding: 45px 22px;
-            text-align: center;
-            color: var(--muted);
-        }
-
-        footer strong {
-            color: white;
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .socials a:hover {
-            color: #c084fc;
-        }
-
-        /* =========================
-           CHAT
-        ========================= */
-
-        .help-button {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            z-index: 1500;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg,#7c3aed,#a855f7);
-            color: white;
-            font-size: 23px;
-            cursor: pointer;
-            box-shadow: 0 10px 35px rgba(139,92,246,.4);
-        }
-
-        .chat {
-            position: fixed;
-            right: 22px;
-            bottom: 90px;
-            width: 320px;
-            background: #120e18;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 20px;
-            z-index: 1500;
-            display: none;
-            box-shadow: 0 20px 60px rgba(0,0,0,.5);
-        }
-
-        .chat.active {
-            display: block;
-        }
-
-        .chat h3 {
-            font-family: Poppins;
-            margin-bottom: 8px;
-        }
-
-        .chat p {
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media(max-width:950px) {
-
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero p {
-                margin: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .products {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .categories {
-                grid-template-columns: repeat(3,1fr);
-            }
-        }
-
-        @media(max-width:650px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero {
-                padding-top: 55px;
-            }
-
-            h1 {
-                font-size: 48px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
-            .categories {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            .offers {
-                padding: 30px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .contact {
-                padding: 30px 20px;
-            }
-
-            .pyro-image {
-                height: 300px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VendixStore</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#050505;
+    color:white;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#080808ee;
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #8b2cff;
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+.logo span{
+    color:#a855f7;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:#a855f7;
+}
+
+.cart{
+    background:#8b2cff;
+    color:white;
+    border:0;
+    padding:11px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px 20px;
+
+    background:
+    radial-gradient(circle,#7b22ff55,transparent 45%),
+    #050505;
+}
+
+.hero h1{
+    font-size:clamp(60px,10vw,120px);
+    background:linear-gradient(90deg,#fff,#a855f7,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#999;
+    font-size:18px;
+    margin:25px auto;
+    max-width:650px;
+}
+
+.btn{
+    display:inline-block;
+    background:#8b2cff;
+    color:white;
+    padding:15px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.title h2{
+    font-size:40px;
+}
+
+.title span{
+    color:#a855f7;
+}
+
+.title p{
+    color:#888;
+    margin-top:10px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:#100b14;
+    border:1px solid #8b2cff44;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+    border-color:#a855f7;
+    box-shadow:0 15px 40px #8b2cff33;
+}
+
+.product img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+.info{
+    padding:20px;
+}
+
+.info h3{
+    margin-bottom:10px;
+}
+
+.info p{
+    color:#888;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#c084fc;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.add{
+    width:100%;
+    padding:13px;
+    background:#8b2cff;
+    color:white;
+    border:0;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add:hover{
+    background:#a855f7;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.info-box{
+    background:#100b14;
+    border:1px solid #8b2cff44;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+}
+
+.info-box p{
+    color:#888;
+    margin-top:10px;
+}
+
+.social{
+    text-align:center;
+}
+
+.social a{
+    display:inline-block;
+    padding:15px 25px;
+    margin:8px;
+    color:white;
+    text-decoration:none;
+    border:1px solid #8b2cff;
+    border-radius:10px;
+}
+
+.social a:hover{
+    background:#8b2cff;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #8b2cff44;
+    color:#777;
+}
+
+/* CARRITO */
+
+#cartBox{
+    position:fixed;
+    top:0;
+    right:-400px;
+    width:370px;
+    max-width:90%;
+    height:100vh;
+    background:#0b070e;
+    border-left:1px solid #8b2cff;
+    z-index:3000;
+    padding:25px;
+    transition:.4s;
+}
+
+#cartBox.open{
+    right:0;
+}
+
+.close{
+    float:right;
+    background:none;
+    border:0;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.cartItem{
+    background:#17101c;
+    padding:15px;
+    margin-top:15px;
+    border-radius:10px;
+}
+
+.remove{
+    margin-top:10px;
+    background:#e63955;
+    color:white;
+    border:0;
+    padding:7px 10px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.checkout{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    background:#8b2cff;
+    color:white;
+    border:0;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media(max-width:700px){
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:60px;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-    <div class="nav">
+<div class="nav">
 
-        <a href="#inicio" class="logo">
-            Vendix<span>Store</span>
-        </a>
+<div class="logo">
 
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#ropa">Ropa</a>
-            <a href="#ofertas">Ofertas</a>
-            <a href="#pirotecnia">Pirotecnia</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+<img src="logo.png" alt="VendixStore">
 
-        <button class="cart-button" onclick="openCart()">
-            🛒 Carrito
-            <span id="cartCount">0</span>
-        </button>
+Vendix<span>Store</span>
 
-    </div>
+</div>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#bambas">Bambas</a>
+<a href="#ropa">Ropa</a>
+<a href="#petardos">Petardos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<button class="cart" onclick="openCart()">
+🛒 Carrito (<span id="count">0</span>)
+</button>
+
+</div>
 
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
-
-<main>
-
 <section class="hero" id="inicio">
 
-    <div>
+<div>
 
-        <div class="hero-badge">
-            ✦ BIENVENIDO A VENDIXSTORE
-        </div>
+<h1>VendixStore</h1>
 
-        <h1>
-            Tu estilo.<br>
-            Tu <span>Vibe.</span>
-        </h1>
+<p>
+Ropa, bambas y mucho más.
+Descubre nuestros productos.
+</p>
 
-        <p>
-            Descubre una selección de ropa y accesorios con un diseño
-            moderno, ofertas especiales y novedades.
-        </p>
+<a href="#bambas" class="btn">
+Ver productos
+</a>
 
-        <div class="hero-buttons">
-
-            <a href="#ropa" class="primary-btn">
-                Explorar productos
-            </a>
-
-            <a href="#ofertas" class="secondary-btn">
-                Ver ofertas
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="hero-card">
-
-        <div class="hero-logo">
-            VENDIX<br>
-            <span style="color:#a855f7;">STORE</span>
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     SEARCH
-========================= -->
+<!-- BAMBAS -->
 
-<div class="search-area">
+<section id="bambas">
 
-    <div class="search-box">
+<div class="title">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Buscar productos..."
-            oninput="searchProducts()"
-        >
+<h2>Nuestras <span>Bambas</span></h2>
 
-        <button>
-            🔎 Buscar
-        </button>
+<p>Descubre nuestros modelos</p>
 
-    </div>
+</div>
+
+<div class="products">
+
+
+<div class="product">
+
+<img src="bambas1.jpg">
+
+<div class="info">
+
+<h3>Bambas 1</h3>
+
+<p>Modelo VendixStore</p>
+
+<div class="price">59,99 €</div>
+
+<button class="add"
+onclick="addCart('Bambas 1',59.99)">
+🛒 Añadir al carrito
+</button>
+
+</div>
 
 </div>
 
 
-<!-- =========================
-     CATEGORIES
-========================= -->
+<div class="product">
 
-<section>
+<img src="bambas2.jpg">
 
-    <div class="section-title">
+<div class="info">
 
-        <h2>Categorías</h2>
+<h3>Bambas 2</h3>
 
-        <p>
-            Encuentra lo que buscas rápidamente
-        </p>
+<p>Modelo VendixStore</p>
 
-    </div>
+<div class="price">69,99 €</div>
+
+<button class="add"
+onclick="addCart('Bambas 2',69.99)">
+🛒 Añadir al carrito
+</button>
+
+</div>
+
+</div>
 
 
-    <div class="categories">
+<div class="product">
 
-        <div class="category" onclick="filterCategory('Pantalones')">
-            <div class="category-icon">👖</div>
-            <span>Pantalones</span>
-        </div>
+<img src="bambas3.jpg">
 
-        <div class="category" onclick="filterCategory('Camisetas')">
-            <div class="category-icon">👕</div>
-            <span>Camisetas</span>
-        </div>
+<div class="info">
 
-        <div class="category" onclick="filterCategory('Accesorios')">
-            <div class="category-icon">🧢</div>
-            <span>Accesorios</span>
-        </div>
+<h3>Bambas 3</h3>
 
-        <div class="category" onclick="filterCategory('Chaquetas')">
-            <div class="category-icon">🧥</div>
-            <span>Chaquetas</span>
-        </div>
+<p>Modelo VendixStore</p>
 
-        <div class="category" onclick="filterCategory('Sudaderas')">
-            <div class="category-icon">👚</div>
-            <span>Sudaderas</span>
-        </div>
+<div class="price">79,99 €</div>
 
-        <div class="category" onclick="filterCategory('Conjuntos')">
-            <div class="category-icon">✨</div>
-            <span>Conjuntos</span>
-        </div>
+<button class="add"
+onclick="addCart('Bambas 3',79.99)">
+🛒 Añadir al carrito
+</button>
 
-    </div>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
-     CLOTHES
-========================= -->
+<!-- ROPA -->
 
 <section id="ropa">
 
-    <div class="section-title">
+<div class="title">
 
-        <h2>Productos destacados</h2>
+<h2><span>Ropa</span></h2>
 
-        <p>
-            Añade tus productos de ropa y accesorios al carrito
-        </p>
+<p>Productos disponibles</p>
 
-    </div>
+</div>
 
+<div class="products">
 
-    <div class="products" id="productGrid">
+<div class="product">
 
-        <article class="product"
-                 data-name="Sudadera Vendix Premium"
-                 data-category="Sudaderas">
+<img src="camiseta.jpg">
 
-            <div class="product-image">
-                <img src="producto1.jpg"
-                     alt="Sudadera Vendix Premium"
-                     onerror="this.style.display='none'">
-            </div>
+<div class="info">
 
-            <div class="product-info">
+<h3>Camiseta VendixStore</h3>
 
-                <span class="product-tag">
-                    DESTACADO
-                </span>
+<p>Camiseta</p>
 
-                <h3>Sudadera Vendix Premium</h3>
+<div class="price">24,99 €</div>
 
-                <p class="product-description">
-                    Diseño premium de VendixStore.
-                </p>
+<button class="add"
+onclick="addCart('Camiseta VendixStore',24.99)">
+🛒 Añadir al carrito
+</button>
 
-                <div class="price">
-                    39,99 €
-                </div>
+</div>
 
-                <button class="add-btn"
-                        onclick="addToCart('Sudadera Vendix Premium',39.99)">
-                    Añadir al carrito
-                </button>
+</div>
 
-            </div>
-
-        </article>
-
-
-        <article class="product"
-                 data-name="Camiseta Vendix"
-                 data-category="Camisetas">
-
-            <div class="product-image">
-                <img src="producto2.jpg"
-                     alt="Camiseta Vendix"
-                     onerror="this.style.display='none'">
-            </div>
-
-            <div class="product-info">
-
-                <span class="product-tag">
-                    NUEVO
-                </span>
-
-                <h3>Camiseta Vendix</h3>
-
-                <p class="product-description">
-                    Estilo sencillo y moderno.
-                </p>
-
-                <div class="price">
-                    24,99 €
-                </div>
-
-                <button class="add-btn"
-                        onclick="addToCart('Camiseta Vendix',24.99)">
-                    Añadir al carrito
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="product"
-                 data-name="Gorra Vendix"
-                 data-category="Accesorios">
-
-            <div class="product-image">
-                <img src="producto3.jpg"
-                     alt="Gorra Vendix"
-                     onerror="this.style.display='none'">
-            </div>
-
-            <div class="product-info">
-
-                <span class="product-tag">
-                    TOP
-                </span>
-
-                <h3>Gorra Vendix</h3>
-
-                <p class="product-description">
-                    Accesorio para completar tu outfit.
-                </p>
-
-                <div class="price">
-                    19,99 €
-                </div>
-
-                <button class="add-btn"
-                        onclick="addToCart('Gorra Vendix',19.99)">
-                    Añadir al carrito
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <article class="product"
-                 data-name="Conjunto Vendix"
-                 data-category="Conjuntos">
-
-            <div class="product-image">
-                <img src="producto4.jpg"
-                     alt="Conjunto Vendix"
-                     onerror="this.style.display='none'">
-            </div>
-
-            <div class="product-info">
-
-                <span class="product-tag">
-                    OFERTA
-                </span>
-
-                <h3>Conjunto Vendix</h3>
-
-                <p class="product-description">
-                    Conjunto completo con estilo urbano.
-                </p>
-
-                <div class="price">
-                    59,99 €
-                </div>
-
-                <button class="add-btn"
-                        onclick="addToCart('Conjunto Vendix',59.99)">
-                    Añadir al carrito
-                </button>
-
-            </div>
-
-        </article>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     OFFERS
-========================= -->
+<!-- PETARDOS -->
 
-<section id="ofertas">
+<section id="petardos">
 
-    <div class="offers">
+<div class="title">
 
-        <div>
+<h2>🧨 <span>Pirotecnia</span></h2>
 
-            <h2>🔥 Ofertas Vendix</h2>
+<p>Consulta disponibilidad y condiciones.</p>
 
-            <p>
-                Descubre productos seleccionados y novedades
-                con precios especiales.
-            </p>
+</div>
 
-        </div>
+<div class="products">
 
-        <a href="#ropa" class="primary-btn">
-            Ver productos
-        </a>
 
-    </div>
+<div class="product">
+
+<img src="petardo1.jpg">
+
+<div class="info">
+
+<h3>Petardo 1</h3>
+
+<p>Producto pirotécnico</p>
+
+<div class="price">Consultar</div>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="petardo2.jpg">
+
+<div class="info">
+
+<h3>Petardo 2</h3>
+
+<p>Producto pirotécnico</p>
+
+<div class="price">Consultar</div>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="petardo3.jpg">
+
+<div class="info">
+
+<h3>Petardo 3</h3>
+
+<p>Producto pirotécnico</p>
+
+<div class="price">Consultar</div>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="petardo4.jpg">
+
+<div class="info">
+
+<h3>Petardo 4</h3>
+
+<p>Producto pirotécnico</p>
+
+<div class="price">Consultar</div>
+
+</div>
+
+</div>
+
+
+</div>
 
 </section>
 
 
-<!-- =========================
-     PIROTECNIA
-========================= -->
-
-<section id="pirotecnia" class="pyro-section">
-
-    <div class="section-title">
-
-        <h2>🎆 Pirotecnia</h2>
-
-        <p>
-            Catálogo informativo de productos
-        </p>
-
-    </div>
-
-
-    <div class="pyro-notice">
-
-        ⚠️ <strong>Información importante:</strong>
-        Los productos de pirotecnia están sujetos a normativa,
-        restricciones de edad y condiciones de venta y transporte.
-        Consulta siempre la legislación aplicable antes de adquirir
-        cualquier producto.
-
-    </div>
-
-
-    <div class="products">
-
-
-        <!-- RED FLAME -->
-
-        <article class="pyro-card">
-
-            <div class="pyro-image">
-
-                <img src="petardo1.jpg"
-                     alt="RED FLAME XP1072"
-                     onerror="this.style.display='none'">
-
-            </div>
-
-            <div class="pyro-info">
-
-                <span class="product-tag">
-                    -10%
-                </span>
-
-                <h3>
-                    RED FLAME XP1072
-                </h3>
-
-                <p>
-                    Presentación indicada en la imagen: x5.
-                    Producto mostrado únicamente con finalidad
-                    informativa.
-                </p>
-
-                <button class="consult-btn"
-                        onclick="contactPyro('RED FLAME XP1072')">
-                    Solicitar información
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- DUMBUM -->
-
-        <article class="pyro-card">
-
-            <div class="pyro-image">
-
-                <img src="petardo2.jpg"
-                     alt="DUMBUM BLACK THUNDER PBDF2"
-                     onerror="this.style.display='none'">
-
-            </div>
-
-            <div class="pyro-info">
-
-                <span class="product-tag">
-                    -10%
-                </span>
-
-                <h3>
-                    DUMBUM BLACK THUNDER PBDF2
-                </h3>
-
-                <p>
-                    Presentación indicada en la imagen: x6.
-                    Consulta disponibilidad y condiciones aplicables.
-                </p>
-
-                <button class="consult-btn"
-                        onclick="contactPyro('DUMBUM BLACK THUNDER PBDF2')">
-                    Solicitar información
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- BIG BANG -->
-
-        <article class="pyro-card">
-
-            <div class="pyro-image">
-
-                <img src="petardo3.jpg"
-                     alt="BIG BANG 2G GREEN"
-                     onerror="this.style.display='none'">
-
-            </div>
-
-            <div class="pyro-info">
-
-                <span class="product-tag">
-                    -10%
-                </span>
-
-                <h3>
-                    BIG BANG 2G GREEN
-                </h3>
-
-                <p>
-                    Presentación indicada en la imagen: x4.
-                    Producto mostrado como referencia informativa.
-                </p>
-
-                <button class="consult-btn"
-                        onclick="contactPyro('BIG BANG 2G GREEN')">
-                    Solicitar información
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- FP3 -->
-
-        <article class="pyro-card">
-
-            <div class="pyro-image">
-
-                <img src="petardo4.jpg"
-                     alt="FP3 SMALL JC05"
-                     onerror="this.style.display='none'">
-
-            </div>
-
-            <div class="pyro-info">
-
-                <span class="product-tag">
-                    -10%
-                </span>
-
-                <h3>
-                    FP3 SMALL JC05
-                </h3>
-
-                <p>
-                    Presentación indicada en la imagen: x1.
-                    Consulta información y disponibilidad.
-                </p>
-
-                <button class="consult-btn"
-                        onclick="contactPyro('FP3 SMALL JC05')">
-                    Solicitar información
-                </button>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FEATURES
-========================= -->
+<!-- INFORMACIÓN -->
 
 <section>
 
-    <div class="section-title">
+<div class="title">
 
-        <h2>¿Por qué VendixStore?</h2>
+<h2>¿Por qué <span>VendixStore?</span></h2>
 
-        <p>
-            Una experiencia sencilla y moderna
-        </p>
+</div>
 
-    </div>
+<div class="info-grid">
 
+<div class="info-box">
 
-    <div class="features">
+<h3>🚚 Envíos</h3>
 
-        <div class="feature">
+<p>
+Envíos disponibles por Europa.
+</p>
 
-            <div class="feature-icon">✨</div>
+</div>
 
-            <h3>
-                Selección cuidada
-            </h3>
+<div class="info-box">
 
-            <p>
-                Productos seleccionados para ofrecer
-                diferentes estilos y categorías.
-            </p>
+<h3>🛍️ Productos</h3>
 
-        </div>
+<p>
+Ropa, bambas y accesorios.
+</p>
 
+</div>
 
-        <div class="feature">
+<div class="info-box">
 
-            <div class="feature-icon">🛒</div>
+<h3>💬 Atención</h3>
 
-            <h3>
-                Compra sencilla
-            </h3>
+<p>
+Contacta con nosotros para cualquier duda.
+</p>
 
-            <p>
-                Añade productos de ropa y accesorios
-                al carrito de forma rápida.
-            </p>
+</div>
 
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">🌍</div>
-
-            <h3>
-                Europa
-            </h3>
-
-            <p>
-                Información de envíos disponible
-                para destinos dentro de Europa.
-            </p>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- =========================
-     FAQ
-========================= -->
-
-<section id="faq">
-
-    <div class="section-title">
-
-        <h2>Preguntas frecuentes</h2>
-
-        <p>
-            Todo lo que necesitas saber
-        </p>
-
-    </div>
-
-
-    <div class="faq">
-
-        <details>
-
-            <summary>
-                ¿Dónde realizáis envíos?
-            </summary>
-
-            <p>
-                Los envíos están previstos para destinos
-                dentro de Europa, sujetos a disponibilidad
-                y condiciones aplicables.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                ¿Cómo funciona el carrito?
-            </summary>
-
-            <p>
-                Puedes añadir productos de ropa y accesorios
-                al carrito y consultar el resumen de tu selección.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                ¿Puedo consultar sobre pirotecnia?
-            </summary>
-
-            <p>
-                Sí. Puedes solicitar información sobre los productos
-                mostrados mediante el correo de contacto.
-            </p>
-
-        </details>
-
-
-        <details>
-
-            <summary>
-                ¿Cómo contacto con VendixStore?
-            </summary>
-
-            <p>
-                Puedes escribirnos mediante
-                micmc018@gmail.com.
-            </p>
-
-        </details>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- CONTACTO -->
 
 <section id="contacto">
 
-    <div class="contact">
+<div class="title">
 
-        <h2>
-            ¿Necesitas ayuda?
-        </h2>
+<h2>Contacta con <span>VendixStore</span></h2>
 
-        <p>
-            Estamos aquí para ayudarte con tus dudas.
-        </p>
+</div>
 
-        <a class="email"
-           href="mailto:micmc018@gmail.com">
-            ✉️ micmc018@gmail.com
-        </a>
+<div class="social">
 
-        <br>
+<a href="https://www.tiktok.com/@vendixstore7" target="_blank">
+🎵 TikTok
+</a>
 
-        <a class="primary-btn"
-           href="mailto:micmc018@gmail.com?subject=Consulta%20VendixStore">
-            Contactar
-        </a>
+<a href="https://www.instagram.com/vendixstore02" target="_blank">
+📸 Instagram
+</a>
 
-    </div>
+<a href="mailto:micmc018@gmail.com">
+📧 Email
+</a>
+
+</div>
 
 </section>
 
-</main>
-
-
-<!-- =========================
-     CART
-========================= -->
-
-<div class="cart-overlay" id="cartOverlay">
-
-    <div class="cart">
-
-        <div class="cart-header">
-
-            <h2>🛒 Tu carrito</h2>
-
-            <button class="close-cart"
-                    onclick="closeCart()">
-                ×
-            </button>
-
-        </div>
-
-        <div id="cartItems">
-
-            <p style="color:#aaa;">
-                Tu carrito está vacío.
-            </p>
-
-        </div>
-
-        <div class="cart-total">
-
-            Total:
-            <span id="cartTotal">
-                0,00 €
-            </span>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     CHAT
-========================= -->
-
-<button class="help-button"
-        onclick="toggleChat()">
-    💬
-</button>
-
-
-<div class="chat" id="chatBox">
-
-    <h3>
-        💜 Ayuda VendixStore
-    </h3>
-
-    <p>
-        ¿Tienes alguna duda? Escríbenos directamente
-        y te ayudaremos.
-    </p>
-
-    <a class="primary-btn"
-       style="display:block;text-align:center;"
-       href="mailto:micmc018@gmail.com?subject=Ayuda%20VendixStore">
-        Abrir correo
-    </a>
-
-</div>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
-    <strong>
-        VendixStore
-    </strong>
+<h2>VendixStore</h2>
 
-    <div class="socials">
-
-        <a href="https://www.tiktok.com/@vendixstore7"
-           target="_blank">
-            TikTok
-        </a>
-
-        <a href="https://www.instagram.com/vendixstore02"
-           target="_blank">
-            Instagram
-        </a>
-
-    </div>
-
-    <p>
-        © 2026 VendixStore. Todos los derechos reservados.
-    </p>
+<p>© 2026 VendixStore</p>
 
 </footer>
 
 
+<!-- CARRITO -->
+
+<div id="cartBox">
+
+<button class="close" onclick="closeCart()">×</button>
+
+<h2>🛒 Carrito</h2>
+
+<br>
+
+<div id="cartItems">
+
+<p style="color:#777">
+Tu carrito está vacío.
+</p>
+
+</div>
+
+<h2>
+Total: <span id="total">0.00</span> €
+</h2>
+
+<button class="checkout" onclick="checkout()">
+📧 Realizar pedido
+</button>
+
+</div>
+
+
 <script>
 
-    /* =========================
-       CART
-    ========================= */
+let cart=[];
 
-    let cart = [];
+function addCart(name,price){
 
-    function addToCart(name, price) {
+cart.push({
+name:name,
+price:price
+});
 
-        cart.push({
-            name: name,
-            price: price
-        });
+updateCart();
 
-        updateCart();
+openCart();
 
-        openCart();
-    }
+}
 
+function updateCart(){
 
-    function removeFromCart(index) {
+let items=
+document.getElementById("cartItems");
 
-        cart.splice(index,1);
+let count=
+document.getElementById("count");
 
-        updateCart();
-    }
+let total=
+document.getElementById("total");
 
+count.innerText=cart.length;
 
-    function updateCart() {
+if(cart.length===0){
 
-        const items = document.getElementById("cartItems");
-        const count = document.getElementById("cartCount");
-        const totalElement = document.getElementById("cartTotal");
+items.innerHTML=
+'<p style="color:#777">Tu carrito está vacío.</p>';
 
-        count.textContent = cart.length;
+total.innerText="0.00";
 
-        if(cart.length === 0) {
+return;
 
-            items.innerHTML =
-                '<p style="color:#aaa;">Tu carrito está vacío.</p>';
+}
 
-            totalElement.textContent = "0,00 €";
+items.innerHTML="";
 
-            return;
-        }
+let sum=0;
 
-        let total = 0;
+cart.forEach((item,index)=>{
 
-        items.innerHTML = "";
+sum+=item.price;
 
-        cart.forEach((item,index) => {
+items.innerHTML+=`
 
-            total += item.price;
+<div class="cartItem">
 
-            const div = document.createElement("div");
+<strong>${item.name}</strong>
 
-            div.className = "cart-item";
+<br>
 
-            div.innerHTML = `
-                <div>
-                    <strong>${item.name}</strong>
-                    <br>
-                    <small>${item.price.toFixed(2).replace(".",",")} €</small>
-                </div>
+<span style="color:#c084fc">
+${item.price.toFixed(2)} €
+</span>
 
-                <button class="remove-btn"
-                        onclick="removeFromCart(${index})">
-                    Eliminar
-                </button>
-            `;
+<br>
 
-            items.appendChild(div);
+<button
+class="remove"
+onclick="removeItem(${index})">
+Eliminar
+</button>
 
-        });
+</div>
 
-        totalElement.textContent =
-            total.toFixed(2).replace(".",",") + " €";
-    }
+`;
 
+});
 
-    function openCart() {
+total.innerText=sum.toFixed(2);
 
-        document
-            .getElementById("cartOverlay")
-            .classList.add("active");
+}
 
-    }
+function removeItem(index){
 
+cart.splice(index,1);
 
-    function closeCart() {
+updateCart();
 
-        document
-            .getElementById("cartOverlay")
-            .classList.remove("active");
+}
 
-    }
+function openCart(){
 
+document
+.getElementById("cartBox")
+.classList.add("open");
 
-    /* =========================
-       SEARCH
-    ========================= */
+}
 
-    function searchProducts() {
+function closeCart(){
 
-        const query =
-            document
-            .getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
+document
+.getElementById("cartBox")
+.classList.remove("open");
 
-        const products =
-            document.querySelectorAll(".product");
+}
 
-        products.forEach(product => {
+function checkout(){
 
-            const name =
-                product.dataset.name.toLowerCase();
+if(cart.length===0){
 
-            const category =
-                product.dataset.category.toLowerCase();
+alert("El carrito está vacío.");
 
-            if(
-                name.includes(query) ||
-                category.includes(query)
-            ) {
+return;
 
-                product.style.display = "";
+}
 
-            } else {
+let message=
+"Hola VendixStore 👋%0A%0AQuiero realizar este pedido:%0A%0A";
 
-                product.style.display = "none";
+let total=0;
 
-            }
+cart.forEach(item=>{
 
-        });
+message+=
+"• "+item.name+
+" - "+item.price.toFixed(2)+
+" €%0A";
 
-    }
+total+=item.price;
 
+});
 
-    /* =========================
-       CATEGORY FILTER
-    ========================= */
+message+=
+"%0ATotal: "+
+total.toFixed(2)+
+" €";
 
-    function filterCategory(category) {
+window.location.href=
+"mailto:micmc018@gmail.com?subject=Pedido VendixStore&body="+message;
 
-        document
-            .getElementById("ropa")
-            .scrollIntoView({
-                behavior:"smooth"
-            });
-
-        const products =
-            document.querySelectorAll(".product");
-
-        products.forEach(product => {
-
-            if(product.dataset.category === category) {
-
-                product.style.display = "";
-
-            } else {
-
-                product.style.display = "none";
-
-            }
-
-        });
-
-    }
-
-
-    /* =========================
-       CHAT
-    ========================= */
-
-    function toggleChat() {
-
-        document
-            .getElementById("chatBox")
-            .classList.toggle("active");
-
-    }
-
-
-    /* =========================
-       PYRO CONTACT
-    ========================= */
-
-    function contactPyro(product) {
-
-        const subject =
-            encodeURIComponent(
-                "Consulta sobre " + product
-            );
-
-        const body =
-            encodeURIComponent(
-                "Hola VendixStore,\n\n" +
-                "Me gustaría solicitar información " +
-                "sobre el producto: " + product +
-                ".\n\nGracias."
-            );
-
-        window.location.href =
-            "mailto:micmc018@gmail.com?subject="
-            + subject
-            + "&body="
-            + body;
-
-    }
-
-
-    /* =========================
-       CLOSE CART CLICK OUTSIDE
-    ========================= */
-
-    document
-        .getElementById("cartOverlay")
-        .addEventListener("click", function(e) {
-
-            if(e.target === this) {
-
-                closeCart();
-
-            }
-
-        });
+}
 
 </script>
 
