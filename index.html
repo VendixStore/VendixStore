@@ -3,314 +3,748 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VendixStore</title>
+
+<title>VendixStore — Official Store</title>
+
+<meta name="description" content="VendixStore — Sneakers, ropa y accesorios.">
 
 <style>
+:root{
+    --bg:#050505;
+    --surface:#0d0d0f;
+    --surface2:#15151a;
+    --purple:#8b2cff;
+    --purple2:#b45cff;
+    --text:#fff;
+    --muted:#92929a;
+    --border:#ffffff12;
+}
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#050505;
-    color:white;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
 }
+
+/* ---------- TOP BAR ---------- */
+
+.topbar{
+    background:#000;
+    color:#aaa;
+    text-align:center;
+    padding:9px;
+    font-size:12px;
+    letter-spacing:.4px;
+}
+
+/* ---------- HEADER ---------- */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:#080808ee;
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid #8b2cff;
+    background:#050505e8;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
 }
 
 .nav{
-    max-width:1200px;
+    max-width:1400px;
     margin:auto;
-    padding:15px 20px;
+    min-height:72px;
+    padding:0 28px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:30px;
 }
 
-.logo{
+.brand{
     display:flex;
     align-items:center;
-    gap:10px;
-    font-size:25px;
-    font-weight:bold;
+    gap:11px;
+
+    color:white;
+    text-decoration:none;
+    font-weight:900;
+    font-size:22px;
 }
 
-.logo img{
-    width:45px;
-    height:45px;
+.brand img{
+    width:42px;
+    height:42px;
     object-fit:contain;
 }
 
-.logo span{
-    color:#a855f7;
+.brand span{
+    color:var(--purple2);
 }
 
 nav{
     display:flex;
-    gap:20px;
+    align-items:center;
+    gap:28px;
 }
 
 nav a{
-    color:white;
+    color:#ddd;
     text-decoration:none;
+    font-size:14px;
+    transition:.2s;
 }
 
 nav a:hover{
-    color:#a855f7;
+    color:white;
 }
 
-.cart{
-    background:#8b2cff;
-    color:white;
-    border:0;
-    padding:11px 16px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    background:#111;
+    color:white;
+    border-radius:50%;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    border-color:var(--purple);
+    transform:translateY(-2px);
+}
+
+.cart-btn{
+    border:0;
+    background:white;
+    color:black;
+    padding:12px 17px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+/* ---------- HERO ---------- */
 
 .hero{
-    min-height:90vh;
+    min-height:calc(100vh - 115px);
+    position:relative;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     text-align:center;
-    padding:50px 20px;
+    overflow:hidden;
 
     background:
-    radial-gradient(circle,#7b22ff55,transparent 45%),
-    #050505;
+        radial-gradient(circle at 50% 35%,#8b2cff38,transparent 32%),
+        linear-gradient(#070707,#050505);
+}
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.25;
+    pointer-events:none;
+}
+
+.hero::before{
+    background:#7c19ff;
+    left:-250px;
+    top:25%;
+}
+
+.hero::after{
+    background:#b45cff;
+    right:-250px;
+    bottom:10%;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    padding:70px 20px;
+}
+
+.hero-label{
+    display:inline-block;
+    border:1px solid #ffffff18;
+    background:#ffffff08;
+    padding:8px 14px;
+    border-radius:30px;
+    color:#bbb;
+    font-size:12px;
+    margin-bottom:25px;
 }
 
 .hero h1{
-    font-size:clamp(60px,10vw,120px);
-    background:linear-gradient(90deg,#fff,#a855f7,#fff);
+    font-size:clamp(60px,10vw,150px);
+    line-height:.85;
+    letter-spacing:-7px;
+    font-weight:1000;
+
+    background:linear-gradient(
+        100deg,
+        #fff 20%,
+        #b45cff 50%,
+        #fff 80%
+    );
+
     -webkit-background-clip:text;
     color:transparent;
+
+    animation:titleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow{
+    from{
+        filter:drop-shadow(0 0 5px #8b2cff22);
+    }
+    to{
+        filter:drop-shadow(0 0 35px #8b2cff66);
+    }
 }
 
 .hero p{
-    color:#999;
-    font-size:18px;
-    margin:25px auto;
     max-width:650px;
+    margin:30px auto;
+    color:#9c9ca4;
+    font-size:17px;
+    line-height:1.7;
 }
 
-.btn{
-    display:inline-block;
-    background:#8b2cff;
-    color:white;
-    padding:15px 25px;
-    border-radius:10px;
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.primary{
+    background:white;
+    color:black;
+    padding:15px 26px;
+    border-radius:30px;
     text-decoration:none;
-    font-weight:bold;
+    font-weight:800;
+    transition:.25s;
 }
 
-section{
-    max-width:1200px;
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.secondary{
+    background:#ffffff0d;
+    color:white;
+    border:1px solid #ffffff1c;
+    padding:15px 26px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:800;
+}
+
+.secondary:hover{
+    border-color:var(--purple);
+}
+
+/* ---------- SECTIONS ---------- */
+
+.section{
+    max-width:1400px;
     margin:auto;
-    padding:80px 20px;
+    padding:100px 28px;
 }
 
-.title{
-    text-align:center;
-    margin-bottom:40px;
+.heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:35px;
 }
 
-.title h2{
-    font-size:40px;
+.heading h2{
+    font-size:45px;
+    letter-spacing:-2px;
 }
 
-.title span{
-    color:#a855f7;
+.heading p{
+    color:var(--muted);
+    max-width:500px;
+    line-height:1.6;
 }
 
-.title p{
-    color:#888;
-    margin-top:10px;
+/* ---------- SEARCH ---------- */
+
+.search-box{
+    margin-bottom:35px;
 }
 
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:25px;
-}
-
-.product{
-    background:#100b14;
-    border:1px solid #8b2cff44;
-    border-radius:18px;
-    overflow:hidden;
-    transition:.3s;
-}
-
-.product:hover{
-    transform:translateY(-8px);
-    border-color:#a855f7;
-    box-shadow:0 15px 40px #8b2cff33;
-}
-
-.product img{
+.search-box input{
     width:100%;
-    height:260px;
-    object-fit:cover;
+    padding:18px 20px;
+
+    background:#0d0d0f;
+    border:1px solid var(--border);
+    border-radius:14px;
+
+    color:white;
+    outline:none;
+    font-size:15px;
 }
 
-.info{
+.search-box input:focus{
+    border-color:#8b2cff88;
+    box-shadow:0 0 30px #8b2cff18;
+}
+
+/* ---------- FILTERS ---------- */
+
+.filters{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.filter{
+    background:#111;
+    color:#bbb;
+    border:1px solid var(--border);
+    padding:10px 15px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.filter.active,
+.filter:hover{
+    background:white;
+    color:black;
+}
+
+/* ---------- PRODUCTS ---------- */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#8b2cff55;
+    box-shadow:0 25px 70px #000;
+}
+
+.card-image{
+    position:relative;
+    height:390px;
+    background:#111;
+    overflow:hidden;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.card:hover .card-image img{
+    transform:scale(1.045);
+}
+
+.tag{
+    position:absolute;
+    left:14px;
+    top:14px;
+    background:white;
+    color:black;
+    padding:7px 10px;
+    border-radius:7px;
+    font-size:10px;
+    font-weight:900;
+}
+
+.heart{
+    position:absolute;
+    right:14px;
+    top:14px;
+    width:38px;
+    height:38px;
+    border:1px solid #ffffff22;
+    background:#0008;
+    color:white;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.card-body{
     padding:20px;
 }
 
-.info h3{
-    margin-bottom:10px;
+.card-body h3{
+    font-size:17px;
+    margin-bottom:7px;
 }
 
-.info p{
-    color:#888;
-    margin-bottom:15px;
+.category{
+    color:#777;
+    font-size:13px;
+    margin-bottom:17px;
 }
 
 .price{
-    color:#c084fc;
-    font-size:22px;
-    font-weight:bold;
+    font-size:19px;
+    font-weight:900;
     margin-bottom:15px;
 }
 
 .add{
     width:100%;
     padding:13px;
-    background:#8b2cff;
-    color:white;
+
     border:0;
-    border-radius:9px;
+    border-radius:10px;
+
+    background:white;
+    color:black;
+
+    font-weight:900;
     cursor:pointer;
-    font-weight:bold;
+    transition:.25s;
 }
 
 .add:hover{
-    background:#a855f7;
+    background:var(--purple2);
+    color:white;
 }
+
+/* ---------- FEATURE ---------- */
+
+.feature{
+    border-radius:28px;
+    padding:70px;
+
+    background:
+        radial-gradient(circle at 80% 20%,#8b2cff55,transparent 35%),
+        linear-gradient(135deg,#151019,#080808);
+
+    border:1px solid #ffffff10;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.feature h2{
+    font-size:50px;
+    letter-spacing:-2px;
+}
+
+.feature p{
+    color:#999;
+    line-height:1.7;
+    margin:20px 0;
+}
+
+.feature-image{
+    min-height:360px;
+    border-radius:20px;
+    overflow:hidden;
+    background:#111;
+}
+
+.feature-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ---------- INFO ---------- */
 
 .info-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.info-box{
-    background:#100b14;
-    border:1px solid #8b2cff44;
+.info-card{
     padding:30px;
+    background:#0d0d0f;
+    border:1px solid var(--border);
     border-radius:18px;
-    text-align:center;
 }
 
-.info-box p{
+.info-card .emoji{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.info-card h3{
+    margin-bottom:10px;
+}
+
+.info-card p{
+    color:#777;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq{
+    max-width:850px;
+    margin:auto;
+}
+
+details{
+    background:#0d0d0f;
+    border:1px solid var(--border);
+    padding:20px;
+    border-radius:13px;
+    margin-bottom:10px;
+}
+
+summary{
+    cursor:pointer;
+    font-weight:800;
+}
+
+details p{
     color:#888;
-    margin-top:10px;
+    line-height:1.7;
+    margin-top:15px;
 }
 
-.social{
+/* ---------- CONTACT ---------- */
+
+.contact{
     text-align:center;
+    padding:100px 20px;
+    background:
+        radial-gradient(circle,#8b2cff25,transparent 45%);
 }
 
-.social a{
-    display:inline-block;
-    padding:15px 25px;
-    margin:8px;
+.contact h2{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.contact p{
+    color:#888;
+    margin-bottom:30px;
+}
+
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.socials a{
     color:white;
     text-decoration:none;
-    border:1px solid #8b2cff;
-    border-radius:10px;
+    border:1px solid var(--border);
+    padding:13px 20px;
+    border-radius:30px;
 }
 
-.social a:hover{
-    background:#8b2cff;
+.socials a:hover{
+    border-color:var(--purple);
 }
+
+/* ---------- FOOTER ---------- */
 
 footer{
+    border-top:1px solid var(--border);
+    padding:45px 25px;
     text-align:center;
-    padding:40px;
-    border-top:1px solid #8b2cff44;
-    color:#777;
+    color:#666;
 }
 
-/* CARRITO */
+footer strong{
+    color:white;
+}
 
-#cartBox{
+/* ---------- CART ---------- */
+
+.cart-panel{
     position:fixed;
+    right:-440px;
     top:0;
-    right:-400px;
-    width:370px;
-    max-width:90%;
+    width:420px;
+    max-width:92%;
     height:100vh;
-    background:#0b070e;
-    border-left:1px solid #8b2cff;
     z-index:3000;
+
+    background:#09090b;
+    border-left:1px solid #8b2cff55;
+
     padding:25px;
+
     transition:.4s;
+
+    box-shadow:-30px 0 80px #000;
 }
 
-#cartBox.open{
+.cart-panel.open{
     right:0;
 }
 
+.cart-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
 .close{
-    float:right;
-    background:none;
     border:0;
+    background:none;
     color:white;
     font-size:28px;
     cursor:pointer;
 }
 
-.cartItem{
-    background:#17101c;
+.cart-item{
     padding:15px;
-    margin-top:15px;
-    border-radius:10px;
+    background:#111114;
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+.cart-item small{
+    color:#999;
 }
 
 .remove{
     margin-top:10px;
-    background:#e63955;
-    color:white;
     border:0;
+    background:#ff4058;
+    color:white;
     padding:7px 10px;
-    border-radius:6px;
+    border-radius:7px;
     cursor:pointer;
+}
+
+.total{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:900;
 }
 
 .checkout{
     width:100%;
-    padding:14px;
-    margin-top:20px;
-    background:#8b2cff;
-    color:white;
+    margin-top:18px;
+    padding:15px;
     border:0;
-    border-radius:10px;
-    font-weight:bold;
+    border-radius:12px;
+    background:white;
+    color:black;
+    font-weight:900;
     cursor:pointer;
 }
 
-@media(max-width:700px){
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:1100px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:750px){
 
     nav{
         display:none;
     }
 
+    .nav{
+        padding:10px 16px;
+    }
+
     .hero h1{
-        font-size:60px;
+        letter-spacing:-4px;
+    }
+
+    .section{
+        padding:70px 18px;
+    }
+
+    .heading{
+        display:block;
+    }
+
+    .heading h2{
+        font-size:36px;
+        margin-bottom:12px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+        padding:35px 22px;
+    }
+
+    .feature h2{
+        font-size:38px;
+    }
+
+    .card-image{
+        height:350px;
+    }
+
+    .contact h2{
+        font-size:40px;
     }
 
 }
@@ -319,172 +753,309 @@ footer{
 
 <body>
 
-<header>
+<div class="topbar">
+Envíos disponibles por Europa · Descubre VendixStore
+</div>
 
+<header>
 <div class="nav">
 
-<div class="logo">
-
+<a class="brand" href="#inicio">
 <img src="logo.png" alt="VendixStore">
-
 Vendix<span>Store</span>
-
-</div>
+</a>
 
 <nav>
 <a href="#inicio">Inicio</a>
+<a href="#tienda">Tienda</a>
 <a href="#bambas">Bambas</a>
 <a href="#ropa">Ropa</a>
-<a href="#petardos">Petardos</a>
+<a href="#pirotecnia">Pirotecnia</a>
 <a href="#contacto">Contacto</a>
 </nav>
 
-<button class="cart" onclick="openCart()">
-🛒 Carrito (<span id="count">0</span>)
+<div class="nav-actions">
+
+<button class="icon-btn" onclick="focusSearch()">
+⌕
+</button>
+
+<button class="cart-btn" onclick="openCart()">
+🛒 <span id="cartCount">0</span>
 </button>
 
 </div>
 
+</div>
 </header>
 
 
+<!-- HERO -->
+
 <section class="hero" id="inicio">
 
-<div>
+<div class="hero-content">
+
+<div class="hero-label">
+VENDIXSTORE · OFFICIAL
+</div>
 
 <h1>VendixStore</h1>
 
 <p>
-Ropa, bambas y mucho más.
-Descubre nuestros productos.
+Descubre nuestra selección de sneakers, ropa y accesorios.
+Un estilo propio. Una nueva forma de comprar.
 </p>
 
-<a href="#bambas" class="btn">
-Ver productos
+<div class="hero-buttons">
+
+<a class="primary" href="#tienda">
+Comprar ahora
+</a>
+
+<a class="secondary" href="#bambas">
+Explorar bambas
 </a>
 
 </div>
 
-</section>
-
-
-<!-- BAMBAS -->
-
-<section id="bambas">
-
-<div class="title">
-
-<h2>Nuestras <span>Bambas</span></h2>
-
-<p>Descubre nuestros modelos</p>
-
-</div>
-
-<div class="products">
-
-
-<div class="product">
-
-<img src="bambas1.jpg">
-
-<div class="info">
-
-<h3>Bambas 1</h3>
-
-<p>Modelo VendixStore</p>
-
-<div class="price">59,99 €</div>
-
-<button class="add"
-onclick="addCart('Bambas 1',59.99)">
-🛒 Añadir al carrito
-</button>
-
-</div>
-
-</div>
-
-
-<div class="product">
-
-<img src="bambas2.jpg">
-
-<div class="info">
-
-<h3>Bambas 2</h3>
-
-<p>Modelo VendixStore</p>
-
-<div class="price">69,99 €</div>
-
-<button class="add"
-onclick="addCart('Bambas 2',69.99)">
-🛒 Añadir al carrito
-</button>
-
-</div>
-
-</div>
-
-
-<div class="product">
-
-<img src="bambas3.jpg">
-
-<div class="info">
-
-<h3>Bambas 3</h3>
-
-<p>Modelo VendixStore</p>
-
-<div class="price">79,99 €</div>
-
-<button class="add"
-onclick="addCart('Bambas 3',79.99)">
-🛒 Añadir al carrito
-</button>
-
-</div>
-
-</div>
-
 </div>
 
 </section>
 
 
-<!-- ROPA -->
+<!-- TIENDA -->
 
-<section id="ropa">
+<section class="section" id="tienda">
 
-<div class="title">
+<div class="heading">
 
-<h2><span>Ropa</span></h2>
+<div>
+<h2>Destacados.</h2>
+</div>
 
-<p>Productos disponibles</p>
+<p>
+Productos seleccionados para nuestra comunidad.
+</p>
 
 </div>
 
-<div class="products">
+<div class="search-box">
 
-<div class="product">
+<input
+id="search"
+type="text"
+placeholder="Buscar bambas, ropa..."
+onkeyup="searchProducts()"
+>
 
-<img src="camiseta.jpg">
+</div>
 
-<div class="info">
+<div class="filters">
 
-<h3>Camiseta VendixStore</h3>
+<button class="filter active" onclick="filterProducts('all',this)">
+Todos
+</button>
 
-<p>Camiseta</p>
+<button class="filter" onclick="filterProducts('sneaker',this)">
+Bambas
+</button>
 
-<div class="price">24,99 €</div>
-
-<button class="add"
-onclick="addCart('Camiseta VendixStore',24.99)">
-🛒 Añadir al carrito
+<button class="filter" onclick="filterProducts('clothing',this)">
+Ropa
 </button>
 
 </div>
+
+<div class="grid" id="productGrid">
+
+
+<!-- BAMBA 1 -->
+
+<article class="card product" data-category="sneaker">
+
+<div class="card-image">
+
+<span class="tag">NUEVO</span>
+
+<button class="heart" onclick="favorite(this)">
+♡
+</button>
+
+<img src="bambas1.jpg" alt="Bambas VendixStore">
+
+</div>
+
+<div class="card-body">
+
+<h3>Bambas 01</h3>
+
+<div class="category">
+Sneakers
+</div>
+
+<div class="price">
+59,99 €
+</div>
+
+<button class="add"
+onclick="addToCart('Bambas 01',59.99)">
+Añadir al carrito
+</button>
+
+</div>
+
+</article>
+
+
+<!-- BAMBA 2 -->
+
+<article class="card product" data-category="sneaker">
+
+<div class="card-image">
+
+<span class="tag">TOP</span>
+
+<button class="heart" onclick="favorite(this)">
+♡
+</button>
+
+<img src="bambas2.jpg" alt="Bambas VendixStore">
+
+</div>
+
+<div class="card-body">
+
+<h3>Bambas 02</h3>
+
+<div class="category">
+Sneakers
+</div>
+
+<div class="price">
+69,99 €
+</div>
+
+<button class="add"
+onclick="addToCart('Bambas 02',69.99)">
+Añadir al carrito
+</button>
+
+</div>
+
+</article>
+
+
+<!-- BAMBA 3 -->
+
+<article class="card product" data-category="sneaker">
+
+<div class="card-image">
+
+<button class="heart" onclick="favorite(this)">
+♡
+</button>
+
+<img src="bambas3.jpg" alt="Bambas VendixStore">
+
+</div>
+
+<div class="card-body">
+
+<h3>Bambas 03</h3>
+
+<div class="category">
+Sneakers
+</div>
+
+<div class="price">
+79,99 €
+</div>
+
+<button class="add"
+onclick="addToCart('Bambas 03',79.99)">
+Añadir al carrito
+</button>
+
+</div>
+
+</article>
+
+
+<!-- CAMISETA -->
+
+<article class="card product" data-category="clothing">
+
+<div class="card-image">
+
+<span class="tag">ROPA</span>
+
+<button class="heart" onclick="favorite(this)">
+♡
+</button>
+
+<img src="camiseta.jpg" alt="Camiseta Jordan">
+
+</div>
+
+<div class="card-body">
+
+<h3>Camiseta Jordan</h3>
+
+<div class="category">
+Camiseta
+</div>
+
+<div class="price">
+24,99 €
+</div>
+
+<button class="add"
+onclick="addToCart('Camiseta Jordan',24.99)">
+Añadir al carrito
+</button>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- BANNER -->
+
+<section class="section">
+
+<div class="feature">
+
+<div>
+
+<div class="hero-label">
+VENDIXSTORE
+</div>
+
+<h2>
+Tu estilo.<br>
+Tu elección.
+</h2>
+
+<p>
+Encuentra tus próximos favoritos y descubre
+las novedades de VendixStore.
+</p>
+
+<a href="#tienda" class="primary">
+Ver colección
+</a>
+
+</div>
+
+<div class="feature-image">
+
+<img src="bambas1.jpg" alt="VendixStore">
 
 </div>
 
@@ -493,88 +1064,64 @@ onclick="addCart('Camiseta VendixStore',24.99)">
 </section>
 
 
-<!-- PETARDOS -->
+<!-- PIROTECNIA -->
 
-<section id="petardos">
+<section class="section" id="pirotecnia">
 
-<div class="title">
+<div class="heading">
 
-<h2>🧨 <span>Pirotecnia</span></h2>
+<div>
+<h2>Pirotecnia.</h2>
+</div>
 
-<p>Consulta disponibilidad y condiciones.</p>
+<p>
+Sección informativa. La venta y el envío de productos
+pirotécnicos están sujetos a la normativa aplicable.
+</p>
 
 </div>
 
-<div class="products">
+<div class="grid">
 
-
-<div class="product">
-
-<img src="petardo1.jpg">
-
-<div class="info">
-
-<h3>Petardo 1</h3>
-
-<p>Producto pirotécnico</p>
-
-<div class="price">Consultar</div>
-
+<article class="card">
+<div class="card-image">
+<img src="petardo1.jpg" alt="Producto pirotécnico 1">
 </div>
-
+<div class="card-body">
+<h3>Producto 01</h3>
+<div class="category">Consultar disponibilidad</div>
 </div>
+</article>
 
-
-<div class="product">
-
-<img src="petardo2.jpg">
-
-<div class="info">
-
-<h3>Petardo 2</h3>
-
-<p>Producto pirotécnico</p>
-
-<div class="price">Consultar</div>
-
+<article class="card">
+<div class="card-image">
+<img src="petardo2.jpg" alt="Producto pirotécnico 2">
 </div>
-
+<div class="card-body">
+<h3>Producto 02</h3>
+<div class="category">Consultar disponibilidad</div>
 </div>
+</article>
 
-
-<div class="product">
-
-<img src="petardo3.jpg">
-
-<div class="info">
-
-<h3>Petardo 3</h3>
-
-<p>Producto pirotécnico</p>
-
-<div class="price">Consultar</div>
-
+<article class="card">
+<div class="card-image">
+<img src="petardo3.jpg" alt="Producto pirotécnico 3">
 </div>
-
+<div class="card-body">
+<h3>Producto 03</h3>
+<div class="category">Consultar disponibilidad</div>
 </div>
+</article>
 
-
-<div class="product">
-
-<img src="petardo4.jpg">
-
-<div class="info">
-
-<h3>Petardo 4</h3>
-
-<p>Producto pirotécnico</p>
-
-<div class="price">Consultar</div>
-
+<article class="card">
+<div class="card-image">
+<img src="petardo4.jpg" alt="Producto pirotécnico 4">
 </div>
-
+<div class="card-body">
+<h3>Producto 04</h3>
+<div class="category">Consultar disponibilidad</div>
 </div>
-
+</article>
 
 </div>
 
@@ -583,45 +1130,93 @@ onclick="addCart('Camiseta VendixStore',24.99)">
 
 <!-- INFORMACIÓN -->
 
-<section>
-
-<div class="title">
-
-<h2>¿Por qué <span>VendixStore?</span></h2>
-
-</div>
+<section class="section">
 
 <div class="info-grid">
 
-<div class="info-box">
-
-<h3>🚚 Envíos</h3>
-
+<div class="info-card">
+<div class="emoji">🚚</div>
+<h3>Envíos</h3>
 <p>
 Envíos disponibles por Europa.
 </p>
+</div>
+
+<div class="info-card">
+<div class="emoji">🛍️</div>
+<h3>Compra fácil</h3>
+<p>
+Añade productos al carrito y prepara tu pedido.
+</p>
+</div>
+
+<div class="info-card">
+<div class="emoji">💬</div>
+<h3>Atención</h3>
+<p>
+Estamos disponibles para resolver tus dudas.
+</p>
+</div>
+
+<div class="info-card">
+<div class="emoji">⚡</div>
+<h3>Vendix Community</h3>
+<p>
+Forma parte de nuestra comunidad.
+</p>
+</div>
 
 </div>
 
-<div class="info-box">
+</section>
 
-<h3>🛍️ Productos</h3>
+
+<!-- FAQ -->
+
+<section class="section">
+
+<div class="heading">
+
+<h2>FAQ.</h2>
 
 <p>
-Ropa, bambas y accesorios.
+Todo lo que necesitas saber antes de comprar.
 </p>
 
 </div>
 
-<div class="info-box">
+<div class="faq">
 
-<h3>💬 Atención</h3>
-
+<details>
+<summary>¿Dónde realizáis envíos?</summary>
 <p>
-Contacta con nosotros para cualquier duda.
+Actualmente los envíos están planteados para Europa.
 </p>
+</details>
 
-</div>
+<details>
+<summary>¿Cómo puedo comprar?</summary>
+<p>
+Añade los productos disponibles al carrito y utiliza
+la opción de realizar pedido.
+</p>
+</details>
+
+<details>
+<summary>¿Puedo preguntar por una talla?</summary>
+<p>
+Sí. Puedes contactar con VendixStore para consultar
+tallas y disponibilidad.
+</p>
+</details>
+
+<details>
+<summary>¿Los precios son definitivos?</summary>
+<p>
+Los precios mostrados son orientativos y pueden cambiar
+según modelo, talla, estado y disponibilidad.
+</p>
+</details>
 
 </div>
 
@@ -630,26 +1225,26 @@ Contacta con nosotros para cualquier duda.
 
 <!-- CONTACTO -->
 
-<section id="contacto">
+<section class="contact" id="contacto">
 
-<div class="title">
+<h2>¿Hablamos?</h2>
 
-<h2>Contacta con <span>VendixStore</span></h2>
+<p>
+Síguenos y descubre las novedades de VendixStore.
+</p>
 
-</div>
-
-<div class="social">
+<div class="socials">
 
 <a href="https://www.tiktok.com/@vendixstore7" target="_blank">
-🎵 TikTok
+TikTok
 </a>
 
 <a href="https://www.instagram.com/vendixstore02" target="_blank">
-📸 Instagram
+Instagram
 </a>
 
 <a href="mailto:micmc018@gmail.com">
-📧 Email
+Email
 </a>
 
 </div>
@@ -659,22 +1254,26 @@ Contacta con nosotros para cualquier duda.
 
 <footer>
 
-<h2>VendixStore</h2>
+<strong>VendixStore</strong>
 
-<p>© 2026 VendixStore</p>
+<br><br>
+
+© 2026 VendixStore · Todos los derechos reservados.
 
 </footer>
 
 
 <!-- CARRITO -->
 
-<div id="cartBox">
+<aside class="cart-panel" id="cart">
+
+<div class="cart-head">
+
+<h2>Tu carrito</h2>
 
 <button class="close" onclick="closeCart()">×</button>
 
-<h2>🛒 Carrito</h2>
-
-<br>
+</div>
 
 <div id="cartItems">
 
@@ -684,61 +1283,61 @@ Tu carrito está vacío.
 
 </div>
 
-<h2>
-Total: <span id="total">0.00</span> €
-</h2>
+<div class="total">
 
-<button class="checkout" onclick="checkout()">
-📧 Realizar pedido
-</button>
+Total:
+<span id="cartTotal">0.00</span> €
 
 </div>
+
+<button class="checkout" onclick="checkout()">
+Realizar pedido
+</button>
+
+</aside>
 
 
 <script>
 
 let cart=[];
 
-function addCart(name,price){
+
+/* CART */
+
+function addToCart(name,price){
 
 cart.push({
-name:name,
-price:price
+name,
+price
 });
 
 updateCart();
-
 openCart();
 
 }
 
 function updateCart(){
 
-let items=
-document.getElementById("cartItems");
+const items=document.getElementById("cartItems");
+const count=document.getElementById("cartCount");
+const total=document.getElementById("cartTotal");
 
-let count=
-document.getElementById("count");
-
-let total=
-document.getElementById("total");
-
-count.innerText=cart.length;
+count.textContent=cart.length;
 
 if(cart.length===0){
 
 items.innerHTML=
 '<p style="color:#777">Tu carrito está vacío.</p>';
 
-total.innerText="0.00";
+total.textContent="0.00";
 
 return;
 
 }
 
-items.innerHTML="";
-
 let sum=0;
+
+items.innerHTML="";
 
 cart.forEach((item,index)=>{
 
@@ -746,20 +1345,17 @@ sum+=item.price;
 
 items.innerHTML+=`
 
-<div class="cartItem">
+<div class="cart-item">
 
 <strong>${item.name}</strong>
 
 <br>
 
-<span style="color:#c084fc">
-${item.price.toFixed(2)} €
-</span>
+<small>${item.price.toFixed(2)} €</small>
 
 <br>
 
-<button
-class="remove"
+<button class="remove"
 onclick="removeItem(${index})">
 Eliminar
 </button>
@@ -770,67 +1366,150 @@ Eliminar
 
 });
 
-total.innerText=sum.toFixed(2);
+total.textContent=sum.toFixed(2);
 
 }
 
 function removeItem(index){
 
 cart.splice(index,1);
-
 updateCart();
 
 }
 
 function openCart(){
 
-document
-.getElementById("cartBox")
-.classList.add("open");
+document.getElementById("cart").classList.add("open");
 
 }
 
 function closeCart(){
 
-document
-.getElementById("cartBox")
-.classList.remove("open");
+document.getElementById("cart").classList.remove("open");
 
 }
+
+
+/* CHECKOUT */
 
 function checkout(){
 
 if(cart.length===0){
 
-alert("El carrito está vacío.");
+alert("Tu carrito está vacío.");
 
 return;
 
 }
 
-let message=
-"Hola VendixStore 👋%0A%0AQuiero realizar este pedido:%0A%0A";
+let text=
+"Hola VendixStore 👋%0A%0AQuiero consultar este pedido:%0A%0A";
 
 let total=0;
 
 cart.forEach(item=>{
 
-message+=
+text+=
 "• "+item.name+
-" - "+item.price.toFixed(2)+
-" €%0A";
+" — "+item.price.toFixed(2)+" €%0A";
 
 total+=item.price;
 
 });
 
-message+=
+text+=
 "%0ATotal: "+
-total.toFixed(2)+
-" €";
+total.toFixed(2)+" €";
 
 window.location.href=
-"mailto:micmc018@gmail.com?subject=Pedido VendixStore&body="+message;
+"mailto:micmc018@gmail.com?subject=Pedido VendixStore&body="+text;
+
+}
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+const query=
+document.getElementById("search")
+.value
+.toLowerCase();
+
+document
+.querySelectorAll(".product")
+.forEach(product=>{
+
+const text=
+product.innerText.toLowerCase();
+
+product.style.display=
+text.includes(query) ? "" : "none";
+
+});
+
+}
+
+function focusSearch(){
+
+document.getElementById("search").focus();
+
+document
+.getElementById("tienda")
+.scrollIntoView();
+
+}
+
+
+/* FILTER */
+
+function filterProducts(category,button){
+
+document
+.querySelectorAll(".filter")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+document
+.querySelectorAll(".product")
+.forEach(product=>{
+
+if(
+category==="all" ||
+product.dataset.category===category
+){
+
+product.style.display="";
+
+}else{
+
+product.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* FAVORITES */
+
+function favorite(button){
+
+if(button.textContent==="♡"){
+
+button.textContent="♥";
+button.style.color="#b45cff";
+
+}else{
+
+button.textContent="♡";
+button.style.color="white";
+
+}
 
 }
 
